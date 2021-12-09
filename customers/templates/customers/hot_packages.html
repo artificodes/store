@@ -1,0 +1,29 @@
+<div class="text-left mt-4">
+    <p class="h1 text-darker uk-display-inline-block border-bottom border-darker p-2">Hot Packages</p>
+  
+  </div>
+  <div class="container-fluid recent m-0 p-0" id="activity">
+  
+    <div class="row m-0 p-2 mt-2">
+      {% for product in bestdeals %}
+      <div class="col-cmd-4-e col-csm-5-e col-css-7 col-csx-7 col-csxx-14 p-2 mb-2">
+        <div class="rounded-lg position-relative p-0 card m-0" style="border-style: dashed !important;">
+          <img class="card-img" src="{{product.image.url}}" alt="">
+  
+          <div class="text-center bg-translucent-darker p-2 rounded-0">
+            <h5 class="card-title">{{product.name}}</h5>
+            <button class="btn btn-primary rounded-pill m-0 pr-4 pl-4"> <i class="fa fa-plus mr-2"></i> More</button>
+          </div>
+  
+  
+          <!-- <div class="bg-red text-white h2 uk-display-inline-block text-center p-2 rounded-lg uk-position-bottom-center mb--3">
+      {{product.name}}
+    </div> -->
+        </div>
+  
+      </div>
+  
+      {% endfor %}
+  
+    </div>
+  </div>

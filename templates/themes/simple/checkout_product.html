@@ -1,0 +1,51 @@
+<div class="card m-0 mb-1 shadow-none uk-display-inline-block" id="{{product.cartedproductid}}" style="max-width: 320px;">
+    <div class="card-body pb-1 pl-0 pr-0 border-bottom">
+        <div class="row m-0">
+            <div class="col-csxx-x-4 p-0 text-left"
+                style="">
+               
+                    <img src="{{product.product.image.url}}" alt="" class="rounded-md shadow-none"
+                        style="max-width:100%;; height: 100%;">
+                
+            </div>
+            <div class="col-csxx-x-10 p-0 text-left">
+                <div class="row m-0 pl-2 pt-0">
+                    <div class="col-12 text-right p-0 h4 m-0">
+                        {{product.product.name}}
+                    </div>
+                    <div class="col-12 text-left p-0 h3" id="price{{product.product.productid}}">
+                        <div class="col-csxx-x-14 text-right">
+                            {{product.formatted_amount}}
+                        </div>
+                        <div class="col-csxx-x-14 text-right">
+                            {{product.formatted_quantity}}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <span class="uk-position-top-right text-light text-sm">{% if product.variation %} {{product.variation.formatted_price}}{% else %} {{product.product.formatted_price}} {% endif %}/{{product.product.measurement_unit}}</span>
+        </div>
+
+
+
+    </div>
+</div>
+<br>
+
+<script>
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+</script>

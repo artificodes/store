@@ -1,0 +1,30 @@
+<div class="container-fluid m-0 p-0" id="">
+
+    <div class="row m-0 p-0 mt-0 pt-4 pb-4 bg-white">
+      {% for brand in brands %}
+      <div class="col-csxx-x-4-e col-csm-3-e col-cmd-3-e p-1 position-relative">
+        <a href="{% url 'customer_brand_page' slug=brand.slug %}" class="uk-icon-button bg-white" style="height: 100px;width: 100px;">
+
+          <div class="rounded-md position-relative p-0 overflow-hidden card shadow-none m-0"
+            style="max-height: 230px;max-width: 230px;">
+            <div class="card-body p-0">
+              <img class="rounded-md" src="{{brand.image.url}}" alt=""
+                style="height: 40px;width: 40px;">
+
+              <div class=" text-center">
+                <h1 class="text-sm text-darker uk-text-normal">{{brand.name}}</h1>
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+        </a>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>

@@ -1,0 +1,174 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="col-12 p-2">
+    <div class="bg-darker rounded-sm p-5 position-relative mb-3">
+        <div class="row m-0 text-white text-bold p-2 uk-position-center h2" style="max-width: 320px;">
+            <div class=" pr-2 pl-2">
+                <div class="text-center" >
+                    <span id="days{{flashsale.pk}}">
+
+                    </span>
+
+                    <span>
+                        D
+                    </span>
+                </div>
+                
+            </div>
+            <div class=" pr-2 pl-2">:</div>
+            <div class=" pr-2 pl-2">
+                <div class="text-center" >
+                    <span id="hours{{flashsale.pk}}">
+
+                    </span>
+
+                    <span>
+                        H
+                    </span>
+                </div>
+            </div>
+            <div class="pr-2 pl-2">:</div>
+
+            <div class=" pr-2 pl-2">
+                <div class="text-center" >
+                    <span id="minutes{{flashsale.pk}}">
+
+                    </span>
+
+                    <span>
+                        M
+                    </span>
+                </div>
+            </div>
+            <div class=" pr-2 pl-2">:</div>
+
+            <div class=" pr-2 pl-2">
+                <div class="text-center" >
+                    <span id="seconds{{flashsale.pk}}"></span>
+
+                    <span>S
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white rounded-sm overflow-hidden" style="height: 100%;">
+        <div class="text-left border-bottom row m-0 bg-danger ">
+            <div class="col p-0">
+                <div class="m-0">
+                    <div class="col p-1 col-csxx-x-14 col-csxx-14 col-cmd-7">
+                        <p class="text-bold text-white uk-display-inline-block p-2">Flash sales</p>
+
+                    </div>
+                    <div class="col p-1  col-csxx-x-14 col-csxx-14 col-cmd-7">
+                      
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="load-content position-relative mt-0" identifier="flashsale_products" contenturl="{% url 'all_customer_flash_sales_products' id=flashsale.pk %}">
+        </div>
+    </div>
+</div>
+
+<script>
+        $(function () 
+    {
+        // alert('{{date}}')
+        var suspension_days = (Number({{flashsale.start_time_timestamp}}) - Number({{ server_timestamp }})) /(86400)
+    var suspension_seconds = Math.ceil(suspension_days * 24 * 60 * 60)
+    var suspension_minutes = Math.ceil(suspension_seconds / 60)
+    var total_remaining_days = suspension_minutes / 60 / 24
+    var remain_days = total_remaining_days | 0
+    var total_remaining_hours = (suspension_minutes / 60) % 24
+    var remain_hours = (total_remaining_hours | 0)
+    var total_remaining_minutes = (total_remaining_hours - remain_hours) * 60
+    var remain_minutes = (total_remaining_minutes) | 0
+    var remain_seconds = Math.round((total_remaining_minutes - remain_minutes) * 60)
+    // if (remain_minutes < 1) {
+    //     $('#briefly-suspended-message{{flashsale.pk}}').html('Your account is briefly suspended. Kindly wait for ' + remain_seconds + ' seconds.')
+
+    // }
+    // else {
+    //     $('#briefly-suspended-message{{flashsale.pk}}').html('Your account is briefly suspended. Kindly wait for ' + remain_days + ' days ' + remain_hours + ' hours ' + remain_minutes + ' minutes and ' + remain_seconds + ' seconds.')
+
+    // }
+
+    function updateTime() {
+        if (remain_seconds >= 1) {
+            remain_seconds--
+            $('#days{{flashsale.pk}}').html(remain_days)
+            $('#hours{{flashsale.pk}}').html(remain_hours)
+            $('#minutes{{flashsale.pk}}').html(remain_minutes)
+            $('#seconds{{flashsale.pk}}').html(remain_seconds)
+
+        }
+        else {
+            remain_seconds = 60
+            remain_minutes--
+            $('#days{{flashsale.pk}}').html(remain_days)
+            $('#hours{{flashsale.pk}}').html(remain_hours)
+            $('#minutes{{flashsale.pk}}').html(remain_minutes)
+            $('#seconds{{flashsale.pk}}').html(remain_seconds)
+            if (remain_minutes >= 1) { }
+            else {
+                remain_hours--
+                remain_minutes = 60
+
+                $('#days{{flashsale.pk}}').html(remain_days)
+                $('#hours{{flashsale.pk}}').html(remain_hours)
+                $('#minutes{{flashsale.pk}}').html(remain_minutes)
+                $('#seconds{{flashsale.pk}}').html(remain_seconds)
+                if (remain_hours >= 1) {
+                    $('#days{{flashsale.pk}}').html(remain_days)
+                    $('#hours{{flashsale.pk}}').html(remain_hours)
+                    $('#minutes{{flashsale.pk}}').html(remain_minutes)
+                    $('#seconds{{flashsale.pk}}').html(remain_seconds)
+                }
+                else {
+                    if (remain_days < 1) {
+                        $('#days{{flashsale.pk}}').html(remain_days)
+                        $('#hours{{flashsale.pk}}').html(remain_hours)
+                        $('#minutes{{flashsale.pk}}').html(remain_minutes)
+                        $('#seconds{{flashsale.pk}}').html(remain_seconds)
+                    }
+                    else {
+                        remain_days--
+                        remain_hours = 23
+                    }
+
+                    $('#days{{flashsale.pk}}').html(remain_days)
+                    $('#hours{{flashsale.pk}}').html(remain_hours)
+                    $('#minutes{{flashsale.pk}}').html(remain_minutes)
+                    $('#seconds{{flashsale.pk}}').html(remain_seconds)
+                }
+            }
+        }
+        // else{
+        //     $('#days{{flashsale.pk}}').html(remain_days)
+        // $('#hours{{flashsale.pk}}').html(remain_hours)
+        // $('#minutes{{flashsale.pk}}').html(remain_minutes)
+        // $('#seconds{{flashsale.pk}}').html(remain_seconds)
+        // }
+
+    }
+    setInterval(updateTime, 1000)
+
+    // $('#{{flashsale.pk}}').countdowntimer({
+    //     seconds: 300 - suspension_seconds,
+    //     size: "lg",
+    //     displayFormat: 'DHMS',
+
+    // });
+
+});
+</script>
+
+{% endblock content %}

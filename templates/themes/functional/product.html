@@ -1,0 +1,161 @@
+
+       {% if product.discount %}
+       <div class="uk-position-top-right mt-1 mr-1 bg-primary rounded-sm p-1" style="z-index: 3;">
+          <span class="text-white text-sm"> -{{product.discount}}% </span>
+        </div>
+        {% endif %}
+        <div class="p-2 uk-display-inline-block rounded-0 bg-white overflow-hidden card shadow-none m-0 uk-width-1-1" style="z-index: 2;">
+          <a href="{% url 'customer_product_details' productid=product.productid %}" class="position-relative">
+            <div class="rounded-0 position-relative p-0 overflow-hidden  shadow-none m-0 text-center card">
+              <div class="pb-0 pl-2 pt-2 pr-2 uk-display-inline-block">
+
+                {% if flipimage %}
+                <div class="ui circular rotate left reveal">
+                  <div class="visible content">
+                    <img src="{{product.image.url}}" class="ui big image rounded-sm" style="max-width: 150px; max-height: 200px;">
+                  </div>
+                  <div class="hidden content">
+                    <img src="{{flipimage.image.url}}" class="ui big image rounded-sm" style="max-width: 150px; max-height: 200px;">
+                  </div>
+                </div>
+                {% else %}
+                                <img class="card-img rounded-sm" src="{{product.image.url}}" alt="" style="max-width: 150px; max-height: 200px;">
+
+                {% endif %}
+    
+              </div>
+    
+              <div class=" rounded-md p-0 mt-2 m-0 text-sm text-left">
+                <div class="pl-1 pr-1 pt-0 pb-0">
+                  <h3 class="text-sm text-dark uk-text-normal">{{product.name | truncatechars:40}} </h3>
+                </div>
+                {% if product.discount > 0 %}
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-sm text-darker">{{product.formatted_discount_price}}</p>
+    
+                </div>
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-sm text-danger"><del>{{product.formatted_price}}</del> </p>
+    
+                </div>
+                {% else %}
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-sm text-darker">{{product.formatted_price}}</p>
+    
+                </div>
+                {% endif %}
+                
+           
+                <!-- <div class="">
+                  <div class="ui rating mini uk-display-inline-block" data-rating="{{product.rating}}" data-max-rating="5"></div>
+                  <div class="text-darker uk-display-inline-block">(5)</div>
+      
+                </div> -->
+    
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+    
+        <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative  " style="min-height: 40px;">
+          <div class="row m-0 action hide">
+            <div class="p-2 col-csxx-x-14 col-cmd-4">
+              {% if product not in saved.products.all %}
+
+              <button
+                class="btn bg-transparent m-0 content-btn position-relative rounded-circle uk-icon-button uk-box-shadow-medium"
+                contenturl="{% url 'customer_add_to_saved' productid=product.productid %}">
+      
+                <i class="icon heart outline text-darker shadow-sm uk-position-center"></i>
+      
+              </button>
+              {% else %}
+              <button
+              class="btn bg-transparent m-0 content-btn position-relative rounded-circle uk-icon-button uk-box-shadow-medium"
+              contenturl="{% url 'customer_remove_from_saved' productid=product.productid %}">
+    
+              <i class="icon heart text-red shadow-sm uk-position-center"></i>
+    
+            </button>
+              {% endif %}
+            </div>
+           
+      
+            <div class="p-2 col-csxx-x-14 col-cmd-10 pt-0">
+              <button class="btn btn-primary m-0 uk-width-1-1 content-btn p-1 border border-darker shadow-none"
+                contenturl="{% url 'customer_add_to_cart' productid=product.productid %}">
+      
+                <span class="p-0 pr-2 text-left">
+                  <i class="fa fa-cart-plus"></i>
+      
+                </span>
+                <span class="p-0 text-right pr-2">
+                  Add to cart
+                </span>
+      
+              </button>
+            </div>
+      
+          </div>
+        </div>
+ 
+
+
+
+
+<script>
+  $('.ui.rating')
+    .rating('disable')
+    ;
+</script>
+
+<script>
+
+{
+        (function ($) {
+            $('.uk-card-hover').on('mouseover', function () {
+                $(this).find('.action').removeClass('hide')
+            })
+        }(jQuery))
+    }
+
+    {
+        (function ($) {
+            $('.uk-card-hover').on('mouseout', function () {
+                $(this).find('.action').addClass('hide')
+            })
+        }(jQuery))
+    }
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+
+
+</script>
+
+<script>
+   $('.content-btn').off()
+  {
+    (function ($) {
+      $('.content-btn').on('click', function (event) {
+        event.preventDefault()
+        // UIkit.offcanvas($('#offcanvas-content')).show();
+        var link = $(this);
+       var response = requestContentModal(link, link.attr('contenturl'), 'get')
+
+      })
+    }(jQuery))
+  }
+</script>

@@ -1,0 +1,133 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" class="bg-transparent">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+  <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+  {% endblock %}
+
+  <link rel="stylesheet" href="{% static 'base/fontawesome/css/fontawesome.min.css' %} ">
+  <!-- <link rel="stylesheet" href="{% static 'base/boomerang/assets/css/theme.css' %}"> -->
+  <!--  <link rel="stylesheet" href="{% static 'base/countdown/css/jQuery.countdownTimer.css' %}">-->
+  <!-- <link rel="stylesheet" href="{% static 'base/inputcounter/css/handle-counter.min.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'base/imagepreview/css/jpreview.css' %}">
+  <link rel="stylesheet" href="{% static 'base/formvalidation/js/jquery.validity.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.mind1f1.css' %}">-->
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minb68f.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minf27d.css' %}">  -->
+  <!-- <link rel="stylesheet" href="{% static 'base/searchselect/css/jquery-customselect-1.9.1.css' %}">    -->
+  <link rel="stylesheet" href="{% static 'base/uikit/css/uikit.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}"> -->
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/reset.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/styles.css' %}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+  <link rel="stylesheet" href="{% static 'base/girly/css/girly.css' %}">
+  <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videothumbnails/jquery.youtubevideo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videomodal/modal-video.min.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/vendor/nucleo/css/nucleo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/nucleo-svg.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/argon.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'base/argon/css/argon-design-system.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'base/custom/custom.css' %}">
+
+
+  <link rel="stylesheet" href="{% static 'base/custom/custom.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans">
+  <link rel="stylesheet" href="{% static 'base/countrycodes/css/intlTelInput.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <style>
+    .bg-primary{
+      background-color: {{settings.primary_color}} !important;
+    }
+    .border-primary{
+     border-color: {{settings.primary_color}} !important
+    }
+
+    .btn-primary{
+           border-color:transparent !important;
+ background-color: {{settings.primary_color}} !important;
+    }
+
+    .btn-primary:hover{
+      background-color: {{settings.primary_color}} !important;
+    }
+    .text-primary{
+      color: {{settings.primary_color}} !important;
+    }
+  </style>
+  
+  {% include 'base/scripts.html' %}
+
+
+  <script type="text/javascript">
+
+    window.CSRF_TOKEN = "{{csrf_token}}";
+  </script>
+</head>
+
+<body style="min-width: 100%;background-color:white;" class="position-relative text-left" >
+
+  <div id="top">
+
+  </div>
+
+
+
+  <div class="uk-overlay uk-height-viewport " uk-cover id="loader-cover"
+    style="z-index: 1030;background-color: black;opacity: 0.8;position: fixed;display: none;width: 100%;">
+    <div class='ui active uk-position-center loader loading big uk-border-circle uk-box-shadow-small uk-padding-small'
+      style='position: fixed !important;'>
+      <img src="" class="logo-loader " alt="">
+    </div>
+  </div>
+
+ 
+    
+
+
+
+
+  <div class="text-center" style="z-index: 2;">
+    <div class="" style="width: 100%;max-width: 100%;">
+      <div id="major" class="position-relative p-0 bg-transparent "
+        style="">
+
+
+        <div id="" class="position-relative rounded-md p-0" style="z-index: 2;">
+          {% block content%}
+
+
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    {% include 'themes/functional/base/footer.html' %}
+
+  </div>
+
+
+
+  {% include 'themes/functional/base/modals.html' %}
+
+
+
+
+</body>
+
+</html>

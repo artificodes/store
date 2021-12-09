@@ -1,0 +1,15 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container bg-white rounded-md ">
+    <div class="text-left border-bottom">
+        <h3 class="h3 text-darker uk-display-inline-block p-2">Saved items</h3>
+    </div>
+
+    <div class="load-content position-relative mt-4 p-2 row m-0" id="saved-items" identifier='saveditems'
+    contenturl="{% url 'customer_saved_items_products' %}">
+</div>
+</div>
+
+{% endblock content %}

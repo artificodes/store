@@ -1,0 +1,350 @@
+{% extends "base/ubase.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-transparent pt-md-4  pb-4 ">
+  <div class="uk-display-block uk-width-1-1 rounded-md p-0" id="">
+    <div class="row m-0">
+      <div class="col-cmd-7 col-csm-5-e col-css-7 col-csx-14 col-csxx-14 col-csxx-x-14 p-1">
+        <div class="card m-0 pb-3 bg-white rounded-md">
+          <div class="card-body text-center">
+          {% if productimages %}
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@ pb-3 pt-0" uk-lightbox="">
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{product.image.url}}">
+                  <img src="{{product.image.url}}" alt="" class="card shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+              {% for image in productimages %}
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{image.image.url}}">
+                  <img src="{{image.image.url}}" alt="" class="rounded-md shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+              {% endfor %}
+
+            </ul>
+            <div class="uk-display-inline-block">
+              <ul class="uk-slider-nav uk-dotnav "></ul>
+
+            </div>
+          </div>
+          {% else %}
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@ pb-3 pt-0" uk-lightbox="">
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{product.image.url}}">
+                  <img src="{{product.image.url}}" alt="" class="card shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+
+          <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative">
+            <button class="btn btn-primary m-0 uk-width-1-1 content-btn p-1 btn-sm"
+              contenturl="{% url 'customer_add_to_cart' productid=product.productid %}">
+             
+                <span class="col-csxx-x-5 p-0 pr-2 text-left">
+                  <i class="fa fa-cart-plus"></i>
+      
+                </span>
+                <span class="col-csxx-x-9  p-0 text-right pr-2">
+                  Add to cart
+                </span>
+         
+            </button>
+          </div>
+        </div>
+
+      </div>
+      </div>
+
+      <div class="col-cmd-7 col-csm-5-e col-css-7 col-csx-14 col-csxx-14 col-csxx-x-14 text-left p-1 pb-3">
+        <div class="card m-0 bg-white rounded-md">
+          <div class="card-body">
+            <p class="text-darker h4">{{product.name}}</p>
+            <p class="text-darker h1">{% if product.variations.all %} <span
+                class="uk-text-normal uk-text-small">From</span> {{variations.formatted_price}} {% else %}
+              {{product.formatted_price}}/{{product.measurement_unit}} {% endif %}</p>
+
+
+            <form class="form position-relative" id="add-to-cart" method="POST"
+              action="{% url 'customer_add_to_cart' productid=product.productid %}" style="">
+
+              {% csrf_token %}
+
+
+              <div class="p-2">
+                {% if product.variations.all %}
+                <p class="h2 text-darker">Product variations</p>
+
+                {% for variation in product.variations.all %}
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input class="custom-control-input variation" type="radio" name="variation" price={{variation.price}}
+                    id="variation{{variation.id}}" value="{{variation.id}}" required>
+                  <label class="custom-control-label " for="variation{{variation.id}}">{{variation.name}}
+                    {{variation.formatted_price}}</label>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+              </div>
+              <div class="uk-inline mt-4 position-relative" style="width: 100%;">
+                <input type="hidden" name="productid" value="{{product.productid}}" id="">
+                <input
+                  class="uk-input form-control p-3  pl-6  rounded-pill position-relative border border-primary text-dark "
+                  style="z-index: 1;" id="quantity" type="number" min="0" name="quantity" parent="#add-to-cart"
+                  price=" {% if product.variations.all %} {% else %} {{product.price}} {% endif %}"
+                  unit="{{product.measurement_unit}}" required>
+                <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-5 c-label"
+                  style="z-index: 1;font-size: 10px;">
+                  Qty
+                </span>
+                <p class=" text-white h2 uk-position-center-left ml-4" style="z-index: 3;">
+                  <button class="btn-primary btn rounded-circle uk-position-center m-0 decrease-quantity"
+                    style="height: 35px;width: 35px;"> <span class="uk-position-center text-white"
+                      style="font-size: large !important;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">-</span></button>
+                </p>
+                <p class="text-white h2 uk-position-center-right mr-4" style="z-index: 3;">
+                  <button class="btn-primary btn rounded-circle uk-position-center m-0 increase-quantity" type="button"
+                    style="height: 35px;width: 35px;"> <span class="h2 uk-position-center text-white">+</span></button>
+                </p>
+
+              </div>
+              <div class="row m-0 text-darker mt-4 pt-2 pb-2">
+                <div class="col-6 text-left">
+                  Quantity
+                </div>
+
+                <div class="col-6 text-right text-bold" id="purchase-quantity">
+                  {{product.measurement_unit}}
+                </div>
+              </div>
+              <div class="row m-0 text-darker border-top mt-2 pt-2 pb-2">
+
+
+                <div class="col-6 text-left">
+                  Amount
+                </div>
+
+                <div class="col-6 text-right text-bold" id="purchase-amount">
+                  ₦ 0
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative mt-3">
+                <button class="btn btn-primary m-0 uk-width-1-1"><i class="fa fa-cart-plus mr-2"></i> Add to
+                  cart</button>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+</div>
+</div>
+
+
+
+    <script>
+
+      $("#quantity").change(function (event) {
+        var inputValue = Number($(this).val())
+        var price = Number($(this).attr('price'))
+        var unit = $(this).attr('unit')
+        var amount = price * inputValue
+        $('#purchase-amount').empty().html('₦ ' + String(amount))
+      })
+
+      $(".variation").click(function (event) {
+
+        var inputValue = Number($(this).attr('price'))
+        var quantityFieldValue = $('#quantity').attr('price', inputValue)
+        var quantityFieldValue = $('#quantity')
+
+        var price = Number(quantityFieldValue.attr('price'))
+        if (price) {
+          // quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+          var inputValue = quantityFieldValue.val()
+          var unit = quantityFieldValue.attr('unit')
+          if (Number(inputValue) > 1) {
+            unit += 's'
+          }
+          var amount = price * inputValue
+          $('#purchase-quantity').empty().html(String(inputValue) + ' ' + unit)
+          $('#purchase-amount').empty().html('₦ ' + String(amount))
+        }
+        else {
+          $(quantityFieldValue.attr('parent')).append(inlineAlert)
+
+          $('#inline-alert-inner').empty().append('Choose variation')
+          $('#inline-alert').fadeToggle()
+          $('#inline-alert').removeClass('bg-green')
+          $('#inline-alert').addClass('bg-danger')
+          $('#inline-alert').show()
+          setTimeout(fadeInlineAlert, 3000)
+        }
+
+      })
+
+      $(".increase-quantity").on('click', function (event) {
+        event.preventDefault()
+        var quantityFieldValue = $('#quantity')
+
+        var price = Number(quantityFieldValue.attr('price'))
+        if (price) {
+          quantityFieldValue.val(Number(quantityFieldValue.val()) + 1)
+          var inputValue = quantityFieldValue.val()
+          var unit = quantityFieldValue.attr('unit')
+          if (Number(inputValue) > 1) {
+            unit += 's'
+          }
+          var amount = price * inputValue
+          $('#purchase-quantity').empty().html(String(inputValue) + ' ' + unit)
+          $('#purchase-amount').empty().html('₦ ' + String(amount))
+        }
+        else {
+          $(quantityFieldValue.attr('parent')).append(inlineAlert)
+
+          $('#inline-alert-inner').empty().append('Choose variation')
+          $('#inline-alert').fadeToggle()
+          $('#inline-alert').removeClass('bg-green')
+          $('#inline-alert').addClass('bg-danger')
+          $('#inline-alert').show()
+          setTimeout(fadeInlineAlert, 3000)
+        }
+
+      })
+
+
+
+      $(".decrease-quantity").on('click', function (event) {
+        event.preventDefault()
+        var quantityFieldValue = $('#quantity')
+        quantityFieldValue.val(Number(quantityFieldValue.val()) - 1)
+        var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1) {
+          unit += 's'
+        }
+        var amount = price * inputValue
+        $('#purchase-quantity').empty().html(String(inputValue) + ' ' + unit)
+        $('#purchase-amount').empty().html('₦ ' + String(amount))
+      })
+
+
+
+      $('.load-content').beacon({
+
+        onenter: function (el) {
+          var contentElement = $(el)
+          $.ajax({
+            beforeSend: function () {
+              //  alert(contentElement.attr('id'))
+            },
+            complete: function () {
+            },
+            type: 'get',
+            url: contentElement.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+            },
+            success: function (response) {
+
+              if (response.content) {
+                $(el).empty()
+
+                $(el).append(response.content);
+              }
+
+
+            },
+            error: function (xhr, status, error) {
+              //   alert('there was an error')
+            }
+          });
+
+        }
+      });
+
+
+
+    </script>
+
+
+    <script>
+
+      $("#add-to-cart").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+          beforeSend: function () {
+
+            showLoadingBar()
+          },
+          complete: function () {
+            hideLoadingBar()
+
+          },
+          url: post_url,
+          type: request_method,
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+
+          success: function (response) {
+            if (response.content) {
+              loadContent("{% url 'customer_cart_count' %}", '#cart-count')
+
+            }
+            if (response.full_modal) {
+              fullcontentModal(response.full_modal, response.heading)
+
+            }
+            if (response.modal_message) {
+              messageModal(response.modal_message,)
+
+            }
+            if (response.modal_notification) {
+              notificationModal(response.modal_notification)
+
+            }
+
+            if (response.modal_content) {
+              contentModal(response.modal_content, response.heading)
+
+            }
+            if (response.message) {
+              UIkit.notification.closeAll()
+              UIkit.notification(response.message)
+            }
+          },
+
+          error: function (xhr, status, error) {
+            UIkit.notification.closeAll()
+            UIkit.notification('Operation not successful. Check your internet connection',)
+          }
+        });
+      });
+
+    </script>
+
+
+
+    {% endblock content %}

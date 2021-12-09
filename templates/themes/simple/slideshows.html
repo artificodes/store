@@ -1,0 +1,12 @@
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+    
+    <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@ pb-3 pt-3"   uk-lightbox="">
+      {% for slideshow in slideshows %}
+      <li class="col-cmd-4-e col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2" >
+    <a class="uk-button uk-button-default" href="{{slideshow.image.url}}" style="height: 100%;">
+                    <img src="{{slideshow.image.url}}" alt="" class="card shadow-none" style="height: 100%;">
+                    </a>
+      </li>
+      {% endfor %}
+    </ul>
+</div>

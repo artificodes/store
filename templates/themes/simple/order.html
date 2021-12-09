@@ -1,0 +1,50 @@
+<div class="col-md-4 col-sm-3 p-1">
+<div class="card p-0 m-0 mt-1 uk-text-left shadow-sm border btn-white btn"
+    style="">
+    <div class="card-header p-2">
+     <span style="font-weight: bold;">Order ID:</span>
+            #{{order.orderid}}
+    
+    </div>
+    <div class="card-body p-2">
+        <div class="col-csxx-x-14" style="">
+          
+            <div class="col-csxx-x-14">
+                <p class="" style="font-weight: bold;"><span style="font-weight: bold;">No. of items:</span>
+                    {{order.products.all | length}}
+                </p>
+            </div>
+            <div class="col-csxx-x-14">
+                <p class="card-text" style=""><span style="font-weight: bold;">Payment status:</span>
+                    <span class="pr-2 pl-2 text-darker rounded-sm"> {% if order.paid %} <span
+                            class="text-green uk-text-bold pr-2 pl-2 rounded-sm bg-white">PAID</span>
+                        {% else %} <span class="text-danger uk-text-bold pr-2 pl-2 rounded-sm bg-white">Not paid</span>
+                        {% endif %}</span>
+            </div>
+            <div class="col-csxx-x-14">
+                <p class="card-text" style=""><span style="font-weight: bold;">Date/time placed:</span>
+                    {{order.date_time_added}}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class=" p-2 text-center row m-0">
+ {% if not order.paid %}
+        <div class="col p-1">
+        <a class="btn btn-warning uk-width-1-1 confirm" target="#order-container"
+        contenturl="{% url 'customer_remove_order' id=order.orderid %}"  
+        message="You are about to remove this product" ><i class="fa fa-times" ></i> Cancel</a>
+     
+        </div>
+      {% endif %}    
+      <div class="col p-1">
+
+        <a href="{% url 'customer_my_order' orderid=order.orderid %}"  class="btn btn-blue  uk-width-1-1"> <i class="fa fa-eye" ></i> View</a>
+</div>
+      </div>
+</div>
+</div>

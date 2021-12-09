@@ -1,0 +1,202 @@
+{% extends "base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="card-body p-0">
+  <div class="tab-content tab-space pb-6">
+    <div class="tab-pane active " id="home">
+      <div class=" h1 pl-2 text-dark bg-white uk-width-1-1 mb-0 p-2 pb-0 text-left">
+        <b>Home</b>
+      </div>
+      <div class="load-content" id="business-mode" contenturl="{% url 'customer_business_mode' %}">
+
+      </div>
+
+      <div class="p-1 mt-1 bg-white load-content position-relative overflow-hidden slide uk-animation-slide-left-small "
+        id="home-summary" style="min-height: 100px;" contenturl="{% url 'customer_home_summary' %}">
+        <div class='ui active loader loading tiny m-0 uk-border-circle uk-box-shadow-small uk-padding-small'>
+        </div>
+      </div>
+
+      <div class="text-left text-dark slide">
+
+        {% include 'customers/dashboard_content.html' %}
+      </div>
+    </div>
+    <div class="tab-pane " id="history">
+      <div class=" h1 pl-2 border-bottom-divider text-dark bg-white uk-width-1-1 mb-0 p-2 pb-0 text-left">
+        <b>History</b>
+      </div>
+
+      <div class="p-0 mt-0  bg-white position-relative overflow-hidden slide uk-animation-slide-left " id="history">
+        {% include 'customers/histories.html' %}
+
+
+      </div>
+    </div>
+    <div class="tab-pane position-relative" id="invest">
+      <div class="uk-width-1-1 bg-secondary fixed-top uk-height-viewport"  style="z-index: 1;"></div>
+      <div class="position-relative"  style="z-index: 5;">
+        <div class=" h1 pl-2 text-dark bg-transparent uk-width-1-1 mb-0 p-2 pb-0 text-left">
+
+          <div class="h1">Invest</div>
+  
+          <div class="nav-tabs-navigation p-0">
+            <div class="nav-tabs-wrapper text-center bg-transparent">
+              <ul class="nav nav-pills nav-pills-info m-0 text-center row">
+                <li class="nav-item  m-0 p-1 uk-display-inline-block col">
+                  <a class="nav-link active custom inner-tab-content-btn rounded-pill shadow-none p-2 uk-width-1-1 pl-2 pr-2 uk-text-bold"
+                    style="font-weight: bold;" href="#active_investments_tab" data-toggle="tab"><i
+                      class="fa fa-check mr-1">
+                    </i>Active</a>
+                </li>
+                <li class="nav-item  m-0 p-0 p-1 col">
+                  <a class="nav-link rounded-pill custom inner-tab-content-btn shadow-none p-2 pl-2 uk-width-1-1 pr-2 uk-text-bold"
+                    style="font-weight: bold;" href="#investment_histories_tab" data-toggle="tab"> <i
+                      class="fa fa-history"> </i>
+                    History</a>
+                </li>
+  
+              </ul>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class=" pl-1 pr-1 pt-1 mt-0  bg-transparent position-relative">
+  
+          <div class="tab-content tab-space pb-0">
+            <div class="tab-pane active slide uk-animation-slide-left " id="active_investments_tab">
+              <div class="p-0 mt-1 load-content position-relative overflow-hidden slide uk-animation-slide-left-small"
+                id="active_investments" style="min-height: 100px;" contenturl="{% url 'customer_active_investments' %}">
+  
+  
+  
+              </div>
+  
+            </div>
+            <div class="tab-pane slide uk-animation-slide-right" id="investment_histories_tab">
+  
+              <div
+                class="p-0 mt-1 bg-white load-content position-relative overflow-hidden slide uk-animation-slide-left-small"
+                id="investments_histories" style="min-height: 100px;"
+                contenturl="{% url 'customer_investment_histories' %}">
+  
+  
+  
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fixed-bottom mb-5 mr-2">
+          <a class="btn-primary uk-icon-button p-4 off-canvas-btn uk-position-center-right mt--5" id="invest"
+            reload="true" contenturl="{% url 'customer_invest' %}"><i class="fa fa-plus uk-position-center"></i></a>
+  
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="tab-pane " id="loan">
+      <div class=" h1 pl-2 border-bottom-divider text-dark bg-white uk-width-1-1 mb-0 p-2 pb-0 text-left">
+        <b>Loan</b>
+      </div>
+
+
+      <div class="p-0 mt-0  bg-white position-relative overflow-hidden slide uk-animation-slide-right" id="get-loan">
+        {% include 'customers/loan_tab_content.html' %}
+      </div>
+    </div>
+    <div class="tab-pane " id="notifications">
+      <div class=" h1 pl-2 border-bottom-divider text-dark bg-white uk-width-1-1 mb-0 p-2 pb-0 text-left">
+        <b>Notifications</b>
+      </div>
+
+      <div class="p-2 mt-2  bg-white position-relative overflow-hidden slide uk-animation-slide-right">
+        <div class="text-left text-dark">
+
+          Notifications
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<script>
+
+  $('.load-content').beacon({
+
+    onenter: function (el) {
+      var contentElement = $(el)
+      $.ajax({
+        beforeSend: function () {
+          //  alert(contentElement.attr('id'))
+        },
+        complete: function () {
+        },
+        type: 'get',
+        url: contentElement.attr('contenturl'),
+        data: {
+          'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+        },
+        success: function (response) {
+
+          if (response.content) {
+            $(el).empty()
+
+            $(el).append(response.content);
+          }
+
+
+        },
+        error: function (xhr, status, error) {
+          //   alert('there was an error')
+        }
+      });
+
+    }
+  });
+
+
+
+</script>
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,70 @@
+<div class="row m-0 mt-2 p-1 bg-darker pt-2">
+    <div class="col p-0 text-left">
+
+        <p><span class="uk-text-bold text-primary h4">Business mode
+            </span><i class="fa fa-question-circle text-lighter ml-2"
+                uk-tooltip="business_mode is system that determines your eligibilty to secure loan facilities from <span class='text-primary uk-text-bold'>fetch.</span> <br> By activating business_mode, you indicate your interest to acquire loan from  <span class='text-primary uk-text-bold'>fetch finance.</span> "></i>
+        </p>
+
+
+    </div>
+    <div class="col p-0 text-right"> 
+        {% if customer.business_mode %}
+        <label class="custom-toggle" id="deactivate_business_mode"
+        contenturl="{% url 'customer_deactivate_business_mode' %}">
+           
+            <input type="radio" checked class="confirm" target="#business-mode"
+                contenturl="{% url 'customer_deactivate_business_mode' %}"
+                message="Are you sure want to deactivate <span class='uk-text-bold text-primary h4'>business_mode</span>?">
+           
+  
+            <span class="custom-toggle-slider  rounded-circle"></span>
+        </label>
+        {% else %}
+        <label class="custom-toggle off-canvas-btn" id="activate_business_mode" reload="true" target="#business-mode"
+        contenturl="{% url 'customer_accept_business_mode' %}">
+           
+            <input type="radio">
+           
+  
+            <span class="custom-toggle-slider  rounded-circle"></span>
+        </label>
+        {% endif %}
+    </div>
+</div>
+
+
+
+<script>
+    $('.ui.rating')
+        .rating('disable')
+        ;
+</script>
+<script>
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function (event) {
+                event.preventDefault()
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+</script>

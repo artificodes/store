@@ -1,0 +1,220 @@
+<form class="form" id="deposit-form" method="POST" action="{% url 'customer_deposit' %}" style="">
+
+    {% csrf_token %}
+
+    <div class="card-body p-1">
+        <p class="text-primary text-bold h2 text-center">Amount</p>
+
+        <div class="uk-inline mt-4 position-relative" style="width: 100%;">
+
+            <span class="text-bold h2 uk-position-center-left" style="z-index: 2;">₦</span>
+
+            <input
+                class="uk-input form-control m-0 p-0  text-center h1 text-darker bg-white  rounded-0 position-relative border border-primary "
+                style="height: 35px; z-index: 1;border-left: none !important;border-right: none !important;border-top: none !important; 
+                caret-color: transparent;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: x-large;" 
+                id="deposit-amount" type="text" readonly name="amount"
+                required value="0.00">
+
+        </div>
+        <div class="text-center mt-2">
+            <div class="text-center uk-display-inline-block">
+                <div class="row m-0 text-center" style="width: 200px;">
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class=" rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                           
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">1</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">2</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">3</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">4</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">5</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">6</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">7</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">8</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">9</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-darker bg-secondary m-0  shadow-none p-0 keyboard-btn"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">0</a>
+                    </div>
+                    <div class="col-4 p-0 mb-1  overflow-hidden">
+                        <a
+                            class="rounded-circle h1 uk-icon-button text-danger bg-secondary m-0  shadow-none p-0 keyboard-btn-clear"
+                            type="button"
+                            style="height: 50px;width: 50px;transform: none;font-size: x-large;">C</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="mt-4 text-center bg-white">
+        <button class="btn-primary shadow-none btn-flat btn " type="submit" style=""> Submit </button>
+    </div>
+
+</form>
+
+
+<script>
+
+$(".keyboard-btn-clear").on('click', function (event) {
+    var inputField = $("#deposit-amount")
+
+    inputField.val('0.00')
+
+})
+    $(".keyboard-btn").on('click', function (event) {
+        var keyboardButton = $(this)
+        var inputField = $("#deposit-amount")
+        var inputFieldValue = String(inputField.val()).replace('.','').replace(',','')
+        var finalValue = (Number(String(inputFieldValue) + keyboardButton.html())/100).toFixed(2)
+        if (finalValue == 'NaN'){
+            inputField.val('0.00')
+
+        }
+        else{
+            var finalValueList = finalValue.split('.')
+        var firstdigits =finalValueList[0]
+        var lastdigits = finalValueList[1]
+        var finalValueNew = []
+        counter = 0
+        for (let i = firstdigits.length-1; i >=0; i--) {
+                if(counter%3==0 && firstdigits.length !=3 && counter!=0){
+                    finalValueNew.push(firstdigits[i]+',')
+                }
+                else{
+                    finalValueNew.push(firstdigits[i])
+                }
+                counter++
+        }        
+        inputField.val(finalValueNew.reverse().join('')+'.'+lastdigits)
+
+        }
+
+
+    })
+
+
+
+
+    $("#deposit-amount").on('change', function (event) {
+        alert('')
+        var inputField = $(this)
+        var inputFieldValue = String(inputField.val())
+        var inputFieldValueList = []
+        for (char in inputFieldValue) {
+            inputFieldValueList.push(inputFieldValue[char])
+        }
+        for (char in inputFieldValueList) {
+            if (inputFieldValueList[char] == '.') {
+                //   alert(inputFieldValueList[Number(char)+1])
+                if (inputFieldValueList[Number(char) + 1] == '0') {
+                    inputFieldValueList.splice(Number(char) + 1, 1)
+                }
+            }
+        }
+        alert(inputFieldValueList)
+    });
+
+
+
+    $("#deposit-form").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.created) {
+                    depositWithPaystack(response.customeremail,response.depositamount,response.depositid) 
+
+                }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

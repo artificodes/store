@@ -1,0 +1,143 @@
+    <div class="card-body pb-1 pl-0 pr-0 border-bottom">
+        <div class="row m-0">
+            <div class="col-cmd-6 col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-left"
+                style="">
+                <a href="{% url 'customer_product_details' productid=product.product.productid %}"
+                    class="position-relative">
+                    <img src="{{product.product.image.url}}" alt="" class="rounded-md shadow-none"
+                        style="max-width:100%;">
+                </a>
+            </div>
+            <div class="col-cmd-8 col-csm-5-e col-css-7 col-csx-14 col-csxx-9 col-csxx-x-14 p-0 text-left">
+                <div class="row m-0 pl-2 pt-0">
+                    <div class="col-12 text-left p-0 h4 m-0">
+                        {{product.product.name}} {% if product.variation %} <span class="text-green">({{product.variation.name}})</span> {% endif %}
+                    </div>
+                    <div class="col-12 text-left p-0 h3 position-relative" id="price{{product.cartedproductid}}">
+                        <p class="position-relative" style="width: max-content;">  
+                            {{product.formatted_amount}} {% if flashsaleproduct %} 
+                            <span class="p-1 pl-2 pr-2 bg-darker text-white rounded-pill uk-text-normal mt--3 uk-position-center-right-out" style="font-size: xx-small;">Flashsale</span> {% endif %}
+                        </p>
+                      
+                    </div>
+                </div>
+            </div>
+            <span class="uk-position-top-right text-light text-sm">{% if product.variation %} {{product.variation.formatted_price}}{% else %} {{product.product.formatted_price}} {% endif %}/{{product.product.measurement_unit}}</span>
+        </div>
+        <div class="row m-0 mt-2">
+            <div class="col p-0">
+               
+                    <form class="form" id="" method="POST"
+                        action="{% url 'customer_add_to_cart' productid=product.cartedproductid %}" style="">
+
+                        {% csrf_token %}
+
+                        <div class="card-body p-0 bg-white rounded-md shadow-none">
+                            <div class="uk-inline position-relative" style="width: 100%;">
+                                <input type="hidden" name="productid" value="{{product.cartedproductid}}" id="">
+                                <input
+                                    class="uk-input form-control text-center p-0  rounded-pill position-relative text-dark "
+                                    style="z-index: 1;height: 30px;" id="{{product.cartedproductid}}" type="text" min="0"
+                                    value="{{product.quantity}}" name="quantity" price="{% if flashsaleproduct %} {{flashsaleproduct.price}} {% else %} {% if product.variation %} {{product.variation.price}}{% else %} {{product.product.price}} {% endif %} {% endif %}"
+                                    unit="{{product.measurement_unit}}" required>
+                                <!-- <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-5 c-label"
+                                    style="z-index: 1;font-size: 10px;">
+                                    Qty
+                                </span> -->
+                                    <button type="button"
+                                        class="btn-primary btn rounded-circle m-0 p-0 shadow-none
+                                        decrease-quantity text-white h2 uk-position-center-left ml-1" style="z-index: 3;height: 25px;width: 25px;"
+                                        product="{{product.cartedproductid}}" inputfield="#{{product.cartedproductid}}"> <span
+                                            class="uk-position-center text-white"
+                                            style="font-size: large !important;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">-</span></button>
+                            
+                                    <button
+                                        class="btn-primary btn p-0 rounded-circle uk-position-center-right m-0 shadow-none
+                                        increase-quantity mr-1" type="button" style="z-index: 3;height: 25px; width: 25px;" product="{{product.cartedproductid}}" inputfield="#{{product.cartedproductid}}">
+                                        <span class="h2 uk-position-center text-white">+</span></button>
+                           
+
+                            </div>
+
+
+                        </div>
+
+                    </form>
+               
+            </div>
+            <div class="col text-right p-0">
+                    <button class="btn btn-warning m-0 btn-sm confirm" target="#cart-container"
+                    contenturl="{% url 'customer_remove_carted_product' id=product.cartedproductid %}"  
+                    message="You are about to remove this product" type=""><i class="fa fa-times mr-2"></i>
+                        Remove</button>
+              
+            </div>
+        </div>
+
+
+    </div>
+
+<br>
+
+<script>
+    $(".quantity").off()
+    $(".quantity").change( function (event) {
+        var inputValue = Number($(this).val())
+        var price = Number($(this).attr('price'))
+        var unit = $(this).attr('unit')
+        var amount = price * inputValue
+        $('#purchase-amount').empty().html('₦ '+String(amount))
+    })
+
+    $(".increase-quantity").off()
+    $(".increase-quantity").on('click', function (event) {
+      event.preventDefault()
+      var button = $(this)
+      var quantityFieldValue=$(button.attr('inputfield'))
+      quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+      var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
+        addToCart(inputValue,button.attr('product'))
+    })
+
+    $(".decrease-quantity").off()
+    $(".decrease-quantity").on('click', function (event) {
+      event.preventDefault()
+      var button = $(this)
+      var quantityFieldValue=$(button.attr('inputfield'))
+      quantityFieldValue.val(Number(quantityFieldValue.val())-1)
+      var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
+        addToCart(inputValue,button.attr('product'))
+
+    })
+</script>
+<script>
+    $('.confirm').off()
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+</script>

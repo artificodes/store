@@ -1,0 +1,21 @@
+{% extends "base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container bg-white rounded-md pb-5">
+    <div class="text-left mt-4 border-bottom">
+        <p class="h2 text-darker uk-display-inline-block p-2">My orders</p>
+    </div>
+
+    <div>
+        <div class="row m-0" id="order-container">
+
+       {% include 'customers/order_container.html' %}
+
+
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}

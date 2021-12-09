@@ -1,0 +1,112 @@
+<div class="card-body p-0">
+    <div class="tab-content tab-space">
+        <div class="tab-pane active uk-animation-slide-left-small" id="credit-pin">
+            
+
+                <form class="form" id="" method="POST" action="{% url 'pin_credit_account' %}">
+            
+                    {% csrf_token %}
+                    <div class="card-body p-1">
+                        <p class="m-0">
+                            <span class="pl-1 pr-1 text-primary uk-text-bold" style="z-index: 1;">
+                                Enter Credit Pin
+                            </span>
+                        </p>
+                        <div class="uk-inline position-relative text-center m-0" style="width: 100%;">
+            
+                            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            
+                            <input class="p-2 uk-input form-control text-center rounded-0 position-relative shadow-none border-bottom border-primary 
+                  border-top-0 border-left-0 border-right-0"
+                                style="z-index: 2;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: large; color: black;"
+                                id="creditpin" type="text" placeholder="" name="creditpin" required autofocus='true'>
+            
+            
+            
+            
+                            <div class="mt-2" style="z-index: 3;">
+                                <button class="btn btn-flat btn-primary m-0 shadow-none
+            " style=" transition: none !important;transform: none !important;
+            " type="submit"><i class="fa fa-coins mr-2" style="font-size: medium;"></i> Credit</button>
+                            </div>
+            
+                        </div>
+                    </div>
+                </form>
+     
+        </div>
+        <div class="tab-pane uk-animation-slide-right-small" id="qrcode-recharge">
+            Qrcode
+</div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    $("#creditform").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.form_content) {
+                    $('#form-container').empty()
+                    $('#form-container').append(response.form_content)
+                }
+                if (response.error) {
+                    $('#error').empty()
+                    $('#error').append(response.error)
+                }
+                if (response.url) {
+                    window.location = response.url
+
+                }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

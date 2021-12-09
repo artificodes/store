@@ -1,0 +1,48 @@
+
+      <div class=" uk-text-center text-darker uk-text-bold rounded-pill p-1 border-0 h3" style="width: max-content;">
+        You have an active loan
+      </div>
+      <div class="p-1">
+        {% for loan in activeloans %}
+
+        <div class="bg-teal uk-width-1-1 text-dark rounded-md position-relative text-left p-2 mb-1">
+            <!-- <i class="fa fa-wallet text-primary mr-2"></i> -->
+            <div class="row m-0">
+                <div class="col-5 p-0 text-left">
+                    <p class=" m-0 text-left"> <span class="h4 text-primary">Amount</span>
+        
+                    </p>
+        
+                    <p class="h3 text-white m-0">₦{{loan.formatted_amount}}</p>
+                   <div class="mt-3">
+                       <button class="btn btn-primary shadow-none m-0 p-1 pl-3 pr-3" onclick="payLoanWithPaystack('{{customer.email}}','{{loan.total}}','{{loan.loanid}}')">Pay now</button>
+                   </div>
+                </div>
+                {% if loan %}
+                <div class="col-7 p-0 text-right">
+        
+                    <div class="col p-0 text-right mt-2">
+                        <p class=" m-0"> <span class="h5 text-gold">Interest (20% * {{loan.months_used}})</span>
+        
+                        </p>
+        
+                        <p class="h4 text-lighter m-0">₦{{loan.formatted_interest}}</p>
+        
+        
+                    </div>
+                    <div class="col p-0 text-right mt-2">
+                        <p class=" m-0"> <span class="h5 text-warning">Due date</span>
+        
+                        </p>
+        
+                        <p class="h5 text-lighter m-0">{{loan.due_date}}</p>
+        
+        
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% endfor %}
+      </div>

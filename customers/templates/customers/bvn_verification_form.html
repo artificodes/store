@@ -1,0 +1,120 @@
+<div class="p-2 text-darker ">
+    <div class="p-2 text-center rounded-md bg-white">
+        <p class="h2"><span class="text-darker">BVN Verification</span></p>
+        <p class="text-sm"><span class="text-bold text-danger">Note: </span> We do not store your BVN. This is only a
+            verification process. <span class="text-primary text-bold">Keep it SAFE</span> </p>
+    </div>
+
+    <form class="form" id="verifybvn" method="POST" action="{% url 'customer_verify_bvn' %}">
+
+        {% csrf_token %}
+        <div class="card-body p-1">
+            <input type="hidden" name="next" id="next" value="{{next_url}}">
+            <div class="uk-inline mt-4" style="width: 100%;">
+                {% if account %}
+                <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+                <input class="uk-input form-control p-3    rounded-md position-relative border border-light text-dark "
+                    style="z-index: 2;" id="account_number" type="number" name="account_number"
+                    value="{{account.number}}" required>
+                {% else %}
+                <input class="uk-input form-control p-3    rounded-md position-relative border border-light text-dark "
+                    style="z-index: 2;" id="account_number" type="number" name="account_number" required>
+                {% endif %}
+                <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                    style="z-index: 1;font-size: 10px;">
+                    Account number
+                </span>
+            </div>
+            <div class="uk-inline mt-4" style="width: 100%;">
+
+                <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+                <input class="uk-input form-control p-3    rounded-md position-relative border border-light text-dark "
+                    style="z-index: 2;" id="bvn" type="number" name="bvn" required>
+                <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                    style="z-index: 1;font-size: 10px;">
+                    BVN
+                </span>
+            </div>
+            <div class="mt-2 text-center" style="z-index: 3;">
+                <button class="btn btn-flat btn-primary m-0 shadow-none"
+                    style=" transition: none !important;transform: none !important;" type="submit"><i
+                        class="fa fa-user-check mr-2" style="font-size: medium;"></i> Verify</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+
+<script>
+
+    $("#verifybvn").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.success) {
+                    $.ajax({
+                        beforeSend: function () {
+
+                            showLoadingBar()
+                        },
+                        complete: function () {
+                            hideLoadingBar()
+
+                        },
+                        url: "{{next_url}}",
+                        type: 'POST',
+                        data: { 'csrfmiddlewaretoken': '{{csrf_token}}', },
+                        success: function (response) {
+                            if (response.modal_message) {
+                                messageModal(response.modal_message,)
+
+                            }
+
+                        },
+
+                        error: function (xhr, status, error) {
+                            UIkit.notification.closeAll()
+                            UIkit.notification('Operation not successful. Check your internet connection',)
+                        }
+                    });
+
+                }
+
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

@@ -1,0 +1,241 @@
+<!-- <div class="form-group mb-3">
+                    <div
+                        class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            Landmark:
+                        </span>
+                    </div>
+                    <input type="text" placeholder="e.g Hospitals, Schools, Petrol Stating, Churches"
+                        class="form-control col-csxx-x-14" name="landmark" required id="id_landmark"
+                        value="{{partner.landmark}}">
+                </div>
+                </div> -->
+<!-- <div class="form-group mb-3">
+                    <div
+                        class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            Nearest Bus-stop:
+                        </span>
+                    </div>
+                    <input type="text" placeholder="e.g Hospitals, Schools, Petrol Stating, Churches"
+                        class="form-control col-csxx-x-14" name="busstop" required id="id_busstop"
+                        value="{{partner.nearest_bus_stop}}">
+                </div>
+                </div> -->
+
+
+<!-- 
+                <div class="form-group mb-3">
+                    <div
+                        class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            State:
+                            </span>
+                    </div>
+
+                    
+                    <div class="col-csxx-x-14">
+                        <select class="ui fluid search dropdown" data-style="btn btn-link" name="state" id="state"
+                            class="form-control" required>
+                            <option value="{{partner.state}}" selected="selected">{{partner.state}}</option>
+                            <option value='Abia'>Abia</option>
+                            <option value='Adamawa'>Adamawa</option>
+                            <option value='AkwaIbom'>AkwaIbom</option>
+                            <option value='Anambra'>Anambra</option>
+                            <option value='Bauchi'>Bauchi</option>
+                            <option value='Bayelsa'>Bayelsa</option>
+                            <option value='Benue'>Benue</option>
+                            <option value='Borno'>Borno</option>
+                            <option value='Cross River'>Cross River</option>
+                            <option value='Delta'>Delta</option>
+                            <option value='Ebonyi'>Ebonyi</option>
+                            <option value='Edo'>Edo</option>
+                            <option value='Ekiti'>Ekiti</option>
+                            <option value='Enugu'>Enugu</option>
+                            <option value='Gombe'>Gombe</option>
+                            <option value='Imo'>Imo</option>
+                            <option value='Jigawa'>Jigawa</option>
+                            <option value='Kaduna'>Kaduna</option>
+                            <option value='Kano'>Kano</option>
+                            <option value='Katsina'>Katsina</option>
+                            <option value='Kebbi'>Kebbi</option>
+                            <option value='Kogi'>Kogi</option>
+                            <option value='Kwara'>Kwara</option>
+                            <option value='Lagos'>Lagos</option>
+                            <option value='Nasarawa'>Nasarawa</option>
+                            <option value='Niger'>Niger</option>
+                            <option value='Ogun'>Ogun</option>
+                            <option value='Ondo'>Ondo</option>
+                            <option value='Osun'>Osun</option>
+                            <option value='Oyo'>Oyo</option>
+                            <option value='Plateau'>Plateau</option>
+                            <option value='Rivers'>Rivers</option>
+                            <option value='Sokoto'>Sokoto</option>
+                            <option value='Taraba'>Taraba</option>
+                            <option value='Yobe'>Yobe</option>
+                            <option value='Zamfara'>Zamafara</option>
+                            <option value='Abuja'>Abuja</option>
+                        </select>
+                    </div>
+
+                </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div
+                        class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                            LGA:
+                            </span>
+                    </div>
+                    <div class="col-csxx-x-14">
+                        <select class="ui fluid search dropdown" data-style="btn btn-link" name="lga" id="lga"
+                            class="form-control" required>
+                            <option value="{{partner.lga}}" selected="selected">{{partner.lga}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                </div> -->
+
+
+<div id="offcanvas-nav-primary" class="uk-offcanvas" uk-offcanvas="overlay: false;mode:slide;bg-close:false">
+  <div class="uk-height-viewport uk-offcanvas-bar p-0 uk-flex uk-flex-column border-right
+                      bg-white  uk-offcanvas-bar-animation">
+    <div class="card m-1 mt-0 bg-transparent" style="box-shadow: none;">
+      <div class="card-body p-0">
+
+        <!-- <div class="uk-text-center uk-padding-remove" style="width: 100px;">
+                            <img src="{{settings.logo.url}}" alt="" style="width: 50px">
+                          </div> -->
+        <button
+          class="uk-offcanvas-close uk-button uk-button-default uk-position-top-right uk-margin-small uk-padding-small"><i
+            class="fa text-dark fa-arrow-left  uk-padding-small text-dark" style="font-size:medium;"></i></button>
+      </div>
+    </div>
+    <div class="card mt-2 bg-white mb-0 shadow-none text-center uk-display-inline-block" style="width: 100%;">
+
+      <div class="card-body pl-2 pr-2 pt-1 pb-1 text-center text-dark">
+        <div class="position-relative uk-display-inline-block" style="width: max-content;">
+          <div
+            class="uk-border-circle bg-transparent uk-display-inline-block mt-1 overflow-hidden p-1 border position-relative"
+            style="height: 80px;width: 80px;border: 4px solid white;">
+            {% if customer.photo %}
+            <img src="{{customer.photo.url}}" alt="" style="width: 100%;display: inline-block;height: 100%;"
+              class="rounded-circle">
+            {% else %}
+            <span class="text-dark uk-position-center h1" style="font-size: 30px;">
+              {{customer.first_name.0}}
+            </span>
+            {% endif %}
+          </div>
+          <!-- <button  onclick="requestContentModal('{% url 'customer_change_photo' %}','get')"
+                          class="btn btn-sm btn-white rounded-circle uk-position-bottom-right border shadow-none bg-white mb-3 mr--2"><i class="fa fa-camera"></i></button> -->
+
+        </div>
+        <div class="uk-padding-small" style="font-weight: bold;">
+          {% if customer.account_type == 'I' %}
+          {% if customer.gender == 'M' %}
+          Mr.
+          {% elif customer.gender == 'F' %}
+          {% if customer.marital_status == 'S' %} Miss {% else %} Mrs. {% endif %}
+          {% endif %}
+          {{customer.first_name}} {{customer.last_name}}
+
+          {% elif customer.account_type == 'Cr' %}
+          {{customer.company_name}}
+
+          {% elif customer.account_type == 'S' %}
+          {{customer.first_name}} {{customer.last_name}}
+          {% elif customer.account_type == 'C' %}
+          Mr. & Mrs. {{customer.last_name}}
+          {% endif %}
+          <!-- <div class=" text-capitalize p-1 border rounded-pill pl-2 pr-2 bg-gradient-success text-white mt-1 uk-display-inline-block" 
+                            style="width: max-content;font-size:9px;">                     
+                                {% if customer.account_type == 'I' %} Individual {% elif customer.account_type == 'C' %} Couple 
+                                {% elif customer.account_type == 'Cr' %} Corporate {% elif customer.account_type == 'S' %} Sponsor   {% endif %}
+                             </div> -->
+        </div>
+      </div>
+      <!-- <div class="uk-text-center mt-0 p-2 border-top border-bottom">
+                          <a href="{% url 'customer_my_profile' %}"
+                            class="main-content-redirect btn btn-outline-light bg-white rounded-pill m-0 pl-4 pr-4 mt-2 shadow-none text-dark">View profile</a>
+                       <br>
+                        <button class="btn btn-secondary rounded-pill signout m-0 shadow-none pr-4 pl-4 mt-2 text-dark"
+                            contenturl="{% url 'customer_account_logout' %}">Sign out</button> 
+                          </div> -->
+
+    </div>
+
+    <ul class="uk-nav uk-nav-primary uk-nav-left border-top  bg-transparent mt-2">
+      <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="" style="font-size: 14px;"
+          class="main-content-redirect uk-padding-small  text-dark ">
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-white">
+            <i class="fa text-dark fa-th-large text-dark uk-position-center "></i></span>
+          <span class="p-1">Dashboard</span></a></li>
+
+    </ul>
+
+  </div>
+</div>
+
+{% include 'customers/information_desk.html' %}
+
+
+<a class="btn btn-light rounded-circle uk-margin-small-right uk-margin-remove-top bg-lighter border-0 shadow-none"
+  style="width: 35px !important;height: 35px !important;" uk-toggle="target: #offcanvas-nav-secondary" style=""
+  uk-tooltip='Notifications'>
+
+  <i class="fa fa-bell uk-position-center text-dark" style="font-size: medium;"></i>
+  {% if notificationscount > 0 %}
+  <span class="uk-position-top-right text-white rounded-circle bg-red mt--1 mr--1 p-0"
+    style="height: 17px;width: 17px;font-size: 9px;border: 1.5px solid white;">
+
+    <span class="uk-position-center">
+      {% if notificationscount > 9 %}
+      9+
+      {% else %}
+      {{notificationscount}}
+      {% endif %}
+    </span>
+  </span>
+  {% endif %}
+</a>
+
+
+<div class="tab-pane " id="save">
+  <div class="  pl-2 border-bottom-divider text-dark bg-white uk-width-1-1 mb-0 p-2 pb-0 text-left">
+    <div class="row m-0">
+      <div class="col-3 p-0 h1">Save</div>
+      <div class="nav-tabs-navigation col-9 p-0">
+        <div class="nav-tabs-wrapper text-right bg-white">
+          <ul class="nav nav-pills nav-pills-info m-0 text-right uk-display-inline-block">
+            <li class="nav-item  m-0 p-1 uk-display-inline-block">
+              <a class="nav-link active custom rounded-pill shadow-none p-1 pl-2 pr-2 uk-text-bold"
+                style="width: max-content;font-weight: bold;" href="#credit-pin" data-toggle="tab"><i
+                  class="fa fa-keyboard mr-1"> </i>Credit Pin </a>
+            </li>
+            <li class="nav-item  m-0 p-0 p-1 uk-display-inline-block">
+              <a class="nav-link rounded-pill custom shadow-none p-1 pl-2 pr-2 uk-text-bold"
+                style="width: max-content;font-weight: bold;" href="#qrcode-recharge" data-toggle="tab"> <i
+                  class="fa fa-qrcode"> </i>
+                QR Code</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-2 mt-2  bg-white position-relative overflow-hidden uk-animation-slide-right">
+    <div class="text-left text-dark">
+
+      {% include 'customers/save_tab.html' %}
+    </div>
+  </div>
+</div>

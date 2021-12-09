@@ -1,0 +1,14 @@
+<div class="text-left mt-4">
+    <p class="h1 text-darker uk-display-inline-block border-bottom border-darker p-2">Our offers</p>
+  </div>
+  <div class="container-fluid recent m-0 p-0" id="">
+  
+    <div class="row m-0 p-0 mt-2">
+      {% for product in groupproducts %}
+      {% include 'themes/functional/product.html' %}
+
+  
+      {% endfor %}
+  
+    </div>
+  </div>

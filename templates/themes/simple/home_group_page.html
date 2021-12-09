@@ -1,0 +1,106 @@
+{% extends "themes/simple/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="bg-white rounded-sm overflow-hidden">
+  <div class="text-left border-bottom row m-0" 
+  style="color: {{homegroup.header_text_color}} !important; background-color: {{homegroup.header_background_color}} !important;" >
+         <h3 class="text-bold text-dark uk-display-inline-block p-2"
+         style="color: {{homegroup.header_text_color}} !important;">{{homegroup.name}}</3>
+
+ 
+     
+ </div>
+
+<div class="load-content position-relative mt-4 row m-0" id="{{homegroup.slug}}" identifier="homegroup" contenturl="{% url 'all_customer_home_group_products' slug=homegroup.slug %}" >
+</div>  
+</div>
+
+
+<script>
+
+
+
+  // $('.load-content').beacon({
+  //   enteronce: true,
+  //   onenter: (el) => {
+  //     var contentElement = $(el)
+  //     if (contentObject[contentElement.attr('identifier')]) {
+  //     contentElement.empty();
+  //     contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+  //   }
+  //   else {
+  //     $.ajax({
+  //       beforeSend: function () {
+  //         contentElement.append(loader)
+  //       },
+  //       complete: function () {
+  //       },
+  //       type: 'get',
+  //       url: contentElement.attr('contenturl'),
+  //       data: {
+  //         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+  //       },
+  //       success: function (response) {
+
+  //         if (response.content) {
+  //           $(el).empty()
+
+  //           $(el).append(response.content);
+  //           contentElement.attr('loaded', '1')
+  //           contentElement.removeClass('load-content')
+
+  //         }
+
+  //         contentObject[contentElement.attr('identifier')] = {}
+  //         contentObject[contentElement.attr('identifier')]['body'] = response.content
+
+
+  //       },
+  //       error: function (xhr, status, error) {
+  //         //   alert('there was an error')
+  //       }
+  //     });
+  //   } 
+  // }
+  // });
+
+</script>
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

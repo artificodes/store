@@ -1,0 +1,36 @@
+<div class="bg-gradient-default text-white rounded-md position-relative p-2 text-left">
+    <i
+            class="fa fa-wallet text-primary mr-2"></i>
+   <div class="row m-0">
+     <div class="col p-0 text-left">
+        <span class="uk-text-bold text-sm">{{customer.first_name}}</span><br>
+        <span class="text-sm">{{customer.last_name}}</span>
+        <div class="text-left mt--1">
+            <div class="ui rating mini" data-rating="{{customer.savings_rating}}" data-max-rating="5"></div>
+
+        </div>
+   </div>
+    <div class="col p-0 text-right">
+       <p class=" m-0 text-right"> <span class="h3 text-primary">{{customer.savings_account.number}}</span>
+             
+    </p>
+    <span class="text-sm">Account balance</span>
+  
+    <p class="h2 text-white m-0">N{{customer.savings_account.formatted_balance}}</p>
+    
+
+    </div>   
+   </div>
+   <i class=" fa fa-dot-circle uk-position-bottom-left mb-4 text-cyan mr-2"
+        style="font-size: xx-small;"></i>
+    <i class=" fa fa-dot-circle uk-position-top-center mt-2 text-yellow"
+        style="font-size: xx-small;"></i>
+    
+</div>
+
+
+<script>
+    $('.ui.rating')
+.rating('disable')
+;
+</script>

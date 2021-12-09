@@ -1,0 +1,62 @@
+{% extends "themes/simple/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div id="cart-container" class="text-center">
+
+    {% include 'themes/simple/checkout_container.html' %}
+
+</div>
+
+
+
+
+
+<script>
+    
+    $(".quantity").change( function (event) {
+        var inputValue = Number($(this).val())
+        var price = Number($(this).attr('price'))
+        var unit = $(this).attr('unit')
+        var amount = price * inputValue
+        $('#purchase-amount').empty().html('₦ '+String(amount))
+    })
+
+
+    $(".increase-quantity").on('click', function (event) {
+      event.preventDefault()
+      var button = $(this)
+      var quantityFieldValue=$(button.attr('inputfield'))
+      quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+      var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
+        addToCart(inputValue,button.attr('product'))
+    })
+
+
+    $(".decrease-quantity").on('click', function (event) {
+      event.preventDefault()
+      var button = $(this)
+      var quantityFieldValue=$(button.attr('inputfield'))
+      quantityFieldValue.val(Number(quantityFieldValue.val())-1)
+      var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
+        addToCart(inputValue,button.attr('product'))
+
+    })
+</script>
+
+
+{% endblock content %}

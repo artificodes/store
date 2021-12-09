@@ -1,0 +1,169 @@
+
+        <div class="uk-position-top-right mt-1 mr-1 bg-primary rounded-sm p-1" style="z-index: 3;">
+          <span class="text-white text-sm"> -{{product.discount}}% </span>
+        </div>
+        <div class="p-2 uk-display-inline-block rounded-lg bg-white overflow-hidden card shadow-none m-0 uk-width-1-1" style="z-index: 2;">
+          <a href="{% url 'customer_product_details' productid=product.product.productid %}" class="position-relative">
+            <div class="rounded-0 position-relative p-0 overflow-hidden  shadow-none m-0 text-center card">
+              <div class="pb-0 pl-2 pt-2 pr-2">
+                <div class="ui circular rotate left reveal">
+                  <div class="visible content">
+                    <img src="{{product.product.image.url}}" class="ui big image" style="max-width: 200px; max-height: 200px;">
+                  </div>
+                  <div class="hidden content">
+                    <img src="{{product.product.image.url}}" class="ui big image" style="max-width: 200px; max-height: 200px;">
+                  </div>
+                </div>
+                <!-- <img class="card-img" src="{{product.product.image.url}}" alt="" style="max-width: 150px; max-height: 150px;"> -->
+    
+              </div>
+    
+              <div class=" rounded-md p-0 mt-2 m-0 text-sm text-left">
+                <div class="pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-sm text-dark">{{product.product.name | truncatechars:15}} </p>
+                </div>
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-darker">{{product.formatted_price}}</p>
+    
+                </div>
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-sm text-danger"><del>{{product.product.formatted_price}}</del> </p>
+    
+                </div>
+                <div class="">
+                  <div class="ui rating mini uk-display-inline-block" data-rating="{{product.product.rating}}" data-max-rating="5"></div>
+                  <div class="text-darker uk-display-inline-block">(5)</div>
+      
+                </div>
+    
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+    
+        <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative  " style="height: 40px;">
+          <div class="row m-0 action hide">
+            <div class="p-0 col-4">
+              <button
+                class="btn bg-transparent m-0 content-btn position-relative rounded-circle uk-icon-button uk-box-shadow-medium"
+                contenturl="{% url 'customer_add_to_cart' productid=product.product.productid %}">
+      
+                <i class="fa fa-heart text-red shadow-sm uk-position-center"></i>
+      
+              </button>
+            </div>
+      
+            <div class="p-1 col-8 pt-0">
+              <button class="btn btn-primary m-0 uk-width-1-1 content-btn p-2"
+                contenturl="{% url 'customer_add_to_cart' productid=product.product.productid %}">
+      
+                <span class="p-0 pr-2 text-left">
+                  <i class="fa fa-cart-plus"></i>
+      
+                </span>
+                <span class="p-0 text-right pr-2">
+                  Add to cart
+                </span>
+      
+              </button>
+            </div>
+      
+          </div>
+        </div>
+ 
+
+
+
+
+<script>
+  $('.ui.rating')
+    .rating('disable')
+    ;
+</script>
+
+<script>
+
+{
+        (function ($) {
+            $('.uk-card-hover').on('mouseover', function () {
+                $(this).find('.action').removeClass('hide')
+            })
+        }(jQuery))
+    }
+
+    {
+        (function ($) {
+            $('.uk-card-hover').on('mouseout', function () {
+                $(this).find('.action').addClass('hide')
+            })
+        }(jQuery))
+    }
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+    $('.load-more').off()
+
+
+</script>
+<!-- <script>
+    $('.load-more').beacon({
+        enteronce:true,
+        onenter: function (el) {
+            var link = $(el)
+            var targetElement = $(link.attr('target'))
+            var contentElement = $(el)
+      $.ajax({
+        beforeSend: function () {
+          contentElement.append(loader)
+        },
+                complete: function () {
+                },
+                type: 'get',
+                url: link.attr('contenturl'),
+                data: {
+                    'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+                    'page': link.attr('next-page'),
+
+                },
+                success: function (response) {
+
+                    if (response.content) {
+                        link.remove()
+                        targetElement.append(response.content);
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    messageModal('We encountered an error. Try again')
+                }
+            });
+
+        }
+    });
+</script> -->
+
+<script>
+  {
+    (function ($) {
+      $('.content-btn').on('click', function (event) {
+        event.preventDefault()
+        // UIkit.offcanvas($('#offcanvas-content')).show();
+        var link = $(this);
+        requestContentModal(link.attr('contenturl'), 'get')
+      })
+    }(jQuery))
+  }
+</script>

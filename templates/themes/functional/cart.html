@@ -1,0 +1,25 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div id="cart-container" class="text-center">
+
+    {% include 'themes/functional/cart_container.html' %}
+
+</div>
+
+
+
+<div class="bg-white rounded-sm p-2 mt-4">
+    <div class="text-left border-bottom">
+        <p class="text-bold text-darker uk-display-inline-block p-2">Products you may like</p>
+    </div>
+    <div class="load-content position-relative mt-4 row m-0" style="min-height: 20px;" identifier='customer_products_you_may_like' contenturl="{% url 'customer_products_you_may_like' %}">
+        
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

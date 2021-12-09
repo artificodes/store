@@ -1,0 +1,109 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="bg-white rounded-sm">
+<div class="text-left mt-4">
+  <h3 class="uk-text-normal text-bold text-darker uk-display-inline-block p-2">{{category.name}}</h3>
+</div>
+
+<div class="load-content position-relative mt-4" identifier="categoryproducts" contenturl="{% url 'customer_category_products' name=category.name %}" >
+</div>  
+</div>
+
+<div class="bg-white rounded-md pb-4">
+  <div class="text-left mt-4 border-bottom">
+      <p class="text-bold text-darker uk-display-inline-block p-2">Products you may like</p>
+  </div>
+  <div class="load-content position-relative mt-4 row m-0" style="min-height: 20px;" identifier='customer_products_you_may_like' contenturl="{% url 'customer_products_you_may_like' %}">
+      
+  </div>
+</div>
+
+<script>
+
+
+
+  // $('.load-content').beacon({
+  //   enteronce: true,
+  //   onenter: (el) => {
+  //     var contentElement = $(el)
+  //     if (contentObject[contentElement.attr('identifier')]) {
+  //     contentElement.empty();
+  //     contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+  //   }
+  //   else {
+  //     $.ajax({
+  //       beforeSend: function () {
+  //         contentElement.append(loader)
+  //       },
+  //       complete: function () {
+  //       },
+  //       type: 'get',
+  //       url: contentElement.attr('contenturl'),
+  //       data: {
+  //         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+  //       },
+  //       success: function (response) {
+
+  //         if (response.content) {
+  //           $(el).empty()
+
+  //           $(el).append(response.content);
+  //           contentElement.attr('loaded', '1')
+  //           contentElement.removeClass('load-content')
+
+  //         }
+
+  //         contentObject[contentElement.attr('identifier')] = {}
+  //         contentObject[contentElement.attr('identifier')]['body'] = response.content
+
+
+  //       },
+  //       error: function (xhr, status, error) {
+  //         //   alert('there was an error')
+  //       }
+  //     });
+  //   } 
+  // }
+  // });
+
+</script>
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

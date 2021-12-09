@@ -1,0 +1,116 @@
+{% for loan in loans %}
+<div class="card  m-0  uk-text-left rounded-0  btn p-2 off-canvas-btn shadow-none
+{% if loan.repaid %}  btn-white {% else %} bg-cyan {% endif %} " id="{{loan.loanid}}" reload="true"
+    style="width: 100%;display: inline-block;" contenturl="{% url 'customer_loan_details' loanid=loan.loanid %}">
+    <span
+        class="uk-position-top-left ml-0 rounded-right {% if loan.repaid %}  bg-green {% else %} bg-red {% endif %}  text-white pl-1 pr-1 mt-1 uk-text-bold"
+        style="font-size: 8px;">
+        {% if loan.repaid %} Repaid {% else %} Not paid {% endif %}
+    </span>
+    <!-- <span class="uk-position-top-right mr-1">
+        <i class="fa {% if loan.repaid %}  text-green fa-check-circle {% else %} text-danger fa-exclamation-circle {% endif %}"
+            style="font-size: 10px;"></i>
+    </span> -->
+
+    <div class="card-body p-1 mt-3" style="">
+        <div class="col-csxx-x-14" style="font-size: 10px;">
+            <div class="col-csxx-x-14">
+                <p class="" style="font-weight: bold;font-size: 11px;"><span
+                        style="font-weight: bold;font-size: 11px;">Amt:</span>
+                    {% if loan.formatted_amount %}
+                    ₦{{loan.formatted_amount}}
+                    {% else %}
+                    ₦{{loan.amount}}
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="col-csxx-x-14">
+                <p class="card-text" style="font-size: 10px;"><span
+                        style="font-weight: bold;font-size: 10px;">Date/Time:</span>
+                    {{loan.date_time_added}}
+
+                </p>
+
+            </div>
+
+        </div>
+        {% if loan.repaid %}
+        {% else %}
+        <div class="text-right">
+<button class="btn btn-primary btn-sm pl-3 pr-3 shadow-none" onclick="payLoanWithPaystack('{{customer.email}}','{{loan.total}}','{{loan.loanid}}')">Pay now</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endfor %}
+
+{% if loans.has_next %}
+<div class="load-more text-light text-center mt-0 position-relative" next-page="{{loans.next_page_number}}"
+    target="#loan-histories" contenturl="{% url 'customer_loan_histories' %}">
+
+    <i class="fa fa-spinner m-0 text-primary rotate-loader-360"
+        style="width: max-content;height: max-content;font-size: smaller;"></i>
+    <span class="text-sm p-1">
+        Loading more</span>
+
+
+</div>
+{% endif %}
+
+
+<script>
+
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+    $('.load-more').off()
+
+
+</script>
+<script>
+    $('.load-more').beacon({
+        enteronce: false,
+        onenter: function (el) {
+            var link = $(el)
+            var targetElement = $(link.attr('target'))
+            $.ajax({
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                type: 'get',
+                url: link.attr('contenturl'),
+                data: {
+                    'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+                    'page': link.attr('next-page'),
+
+                },
+                success: function (response) {
+
+                    if (response.content) {
+                        link.remove()
+                        targetElement.append(response.content);
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    messageModal('We encountered an error. Try again')
+                }
+            });
+
+        }
+    });
+</script>

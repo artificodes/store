@@ -1,0 +1,15 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div style="">
+<img src="{{settings.error_404_background.url}}" alt="" class="">
+
+<div class="bg-secondary uk-position-center rounded-md p-5">
+This page does not exist. Go to our home page and start again
+<p><a href="{% url 'customer_home' %}" class="btn btn-darker text-secondary">Go to home page</a></p>
+</div>
+
+</div>
+
+{% endblock content %}

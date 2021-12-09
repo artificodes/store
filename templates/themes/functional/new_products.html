@@ -1,0 +1,165 @@
+
+    {% if products %}
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+      <ul class="uk-slider-items">
+        {% for product in products %}
+        <li class="col-csxx-7 col-csxx-x-7 col-csxx-xx-7 col-csx-5-e col-css-4-e col-csm-14 load-content uk-card-hover p-1" identifier="newproduct{{product.productid}}"
+          contenturl="{% url 'customer_product' id=product.id %}">
+
+
+            <div class="rounded-0 position-relative p-0 overflow-hidden  shadow-none m-0 text-center card">
+              <div class="pb-0 pl-2 pt-2 pr-2 bg-translucent-light skeleton uk-display-inline-block"
+                style="height: 200px;width: 200px;">
+
+
+              </div>
+
+              <div class=" rounded-md p-0 mt-2 m-0 text-sm text-left">
+                <div class="pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-sm text-dark skeleton"></p>
+                </div>
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-darker skeleton"></p>
+
+                </div>
+                <div class=" pl-1 pr-1 pt-0 pb-0">
+                  <p class="text-bold text-sm text-danger skeleton"></p>
+
+                </div>
+                <div class="skeleton">
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative fc-content-skeleton " style="height: 40px;">
+
+            </div>
+        
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+
+
+{% if products.has_next %}
+<div class="load-more text-light text-center mt-0 position-relative col-cmd-14 mt-4"
+  next-page="{{products.next_page_number}}" target="#{{section}}" contenturl="{% url 'customer_paginated_products' %}">
+
+
+  <span class="text-sm p-1">
+    Loading more</span>
+
+</div>
+{% endif %}
+
+<script>
+
+
+
+  $('.load-content').beacon({
+    enteronce: true,
+    onenter: (el) => {
+      var contentElement = $(el)
+      if (contentObject[contentElement.attr('identifier')]) {
+        contentElement.empty();
+        contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+      }
+      else {
+        $.ajax({
+          beforeSend: function () {
+            contentElement.append(loader)
+          },
+          complete: function () {
+          },
+          type: 'get',
+          url: contentElement.attr('contenturl'),
+          data: {
+            'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+          },
+          success: function (response) {
+
+            if (response.content) {
+              $(el).empty()
+
+              $(el).append(response.content);
+              contentElement.attr('loaded', '1')
+              contentElement.removeClass('load-content')
+
+            }
+
+            contentObject[contentElement.attr('identifier')] = {}
+            contentObject[contentElement.attr('identifier')]['body'] = response.content
+
+
+          },
+          error: function (xhr, status, error) {
+            //   alert('there was an error')
+          }
+        });
+      }
+    }
+  });
+
+</script>
+<script>
+  $('.ui.rating')
+    .rating('disable')
+    ;
+</script>
+
+<script>
+
+  {
+    (function ($) {
+      $('.uk-card-hover').on('mouseover', function () {
+        $(this).find('.action').removeClass('hide')
+      })
+    }(jQuery))
+  }
+
+  {
+    (function ($) {
+      $('.uk-card-hover').on('mouseout', function () {
+        $(this).find('.action').addClass('hide')
+      })
+    }(jQuery))
+  }
+
+  $('.off-canvas-btn').off()
+  {
+    (function ($) {
+      $('.off-canvas-btn').on('click', function () {
+        UIkit.offcanvas($('#offcanvas-content')).show();
+        var link = $(this);
+        loadOffCanvasContent(link)
+      })
+    }(jQuery))
+  }
+
+
+  $('.load-more').off()
+
+
+</script>
+
+<script>
+  $('.content-btn').off()
+  {
+    (function ($) {
+      $('.content-btn').on('click', function (event) {
+        event.preventDefault()
+        // UIkit.offcanvas($('#offcanvas-content')).show();
+        var link = $(this);
+        requestContentModal(link, link.attr('contenturl'), 'get')
+      })
+    }(jQuery))
+  }
+</script>

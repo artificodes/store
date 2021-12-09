@@ -1,0 +1,115 @@
+<div class="p-2">
+ <div class="p-2 text-center rounded-md bg-white">
+    <p class="text-darker h3"><span class="text-gold">Congratulations!</span> <br> You are eligble to borrow upto  </p>
+    <p><span class="text-primary uk-text-large text-bold">₦{{formattedeligibleamount}}</span></p>
+</div>
+
+<form class="form" id="loanapply" method="POST" action="{% url 'customer_loan_apply' %}">
+
+    {% csrf_token %}
+    <div class="card-body p-1">
+        <!-- <p class="m-0 text-center">
+            <span class="pl-1 pr-1 text-darker uk-text-bold h3" style="z-index: 1;">
+                How much do you need out of ₦{{eligibleamount}}?
+            </span>
+        </p> -->
+        <div class="uk-inline position-relative text-center m-0" style="width: 100%;">
+
+            <input class="p-2 uk-input form-control text-center rounded-0 position-relative shadow-none border-bottom border-primary 
+  border-top-0 border-left-0 border-right-0"
+                style="z-index: 2;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: large; color: black;"
+                id="loanamount" type="number" max="{{eligibleamount}}" placeholder="" name="amount" required autofocus='true'>
+
+            <p class="text-warning text-sm hide" id="loanamountwarning" >Enter amount not more than ₦{{eligibleamount}}</p>
+
+            <div class="mt-2" style="z-index: 3;">
+                <button class="btn btn-flat btn-secondary m-0 shadow-none uk-disabled
+" style=" transition: none !important;transform: none !important;
+" type="submit"><i class="fa fa-plus mr-2" style="font-size: medium;"></i> Apply</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+   
+</div>
+
+
+
+
+<script>
+
+    $('#loanamount').on('input',function(){
+                var formButton = $('#loanapply button')
+        var loanAmount = Number($(this).val())
+        if(loanAmount > Number('{{eligibleamount}}')){
+            formButton.addClass('uk-disabled')
+           formButton.removeClass('btn-primary')
+            formButton.addClass('btn-secondary')
+            $('#loanamountwarning').show()
+        }
+        else{
+            $('#loanamountwarning').hide()
+
+                formButton.removeClass('uk-disabled')
+            formButton.removeClass('btn-secondary')
+           formButton.addClass('btn-primary')
+        }
+    })
+
+    $("#loanapply").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.full_modal) {
+          fullcontentModal(response.full_modal, response.heading)
+
+        }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

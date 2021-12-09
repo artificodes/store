@@ -1,0 +1,79 @@
+<div class="row m-0">
+    <div class="col-5 p-0 text-left">
+
+        <div class="text-left mt--1">
+            <p class="m-0 text-sm text-darker">Credit rating</p>
+            <div class="mt--2">
+                <div class="ui rating mini" data-rating="{{customer.credit_rating}}" data-max-rating="5"></div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="col-7 p-0 text-right">
+        <div class="text-right">
+
+
+            <p class=" m-0 text-right"> <span class="h4 text-darker">Collateral bal.</span>
+
+            </p>
+
+            <p class="h3 text-darker m-0">₦{{customer.savings_account.formatted_collateral_balance}}</p>
+        </div>
+    </div>
+
+    {% if customer.active_loan %}
+    {% if customer.credit_rating == 5 %}
+    <div class="text-center mt-3 col-12 p-0">
+        <div class="rounded-md shadow-sm bg-indigo p-2 uk-width-1-1 m-0  text-left"> 
+           
+            <div class="text-left text-white">You can get loan upto <span class="text-primary h3">
+                ₦{{eligibleamount}}</span>
+                </div>
+            <div class="text-right mt-2"> 
+                <button class="btn btn-white rounded-pill off-canvas-btn m-0"  id="loan_apply"
+                reload="true" contenturl="{% url 'customer_loan_apply' %}">Apply now</button></div>
+            </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <div class="text-center mt-3 col-12 p-0">
+        <button class="btn btn-default rounded-md shadow-sm uk-width-1-1 m-0 off-canvas-btn text-left" id="loan_apply"
+            reload="true" contenturl="{% url 'customer_loan_apply' %}"> 
+            <span class="row m-0"> 
+                <span class="col text-left p-0"><i class="fa fa-plus mr-1"></i></span>
+                
+            <span class="h3 text-white text-lighter m-0 text-right col p-0">Apply now</span></span>
+           
+            <span class="text-left">You can get loan upto <span class="text-primary h2">₦{{eligibleamount}}</span> </span>
+        </button>
+    </div>
+    {% endif %}
+
+</div>
+
+<script>
+    $('.ui.rating')
+        .rating('disable')
+        ;
+</script>
+<script>
+
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+
+
+</script>

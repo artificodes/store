@@ -1,0 +1,166 @@
+<div class="row m-0 mt-2 p-1">
+    <div class="col p-0 text-left">
+
+        <p><span class="uk-text-bold text-white h4  text-center pr-2 pl-2 rounded-pill bg-primary">loanSecure
+            </span><i class="fa fa-question-circle text-dark ml-2"
+                uk-tooltip="loanSecure is system that determines your eligibilty to secure loan facilities from <span class='text-primary uk-text-bold'>fetch.</span> <br> By activating loanSecure, you indicate your interest to acquire loan from  <span class='text-primary uk-text-bold'>fetch finance.</span> "></i>
+        </p>
+
+
+    </div>
+    <div class="col p-0 text-right">
+
+        {% if customer.loansecure_accepted %}
+        <label class="custom-toggle confirm" id="deactivate_loansecure" target="#get-loan"
+        contenturl="{% url 'customer_deactivate_loansecure' %}"  
+        message="Are you sure want to deactivate <span class='uk-text-bold text-primary h4'>loanSecure</span>?">
+           
+            <input type="radio" checked>
+           
+  
+            <span class="custom-toggle-slider  rounded-circle"></span>
+        </label>
+        {% else %}
+        <label class="custom-toggle off-canvas-btn" id="accept_loansecure" reload="true" target="#get-loan"
+        contenturl="{% url 'customer_accept_loansecure' %}">
+           
+            <input type="radio">
+           
+  
+            <span class="custom-toggle-slider  rounded-circle"></span>
+        </label>
+        {% endif %}
+
+     
+    </div>
+</div>
+
+
+<!-- <div class="text-center ">
+    <div class="uk-animation-slide-right-small uk-text-center bg-white pt-1 p-1 load-content"
+    contenturl="{% url 'customer_active_loans' %}" id="loan_card" style="box-shadow: none;">
+
+    </div>
+  </div> -->
+
+
+{% if customer.loansecure_accepted %}
+{% if customer.bvn_verified %}
+<div class="p-0">
+    <div class="bg-secondary uk-width-1-1 text-dark  position-relative text-left p-2 mt-3 load-content"
+        contenturl="{% url 'customer_loan_summary' %}" id="loan_summary">
+
+
+    </div>
+    {% if customer.active_loan %}
+    <div class="border-top-divider  uk-text-center overflow-hidden bg-white p-0 uk-animation-slide-right-small uk-text-center pt-1 p-0 load-content"
+        contenturl="{% url 'customer_active_loans' %}" id="loan_card_loan" style="box-shadow: none;float: none;">
+
+
+
+    </div>
+    {% endif %}
+
+</div>
+
+<div class="border-top-divider mt-3">
+    <div class=" uk-text-center text-darker uk-text-bold rounded-pill p-2 border-0" style="width: max-content;">
+        Loan history
+    </div>
+
+    <div class="pb-5 load-content" id="loan-histories" contenturl="{% url 'customer_loan_histories' %}">
+        {% include 'customers/loan_history.html' %}
+
+    </div>
+
+</div>
+{% else %}
+
+{% include 'customers/bvn_verification_form.html' %}
+{% endif %}
+{% else %}
+<div class="p-1">
+    <div class="text-center rounded-md shadow-sm bg-white border border-primary p-2 mt-3">
+        <i class="fa fa-exclamation-circle fa-2x text-primary"></i>
+        <p class="text-sm mt-2"><span
+                class="uk-text-bold text-white h5 p-1 pr-2 pl-2 rounded-pill bg-default border mr-2">loanSecure
+            </span>is turned off. Kindly turn on to enable Loan facilities.</p>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+
+<script>
+$('.load-content').off()
+    $('.load-content').beacon({
+  
+      onenter: function (el) {
+        var contentElement = $(el)
+        $.ajax({
+          beforeSend: function () {
+            //  alert(contentElement.attr('id'))
+          },
+          complete: function () {
+          },
+          type: 'get',
+          url: contentElement.attr('contenturl'),
+          data: {
+            'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+          },
+          success: function (response) {
+  
+            if (response.content) {
+              $(el).empty()
+  
+              $(el).append(response.content);
+            }
+  
+  
+          },
+          error: function (xhr, status, error) {
+            //   alert('there was an error')
+          }
+        });
+  
+      }
+    });
+  
+  
+  
+  </script>
+<script>
+    $('.ui.rating')
+        .rating('disable')
+        ;
+</script>
+<script>
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function (event) {
+                event.preventDefault()
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+</script>

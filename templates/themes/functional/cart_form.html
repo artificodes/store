@@ -1,0 +1,154 @@
+
+{% for variation in variations %}
+  {% include 'themes/functional/product_variation.html' %}
+{% endfor %}
+  <script>
+
+    $("#quantity").change( function (event) {
+        var inputValue = Number($(this).val())
+        var price = Number($(this).attr('price'))
+        var unit = $(this).attr('unit')
+        var amount = price * inputValue
+        $('#purchase-amount').empty().html('₦ '+String(amount))
+    })
+    
+    $(".variation").click( function (event) {
+    
+      var inputValue = Number($(this).attr('price'))
+        var quantityFieldValue=$('#quantity').attr('price',inputValue)
+        var quantityFieldValue=$('#quantity')
+    
+    var price = Number(quantityFieldValue.attr('price'))
+    if(price){  
+      // quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+    var inputValue = quantityFieldValue.val()
+      var unit = quantityFieldValue.attr('unit')
+    if (Number(inputValue) > 1){
+      unit+='s'
+    }
+    var amount = price * inputValue
+    $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
+    $('#purchase-amount').empty().html('₦ '+String(amount))
+    }
+    else{
+            $(quantityFieldValue.attr('parent')).append(inlineAlert)
+    
+      $('#inline-alert-inner').empty().append('Choose variation')
+          $('#inline-alert').fadeToggle()
+          $('#inline-alert').removeClass('bg-green')
+          $('#inline-alert').addClass('bg-danger')
+          $('#inline-alert').show()
+          setTimeout(fadeInlineAlert, 3000)
+    }
+    
+    })
+    
+    $(".increase-quantity").on('click', function (event) {
+      event.preventDefault()
+      var quantityFieldValue=$('#quantity')
+    
+        var price = Number(quantityFieldValue.attr('price'))
+        if(price){  
+          quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+      var inputValue = quantityFieldValue.val()
+          var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
+        $('#purchase-amount').empty().html('₦ '+String(amount))
+        }
+        else{
+                $(quantityFieldValue.attr('parent')).append(inlineAlert)
+    
+          $('#inline-alert-inner').empty().append('Choose variation')
+              $('#inline-alert').fadeToggle()
+              $('#inline-alert').removeClass('bg-green')
+              $('#inline-alert').addClass('bg-danger')
+              $('#inline-alert').show()
+              setTimeout(fadeInlineAlert, 3000)
+        }
+        
+    })
+    
+    
+    
+    $(".decrease-quantity").on('click', function (event) {
+      event.preventDefault()
+      var quantityFieldValue=$('#quantity')
+      quantityFieldValue.val(Number(quantityFieldValue.val())-1)
+      var inputValue = quantityFieldValue.val()
+        var price = Number(quantityFieldValue.attr('price'))
+        var unit = quantityFieldValue.attr('unit')
+        if (Number(inputValue) > 1){
+          unit+='s'
+        }
+        var amount = price * inputValue
+        $('#purchase-quantity').empty().html(String(inputValue)+' '+unit)
+        $('#purchase-amount').empty().html('₦ '+String(amount))
+    })
+    
+  
+    </script>
+    
+    
+    <script>
+     
+     $("#add-to-cart").submit(function (event) {
+            event.preventDefault(); //prevent default action 
+            var post_url = $(this).attr("action"); //get form action url
+            var request_method = $(this).attr("method"); //get form GET/POST method
+            var form_data = new FormData(this); //Creates new FormData object
+            $.ajax({
+                beforeSend: function () {
+
+                    showLoadingBar()
+                },
+                complete: function () {
+                    hideLoadingBar()
+    
+                },
+                url: post_url,
+                type: request_method,
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+    
+                success: function (response) {
+                    if (response.full_modal) {
+                        fullcontentModal(response.full_modal, response.heading)
+    
+                    }
+                    if (response.content) {
+                        loadContent("{% url 'customer_cart_count' %}",'#cart-count')
+    
+                    }
+                    if (response.modal_message) {
+                        notify(response.modal_message)
+    
+                    }
+                    if (response.modal_notification) {
+                        notificationModal(response.modal_notification)
+    
+                    }
+    
+                    if (response.modal_content) {
+                        contentModal(response.modal_content, response.heading)
+    
+                    }
+                    if (response.message) {
+                        UIkit.notification.closeAll()
+                        UIkit.notification(response.message)
+                    }
+                },
+    
+                error: function (xhr, status, error) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification('Operation not successful. Check your internet connection',)
+                }
+            });
+        });
+    
+    </script>

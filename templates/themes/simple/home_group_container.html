@@ -1,0 +1,53 @@
+{% for homegroup in homegroups %}
+{% include 'themes/functional/home_group.html' %}
+{% endfor %}
+
+
+<script>
+
+
+    $('.load-content').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        if (contentObject[contentElement.attr('identifier')]) {
+          contentElement.empty();
+          contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+        }
+        else {
+          $.ajax({
+            beforeSend: function () {
+              contentElement.append(loader)
+            },
+            complete: function () {
+            },
+            type: 'get',
+            url: contentElement.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+            },
+            success: function (response) {
+  
+              if (response.content) {
+                $(el).empty()
+  
+                $(el).append(response.content);
+                contentElement.attr('loaded', '1')
+                contentElement.removeClass('load-content')
+  
+              }
+  
+              contentObject[contentElement.attr('identifier')] = {}
+              contentObject[contentElement.attr('identifier')]['body'] = response.content
+  
+  
+            },
+            error: function (xhr, status, error) {
+              //   alert('there was an error')
+            }
+          });
+        }
+      }
+    });
+  
+  </script>

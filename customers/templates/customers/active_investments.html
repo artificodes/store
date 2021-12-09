@@ -1,0 +1,82 @@
+{% if investments %}
+<!-- <div class="text-left text-darker uk-text-bold rounded-pill p-0 border-0 h3" style="">
+    You have an active investment
+</div> -->
+<div class="p-2">
+    {% for investment in investments %}
+
+    <div class="bg-white uk-width-1-1 shadow-none text-dark rounded-md mb-2 position-relative text-left p-2 pt-3 pb-3 "
+         style="width: 100%;display: inline-block;"
+        >
+        <!-- <i class="fa fa-wallet text-darker mr-2"></i> -->
+        <div class="row m-0">
+            <div class="col-5 p-0 text-left">
+                <p class=" m-0 text-left"> <span class="h4 text-primary">Principal</span>
+
+                </p>
+
+                <p class="h3 text-darker m-0">₦{{investment.formatted_amount}}</p>
+                
+            </div>
+   
+            <div class="col-7 p-0 text-right">
+
+                <div class="col p-0 text-right">
+                    <!-- <p class="h3 text-dark">Interest</p> -->
+                    <p class=" m-0"> <span class="h5 text-primary">Rate: </span> <span
+                            class="text-darker text-bold">{{investment.interest_rate}}%</span>
+
+                    </p>
+
+                    <p class="h4 text-darker m-0"><span class="h5 text-primary">Amount: </span><span
+                            class="text-darker text-bold"> ₦{{investment.formatted_interest}}</span></p>
+
+                    <!-- <p class=" m-0"> <span class="h5 text-primary">Month(s): </span> <span class="text-darker text-bold">{{investment.months}}</span> 
+        
+                        </p> -->
+                </div>
+                <!-- <div class="col p-0 text-right mt-2">
+                    <p class=" m-0"> <span class="h5 text-warning">Due date</span>
+
+                    </p>
+
+                    <p class="h5 text-darker m-0">{{investment.due_date_time}}</p>
+
+
+                </div> -->
+            </div>
+            <div class="col-12 mt-2 text-center">
+                <button class="btn btn-blue shadow-none m-0 p-1 pl-3 pr-3 btn-sm mr-2"
+                    onclick="payinvestmentWithPaystack('{{customer.email}}','{{investment.total}}','{{investment.investmentid}}')">
+                    Withdraw</button>
+                    <button class="btn btn-secondary shadow-none m-0 p-1 btn-sm pl-4 pr-4 off-canvas-btn" id="{{investment.investmentid}}" reload="true"
+                    contenturl="{% url 'customer_investment_details' investmentid=investment.investmentid %}">
+                    More</button>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+<script>
+
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+    $('.load-more').off()
+
+
+</script>
+{% endif %}

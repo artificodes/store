@@ -1,0 +1,100 @@
+{% for product in cart.products.all %}
+
+<div class="card m-0 mb-1 shadow-none  load-content" 
+identifier="carted{{product.cartedproductid}}" id="{{product.cartedproductid}}-containter" 
+contenturl ="{% url 'customer_carted_product' id=product.cartedproductid %}" style="max-width: 320px;">
+    <div class="card-body pb-1 pl-0 pr-0 border-bottom">
+        <div class="row m-0">
+            <div class="col-cmd-3-e col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-left"
+                style="">
+                <div class="skeleton" style="width: 100%;">
+
+                </div>
+            </div>
+            <div class="col-cmd-11 col-csm-5-e col-css-7 col-csx-14 col-csxx-9 col-csxx-x-14 p-0 text-left">
+                <div class="row m-0 pl-2 pt-0">
+                    <div class="col-12 text-left p-0 h4 m-0 skeleton">
+                        
+                    </div>
+                    <div class="col-12 text-left p-0 h3 skeleton">
+                    </div>
+                </div>
+            </div>
+            <span class="uk-position-top-right text-light text-sm skeleton"></span>
+        </div>
+        <div class="row m-0 mt-2 skeleton">
+            
+          
+        </div>
+
+
+    </div>
+</div>
+{% endfor %}
+<br>
+
+<script>
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+</script>
+<script>
+
+
+
+    $('.load-content').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        if (contentObject[contentElement.attr('identifier')]) {
+        contentElement.empty();
+        contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+      }
+      else {
+        $.ajax({
+          beforeSend: function () {
+            contentElement.append(loader)
+          },
+          complete: function () {
+          },
+          type: 'get',
+          url: contentElement.attr('contenturl'),
+          data: {
+            'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+          },
+          success: function (response) {
+  
+            if (response.content) {
+              $(el).empty()
+  
+              $(el).append(response.content);
+              contentElement.attr('loaded', '1')
+              contentElement.removeClass('load-content')
+  
+            }
+  
+            contentObject[contentElement.attr('identifier')] = {}
+            contentObject[contentElement.attr('identifier')]['body'] = response.content
+  
+  
+          },
+          error: function (xhr, status, error) {
+            //   alert('there was an error')
+          }
+        });
+      } 
+    }
+    });
+  
+  </script>

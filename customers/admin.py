@@ -1,0 +1,22 @@
+from django.contrib import admin
+from customers import models as cmodels
+
+admin.site.register(cmodels.Customer)
+admin.site.register(cmodels.Product)
+admin.site.register(cmodels.SlideShow)
+admin.site.register(cmodels.ProductImage)
+admin.site.register(cmodels.Cart)
+admin.site.register(cmodels.CartedProduct)
+admin.site.register(cmodels.Order)
+admin.site.register(cmodels.DeliveryLocation)
+admin.site.register(cmodels.ProductVariation)
+admin.site.register(cmodels.ProductGroup)
+admin.site.register(cmodels.MeasurementUnit)
+admin.site.register(cmodels.FlashSale)
+admin.site.register(cmodels.FlashSaleProduct)
+admin.site.register(cmodels.Brand)
+admin.site.register(cmodels.HomePageGroup)
+admin.site.register(cmodels.Tag)
+admin.site.register(cmodels.Saved)
+admin.site.register(cmodels.VisitorsLog)
+admin.site.register(cmodels.NewsLetterSubscription)

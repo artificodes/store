@@ -1,0 +1,8 @@
+
+  <div class="p-2">
+    <p class="text-darker h4">{{product.name}}</p>
+    <p class="text-darker h1">{% if product.variations.all %} <span class="uk-text-normal uk-text-small">From</span>  {{variations.formatted_price}} {% else %} {{product.formatted_price}}/{{product.measurement_unit}} {% endif %}</p>
+  </div>
+
+
+  {% include 'themes/functional/cart_form.html' %}

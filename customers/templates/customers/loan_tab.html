@@ -1,0 +1,72 @@
+ {% include 'customers/loan_tab_content.html' %}
+
+   
+
+
+
+<script>
+
+    $("#creditfrom").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.form_content) {
+                    $('#form-container').empty()
+                    $('#form-container').append(response.form_content)
+                }
+                if (response.error) {
+                    $('#error').empty()
+                    $('#error').append(response.error)
+                }
+                if (response.url) {
+                    window.location = response.url
+
+                }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

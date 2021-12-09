@@ -1,0 +1,19 @@
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+    
+    <ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@ pt-3"   uk-lightbox="">
+      {% for slideshow in slideshows %}
+      <li class=" p-2 text-center" style="width: 100%;">
+        <div class="uk-display-inline-block" style="max-width: 500px;">
+    <a class="uk-button uk-button-default" href="{{slideshow.image.url}}" style="height: 100%;">
+                    <img src="{{slideshow.image.url}}" alt="" class="card shadow-none rounded-0" style="height: 100%;">
+                    </a>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="uk-display-inline-block">
+      <ul class="uk-slider-nav uk-dotnav "></ul>
+
+    </div>
+</div>

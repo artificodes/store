@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="text-center rounded-md bg-white p-2 mt-3">
+        <i class="fa fa-exclamation-circle fa-2x text-primary"></i>
+        <p class="text-sm mt-2 text-darker">
+            You have not added an account number yet.
+        </p>
+        <div class="text-center">
+            <button class="btn btn-primary m-0 shadow-none off-canvas-btn"
+             contenturl="{% url 'customer_add_account' %}"  id="add_account" reload="true">Use my personal account</button>
+            <br> <br>
+            <span class="h2 text-dark">Or</span>
+            <br>
+            <br>
+
+            <button class="btn btn-default m-0 shadow-none">
+                <i class="rounded-circle ">
+                    <img src="{{bank.logo.url}}" alt="" style="width: 40px;height: 40px; " class="rounded-circle"> </i>
+                <br>
+                Create a {{bank.name}} account</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+                })
+        }(jQuery))
+    }
+
+</script>

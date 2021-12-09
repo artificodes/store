@@ -1,0 +1,90 @@
+<form class="form" id="generateqrc" method="POST" action="{% url 'customer_generate_pin_qrc' %}">
+
+    {% csrf_token %}
+    <div class="card-body p-1">
+        <p class="m-0 text-center">
+            <span class="pl-1 pr-1 text-darker uk-text-bold h3" style="z-index: 1;">
+                Amount to share
+            </span>
+        </p>
+        <div class="uk-inline position-relative text-center m-0" style="width: 100%;">
+
+            <input class="p-2 uk-input form-control text-center rounded-0 position-relative shadow-none border-bottom border-primary 
+  border-top-0 border-left-0 border-right-0"
+                style="z-index: 2;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: large; color: black;"
+                id="pinamount" type="text" placeholder="" name="amount" required autofocus='true'>
+
+
+
+
+            <div class="mt-2" style="z-index: 3;">
+                <button class="btn btn-flat btn-primary m-0 shadow-none
+" style=" transition: none !important;transform: none !important;
+" type="submit"><i class="fa fa-share-alt mr-2" style="font-size: medium;"></i> Share</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+<script>
+
+    $("#generateqrc").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.full_modal) {
+          fullcontentModal(response.full_modal, response.heading)
+
+        }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>
