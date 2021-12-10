@@ -1987,10 +1987,7 @@ def orderpaid(request, *args, **kwargs):
             product.product.purchase_count +=1
             product.product.save()
         # orders = cmodels.Order.objects.filter(customer=customer,)
-        if order.delivery_option == 'd':
-            feedback = "<span class='text-primary uk-text-bold h1'>Payment is successful.</span>"
-        elif order.delivery_option == 'p':
-            feedback = "<span class='text-primary uk-text-bold h1'>Order placed successful.</span> <br> <p class='text-darker'> Your order is ready for pickup </p>"
+
         subject = 'New Order Placed - '+order.orderid
 
         message = render_to_string('themes/'+allObject['settings'].theme+'/order_placed_email.html', {
@@ -2019,9 +2016,13 @@ def orderpaid(request, *args, **kwargs):
         subject = subject
         body = message
         sendmail(to,body,body,subject)
+        if order.delivery_option == 'd':
+            message = "<span class='text-primary uk-text-bold h1'>Order placed successful.</span>"
+        elif order.delivery_option == 'p':
+            message = "<span class='text-primary uk-text-bold h1'>Order placed successful.</span> <br> <p class='text-darker'> Your order is ready for pickup </p>"
+        
         template_name = 'general/success.html'
-        allObject['message'] =  feedback
-
+        allObject['message'] = message
         message = loader.render_to_string(template_name,allObject,request)
         output_data = {
         'modal_message': message,

@@ -10,3 +10,5 @@ migrations
 media
 static_files
 passenger_wsgi.py
+.git
+.gitignore

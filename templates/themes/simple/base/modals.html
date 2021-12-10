@@ -205,7 +205,8 @@
   var inlineAlert = "<div class='uk-position-center text-center' style='z-index:2'><div class='text-white text-center bg-green pt-2 pb-2 pl-4 pr-4 success hide uk-position-top-center top-0' id='inline-alert' style='max-width: 320px;width: 100%;min-width:max-content'>" +
     "<p class=''><span id='inline-alert-inner'></span></p></div></div>"
 
-  var loader = "<div class='ui active loader loading small m-0 uk-border-circle uk-box-shadow-small uk-padding-small uk-position-center'></div>"
+var inlineLoader = "<div class='ui active loader loading small m-0 uk-border-circle uk-box-shadow-small uk-padding-small uk-position-center'></div>"
+var loader=''
   var scanner = ''
   var qrCodeVerificationUrl = ''
   {
@@ -1179,6 +1180,40 @@ function redirect(url){
   }
 
 
+  function addVariationToCart(quantity, productid,variationid,button) {
+    $.ajax({
+      beforeSend: function () {
+
+        button.append(inlineLoader)
+      },
+      complete: function () {
+        button.find('.loader').remove()
+      },
+      type: 'post',
+      url: "{% url 'customer_add_variation_to_cart' %}",
+      data: {
+        'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+        'quantity': quantity,
+        'productid': productid,
+        'variationid':variationid
+      },
+      success: function (response) {
+
+
+        if (response.notification) {
+          notify(response.notification)
+
+
+        }
+        if(response.loadcontent){
+            
+            loadContent(response.reload_url,'#'+response.container)
+        }
+
+      },
+    });
+
+  }
 
   function addToCart(quantity, productid) {
     $.ajax({
@@ -1506,14 +1541,9 @@ function redirect(url){
         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
       },
       success: function (response) {
-        
-        if (response.content) {
-          $('#tabcontent').removeClass('uk-animation-fade')
-
-          $('#tabcontent').addClass('uk-animation-fade')
-          $('#tabcontent').empty()
-          $('#tabcontent').append(response.content)
-
+        if(response.loadcontent){
+            
+            loadContent(response.reload_url,'#'+response.container)
         }
 
         closeModal()

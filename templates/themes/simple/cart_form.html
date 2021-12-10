@@ -1,220 +1,154 @@
 
+{% for variation in variations %}
+{% include 'themes/simple/product_variation.html' %}
+{% endfor %}
+<script>
 
-  <form class="form position-relative" id="add-to-cart" method="POST" action="{% url 'customer_add_to_cart' productid=product.productid %}" style="">
+  $("#quantity").change( function (event) {
+      var inputValue = Number($(this).val())
+      var price = Number($(this).attr('price'))
+      var unit = $(this).attr('unit')
+      var amount = price * inputValue
+      $('#purchase-amount').empty().html('₦ '+String(amount))
+  })
   
-    {% csrf_token %}
-   
-    <div class="card-body p-1 bg-white rounded-md shadow-lg">
-      <div class="p-2">
-        {% if product.variations.all %}
-              <p class="h2 text-darker">Product variations</p>
-              
-              {% for variation in product.variations.all %}
-              <div class="custom-control custom-radio custom-control-inline">
-                <input class="custom-control-input variation" type="radio" name="variation" price={{variation.price}} id="variation{{variation.id}}"
-                    value="{{variation.id}}" required>
-                <label class="custom-control-label " for="variation{{variation.id}}">{{variation.name}} {{variation.formatted_price}}</label>
-            </div>
-            {% endfor %}
-            {% endif %}
-     
-      </div>
-      <div class="uk-inline mt-4 position-relative" style="width: 100%;">
-        <input type="hidden" name="productid" value="{{product.productid}}" id="">
-        <input class="uk-input form-control p-3  pl-6  rounded-pill position-relative border border-primary text-dark "
-          style="z-index: 1;" id="quantity" type="number" min="0" name="quantity" parent="#add-to-cart" 
-          price="{% if flashsaleproduct %} {{flashsaleproduct.price}} {% else %} {% if product.variation %} {{product.variation.price}}{% else %} {{product.price}} {% endif %} {% endif %}" unit="{{product.measurement_unit}}" required>
-        <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-5 c-label"
-          style="z-index: 1;font-size: 10px;">
-          Qty
-        </span>
-        <p class=" text-white h2 uk-position-center-left ml-4"
-         style="z-index: 3;">
-         <button class="btn-primary btn rounded-circle uk-position-center m-0 decrease-quantity" 
-         style="height: 35px;width: 35px;"> <span class="uk-position-center text-white" style="font-size: large !important;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">-</span></button> 
-      </p>
-      <p class="text-white h2 uk-position-center-right mr-4"
-         style="z-index: 3;">
-         <button class="btn-primary btn rounded-circle uk-position-center m-0 increase-quantity"  type="button"
-         style="height: 35px;width: 35px;"> <span class="h2 uk-position-center text-white">+</span></button> 
-      </p>
+  $(".variation").click( function (event) {
+  
+    var inputValue = Number($(this).attr('price'))
+      var quantityFieldValue=$('#quantity').attr('price',inputValue)
+      var quantityFieldValue=$('#quantity')
+  
+  var price = Number(quantityFieldValue.attr('price'))
+  if(price){  
+    // quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+  var inputValue = quantityFieldValue.val()
+    var unit = quantityFieldValue.attr('unit')
+  if (Number(inputValue) > 1){
+    unit+='s'
+  }
+  var amount = price * inputValue
+  $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
+  $('#purchase-amount').empty().html('₦ '+String(amount))
+  }
+  else{
+          $(quantityFieldValue.attr('parent')).append(inlineAlert)
+  
+    $('#inline-alert-inner').empty().append('Choose variation')
+        $('#inline-alert').fadeToggle()
+        $('#inline-alert').removeClass('bg-green')
+        $('#inline-alert').addClass('bg-danger')
+        $('#inline-alert').show()
+        setTimeout(fadeInlineAlert, 3000)
+  }
+  
+  })
+  
+  $(".increase-quantity").on('click', function (event) {
+    event.preventDefault()
+    var quantityFieldValue=$('#quantity')
+  
+      var price = Number(quantityFieldValue.attr('price'))
+      if(price){  
+        quantityFieldValue.val(Number(quantityFieldValue.val())+1)
+    var inputValue = quantityFieldValue.val()
+        var unit = quantityFieldValue.attr('unit')
+      if (Number(inputValue) > 1){
+        unit+='s'
+      }
+      var amount = price * inputValue
+      $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
+      $('#purchase-amount').empty().html('₦ '+String(amount))
+      }
+      else{
+              $(quantityFieldValue.attr('parent')).append(inlineAlert)
+  
+        $('#inline-alert-inner').empty().append('Choose variation')
+            $('#inline-alert').fadeToggle()
+            $('#inline-alert').removeClass('bg-green')
+            $('#inline-alert').addClass('bg-danger')
+            $('#inline-alert').show()
+            setTimeout(fadeInlineAlert, 3000)
+      }
+      
+  })
+  
+  
+  
+  $(".decrease-quantity").on('click', function (event) {
+    event.preventDefault()
+    var quantityFieldValue=$('#quantity')
+    quantityFieldValue.val(Number(quantityFieldValue.val())-1)
+    var inputValue = quantityFieldValue.val()
+      var price = Number(quantityFieldValue.attr('price'))
+      var unit = quantityFieldValue.attr('unit')
+      if (Number(inputValue) > 1){
+        unit+='s'
+      }
+      var amount = price * inputValue
+      $('#purchase-quantity').empty().html(String(inputValue)+' '+unit)
+      $('#purchase-amount').empty().html('₦ '+String(amount))
+  })
+  
 
-      </div>
-      <div class="row m-0 text-darker mt-4 pt-2 pb-2">
-          <div class="col-6 text-left">
-            Quantity
-          </div>
-
-          <div class="col-6 text-right text-bold" id="purchase-quantity">
-            {{product.measurement_unit}}
-          </div>
-          </div>
-          <div  class="row m-0 text-darker border-top mt-2 pt-2 pb-2">
-
-    
-          <div class="col-6 text-left">
-            Amount
-          </div>
-
-          <div class="col-6 text-right text-bold" id="purchase-amount">
-            ₦ 0
-          </div>
-      </div>
-      <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative mt-3">
-        <button class="btn btn-primary m-0 uk-width-1-1"><i class="fa fa-cart-plus mr-2" ></i> Add to cart</button>
-      </div>
-    </div>
-
-  </form>
-
+  </script>
+  
   
   <script>
+   
+   $("#add-to-cart").submit(function (event) {
+          event.preventDefault(); //prevent default action 
+          var post_url = $(this).attr("action"); //get form action url
+          var request_method = $(this).attr("method"); //get form GET/POST method
+          var form_data = new FormData(this); //Creates new FormData object
+          $.ajax({
+              beforeSend: function () {
 
-    $("#quantity").change( function (event) {
-        var inputValue = Number($(this).val())
-        var price = Number($(this).attr('price'))
-        var unit = $(this).attr('unit')
-        var amount = price * inputValue
-        $('#purchase-amount').empty().html('₦ '+String(amount))
-    })
-    
-    $(".variation").click( function (event) {
-    
-      var inputValue = Number($(this).attr('price'))
-        var quantityFieldValue=$('#quantity').attr('price',inputValue)
-        var quantityFieldValue=$('#quantity')
-    
-    var price = Number(quantityFieldValue.attr('price'))
-    if(price){  
-      // quantityFieldValue.val(Number(quantityFieldValue.val())+1)
-    var inputValue = quantityFieldValue.val()
-      var unit = quantityFieldValue.attr('unit')
-    if (Number(inputValue) > 1){
-      unit+='s'
-    }
-    var amount = price * inputValue
-    $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
-    $('#purchase-amount').empty().html('₦ '+String(amount))
-    }
-    else{
-            $(quantityFieldValue.attr('parent')).append(inlineAlert)
-    
-      $('#inline-alert-inner').empty().append('Choose variation')
-          $('#inline-alert').fadeToggle()
-          $('#inline-alert').removeClass('bg-green')
-          $('#inline-alert').addClass('bg-danger')
-          $('#inline-alert').show()
-          setTimeout(fadeInlineAlert, 3000)
-    }
-    
-    })
-    
-    $(".increase-quantity").on('click', function (event) {
-      event.preventDefault()
-      var quantityFieldValue=$('#quantity')
-    
-        var price = Number(quantityFieldValue.attr('price'))
-        if(price){  
-          quantityFieldValue.val(Number(quantityFieldValue.val())+1)
-      var inputValue = quantityFieldValue.val()
-          var unit = quantityFieldValue.attr('unit')
-        if (Number(inputValue) > 1){
-          unit+='s'
-        }
-        var amount = price * inputValue
-        $('#purchase-quantity').empty().html(String(inputValue)+ ' '+unit)
-        $('#purchase-amount').empty().html('₦ '+String(amount))
-        }
-        else{
-                $(quantityFieldValue.attr('parent')).append(inlineAlert)
-    
-          $('#inline-alert-inner').empty().append('Choose variation')
-              $('#inline-alert').fadeToggle()
-              $('#inline-alert').removeClass('bg-green')
-              $('#inline-alert').addClass('bg-danger')
-              $('#inline-alert').show()
-              setTimeout(fadeInlineAlert, 3000)
-        }
-        
-    })
-    
-    
-    
-    $(".decrease-quantity").on('click', function (event) {
-      event.preventDefault()
-      var quantityFieldValue=$('#quantity')
-      quantityFieldValue.val(Number(quantityFieldValue.val())-1)
-      var inputValue = quantityFieldValue.val()
-        var price = Number(quantityFieldValue.attr('price'))
-        var unit = quantityFieldValue.attr('unit')
-        if (Number(inputValue) > 1){
-          unit+='s'
-        }
-        var amount = price * inputValue
-        $('#purchase-quantity').empty().html(String(inputValue)+' '+unit)
-        $('#purchase-amount').empty().html('₦ '+String(amount))
-    })
-    
+                  showLoadingBar()
+              },
+              complete: function () {
+                  hideLoadingBar()
   
-    </script>
-    
-    
-    <script>
-     
-     $("#add-to-cart").submit(function (event) {
-            event.preventDefault(); //prevent default action 
-            var post_url = $(this).attr("action"); //get form action url
-            var request_method = $(this).attr("method"); //get form GET/POST method
-            var form_data = new FormData(this); //Creates new FormData object
-            $.ajax({
-                beforeSend: function () {
-
-                    showLoadingBar()
-                },
-                complete: function () {
-                    hideLoadingBar()
-    
-                },
-                url: post_url,
-                type: request_method,
-                data: form_data,
-                contentType: false,
-                cache: false,
-                processData: false,
-    
-                success: function (response) {
-                    if (response.full_modal) {
-                        fullcontentModal(response.full_modal, response.heading)
-    
-                    }
-                    if (response.content) {
-                        loadContent("{% url 'customer_cart_count' %}",'#cart-count')
-    
-                    }
-                    if (response.modal_message) {
-                        notify(response.modal_message)
-    
-                    }
-                    if (response.modal_notification) {
-                        notificationModal(response.modal_notification)
-    
-                    }
-    
-                    if (response.modal_content) {
-                        contentModal(response.modal_content, response.heading)
-    
-                    }
-                    if (response.message) {
-                        UIkit.notification.closeAll()
-                        UIkit.notification(response.message)
-                    }
-                },
-    
-                error: function (xhr, status, error) {
-                    UIkit.notification.closeAll()
-                    UIkit.notification('Operation not successful. Check your internet connection',)
-                }
-            });
-        });
-    
-    </script>
+              },
+              url: post_url,
+              type: request_method,
+              data: form_data,
+              contentType: false,
+              cache: false,
+              processData: false,
+  
+              success: function (response) {
+                  if (response.full_modal) {
+                      fullcontentModal(response.full_modal, response.heading)
+  
+                  }
+                  if (response.content) {
+                      loadContent("{% url 'customer_cart_count' %}",'#cart-count')
+  
+                  }
+                  if (response.modal_message) {
+                      notify(response.modal_message)
+  
+                  }
+                  if (response.modal_notification) {
+                      notificationModal(response.modal_notification)
+  
+                  }
+  
+                  if (response.modal_content) {
+                      contentModal(response.modal_content, response.heading)
+  
+                  }
+                  if (response.message) {
+                      UIkit.notification.closeAll()
+                      UIkit.notification(response.message)
+                  }
+              },
+  
+              error: function (xhr, status, error) {
+                  UIkit.notification.closeAll()
+                  UIkit.notification('Operation not successful. Check your internet connection',)
+              }
+          });
+      });
+  
+  </script>
