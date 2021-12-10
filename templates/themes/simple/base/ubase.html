@@ -10,7 +10,9 @@
 
   <title>{{title}}</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  {% if settings.logo_icon %}
+  <link rel="icon" href="{{settings.logo_icon.url}}">
+  {% endif %}
   {% block style %}
   <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
   {% endblock %}
