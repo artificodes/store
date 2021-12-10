@@ -9,3 +9,4 @@ settings.py
 migrations
 media
 static_files
+passenger_wsgi.py
