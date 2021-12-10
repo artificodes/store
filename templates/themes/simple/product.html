@@ -1,3 +1,5 @@
+{% if product.image %}
+
     <div class="p-2 uk-display-inline-block rounded-lg bg-white overflow-hidden card shadow-none m-0" style="z-index: 2;">
       <a href="{% url 'customer_product_details' productid=product.productid %}" class="position-relative">
         <div class="rounded-0 position-relative p-0 overflow-hidden  shadow-none m-0 text-center card">
@@ -34,7 +36,7 @@
    
       </button>
     </div>
-
+{% endif %}
 
     <script>
       $('.ui.rating')

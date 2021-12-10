@@ -14,10 +14,11 @@
 
     <div class="row m-0 p-0 mt-0 pt-4 pb-4 bg-secondary">
       {% for product in groupproducts %}
-      <div class="col-cmd-2-e col-csm-5-e col-css-7 col-csx-7 col-csxx-7 p-1 position-relative">
-        <div class="rounded-circle position-relative p-0 border border-primary overflow-hidden card m-0"
-          style="border-style: dashed !important;max-height: 230px;max-width: 230px;">
-          <img class="card-img" src="{{product.image.url}}" alt="" style="max-height: 230px;max-width: 230px;">
+      <div class="col-cmd-2-e col-csm-5-e col-css-7 col-csx-7 col-csxx-7 p-1 position-relative text-center">
+        <a class="rounded-pill m-0" href="{% url 'customer_our_offers' name=product.name %}">
+        <div class="rounded-circle position-relative p-0 border border-primary overflow-hidden card m-0 uk-display-inline-block"
+          style="border-style: dashed !important;height: 100px;width: 100px;">
+          <img class="card-img" src="{{product.image.url}}" alt="" style="height: 100px;width: 100px;">
           <!-- <div class="card-img-overlay">
              
             </div> -->
@@ -25,16 +26,19 @@
               style="width: 60%;border: 5px solid {% cycle 'black' 'hotpink' 'chartreuse' %};">
               <img class="" src="{{product.image.url}}" alt="">
             </div> -->
-          <div class=" text-left pr-3 uk-position-center-left mb-5 ml--2 pl-3 bg-translucent-darker rounded-pill">
-            <p class="h6 text-white">{{product.name}}</p>
-          </div>
+
 
           <!-- <div class="bg-red text-white h2 uk-display-inline-block text-center p-2 rounded-lg uk-position-bottom-center mb--3">
           {{product.name}}
         </div> -->
         </div>
-        <div class=" text-left p-2 ml-1 mb--2 uk-position-bottom-left">
-          <a class="btn btn-primary rounded-pill m-0" href="{% url 'customer_our_offers' name=product.name %}">More</a>
+        <div class=" text-left p-2 ml-1 mb--2">
+   
+        </div>
+
+        </a>
+        <div class=" text-center">
+          <p class="h6 text-darker">{{product.name}}</p>
         </div>
       </div>
 
