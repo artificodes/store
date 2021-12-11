@@ -508,6 +508,7 @@ class FlashSale(models.Model):
 
 class NewsLetterSubscription(models.Model):
     email =models.EmailField(default='',blank=True,)
-    
+    date_time_added = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return self.email

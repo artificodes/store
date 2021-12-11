@@ -1,13 +1,13 @@
-<div class="bg-lighter pt-4  pb-4  p-1">
-    <div class="container uk-display-block uk-width-1-1 rounded-md shadow-lg bg-white p-3 border border-success" id=""
-        style="max-width: 320px;border-style: dashed !important;">
+<div class="bg-lighter pt-4  pb-4  p-1 rounded-sm overflow-hidden">
+    <div class="container uk-display-block uk-width-1-1 rounded-md shadow-lg bg-white p-3 " id=""
+        style="max-width: 320px;">
         {% if cart.products.all %}
 
 
         <p>My Items ({{cart.products.all | length}})</p>
-        {% for product in cart.products.all %}
-        {% include 'customers/cart_product.html' %}
-        {% endfor %}
+       
+        {% include 'themes/simple/cart_products.html' %}
+     
         <div class="mt-3">
             <a href="{% url 'customer_checkout' %}" class="btn-primary uk-width-1-1 m-0 btn">CHECKOUT</a>
         </div>
