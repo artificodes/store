@@ -1,0 +1,133 @@
+<div class="navbar navbar-expand-lg  p-0 mt-0 p-0 col-md-3 col-lg-2 uk-position-fixed" style="z-index: 4;min-height: 0;">
+  <nav class=" navbar navbar-expand-lg uk-width-1-1  p-0 bg-default uk-height-viewport collapse navbar-collapse "
+    style="z-index: 5;align-items: unset;background-color: {{store.primary_color}} !important;">
+    <div class="uk-width-1-1">
+
+      <div class="card mt-5 bg-transparent mb-0 shadow-none text-left" style="width: 100%;">
+
+        <div class="card-body p-0 text-center">
+            <p
+              class="uk-border-circle m-0 bg-transparent uk-display-inline-block bg-white overflow-hidden p-1 border position-relative"
+              style="height: 60px;width: 60px;border: 4px solid white;">
+              {% if store.logo %}
+              <img src="{{site}}{{store.logo.url}}" alt="" style="width: 100%;display: inline-block;height: 100%;"
+                class="rounded-circle">
+              {% else %}
+              <span class="text-light uk-position-center h1" style="font-size: 30px;">
+                {{store.store_name.0}}
+              </span>
+              {% endif %}
+
+            </p>
+            <p class="h5 text-light p-2">
+              {{store.store_name}}
+            </p>
+         
+
+
+
+        </div>
+
+      </div>
+
+      <div class="collapse navbar-collapse mt-1 overflow-hidden uk-animation-slide-bottom-medium"
+      id="navbarNav">
+
+      <div class="col-12 p-0">
+        <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+          <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_dashboard' %}" style="font-size: 14px;"
+            class=" uk-padding-small spa ">
+            <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+              <i class="material-icons-round uk-position-center ">home</i></span>
+            <span class="p-1  text-lighter">Dashboard</span></a>
+        </li>
+          <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+            <a class="uk-padding-small" style="font-size: 14px;">
+               
+            <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-white">
+              <i class="material-icons uk-position-center " >shopping_cart_checkout </i></span>
+            <span class="p-1 text-lighter">Orders</span>
+            </a>
+            <div uk-dropdown="mode:click;animation:uk-animation-slide-top-small" style="min-width: 100%;"
+            class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-darker uk-animation-slide-top-small">
+              <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+
+              <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_orders' filter='all' %}"style="font-size: 14px;"
+                class="uk-padding-small spa ">
+                <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-white">
+                  <i class="fa fa-th-large uk-position-center "></i></span>
+                <span class="p-1 text-lighter">All orders</span></a>
+              </li>
+              <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_orders' filter='new' %}" style="font-size: 14px;"
+                class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+                  <i class="fa fa-cart-plus uk-position-center "></i></span>
+                <span class="p-1  text-lighter">New orders</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_orders' filter='paid' %}" style="font-size: 14px;"
+                class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+                  <i class="fas fa-check-double uk-position-center "></i></span>
+                <span class="p-1  text-lighter">Paid orders</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_orders' filter='unpaid' %}" style="font-size: 14px;"
+              class=" uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+                <i class="fa fa-check uk-position-center "></i></span>
+              <span class="p-1  text-lighter">Unpaid orders</span></a>
+          </li>
+            </ul>
+            </div>
+        </li>
+        <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+          <a class="uk-padding-small" style="font-size: 14px;">
+             
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-white">
+            <i class="material-icons uk-position-center " >list_alt</i></span>
+          <span class="p-1 text-lighter">Products</span>
+          </a>
+          <div uk-dropdown="mode:click;animation:uk-animation-slide-left-small" style="min-width: 100%;"
+          class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-darker uk-animation-slide-top-small">
+            <ul class="uk-nav uk-nav-primary uk-nav-left bg-default" style="background-color: {{store.primary_color}} !important">
+
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_products_page' %}" reload contenturl="" style="font-size: 14px;"
+              class="uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-white">
+                <i class="fa fa-th-large uk-position-center "></i></span>
+              <span class="p-1 text-lighter">All products</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1">
+              <a href="{% url 'admin_add_product' %}" style="font-size: 14px;"
+              class=" uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+                <i class="fa fa-plus uk-position-center "></i></span>
+              <span class="p-1  text-lighter">Add product</span></a>
+          </li>
+         
+          </ul>
+          </div>
+      </li>
+          <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_settings' %}" style="font-size: 14px;"
+              class=" uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+                <i class="material-icons uk-position-center ">settings</i></span>
+              <span class="p-1  text-lighter">Settings</span></a>
+          </li>
+
+          <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'admin_account_logout' %}" style="font-size: 14px;"
+            class=" uk-padding-small spa ">
+            <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-white">
+              <i class="material-icons-round uk-position-center">logout</i></span>
+            <span class="p-1  text-lighter">Logout</span></a>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+  
+    </div>
+
+
+
+  </nav>
+</div>

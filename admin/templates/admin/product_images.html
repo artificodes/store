@@ -1,0 +1,18 @@
+
+{% if product.image %}
+
+  <div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-3  mt-3
+   p-2" >
+ 
+    <img src="{{product.url}}" alt="">
+ </div>
+ {% endif %}
+    {% for image in images %}
+<div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-3  mt-3
+ p-2" >
+
+   <img src="{{image.url}}" alt="">
+</div>
+
+{% endfor %}
+

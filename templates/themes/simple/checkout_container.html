@@ -7,7 +7,7 @@
 
         <!-- <p>My Items ({{cart.products.all | length}})</p> -->
         {% for product in cart.products.all %}
-        {% include 'customers/checkout_product.html' %}
+        {% include 'app/checkout_product.html' %}
         {% endfor %}
 
         <div class="mt-3">

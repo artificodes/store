@@ -22,7 +22,7 @@ urlpatterns = [
 
       # url("accounts/login/", gviews.loginuser, name='account_login'),
       # url("", gviews.loginuser, name='login'),
-      url("accounts/logout/", gviews.logoutuser, name='account_logout'),
+      url("logout", gviews.logoutuser, name='account_logout'),
 
       url(r'^account_activation_sent/$', gviews.account_activation_sent, name='account_activation_sent'),
   url(r'^accounts/', include('allauth.urls')),

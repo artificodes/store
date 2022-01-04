@@ -1,0 +1,17 @@
+
+<div style="">
+{% if settings.error_404_background %}
+<img src="{{settings.error_404_background.url}}" alt="" class="">
+
+<div class="bg-secondary uk-position-center rounded-md p-5">
+This page does not exist. Go to our home page and start again
+<p><a href="{% url 'admin_dashboard' %}" class="btn btn-darker text-secondary">Go to home page</a></p>
+</div>
+{% else %}
+<div class="bg-secondary position-relative rounded-md p-5">
+    This page does not exist. Go to our home page and start again
+    <p><a href="{% url 'admin_dashboard' %}" class="btn btn-darker text-secondary">Go to home page</a></p>
+    </div>
+    {% endif %}
+</div>
+

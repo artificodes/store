@@ -1,4 +1,4 @@
-{% extends "themes/functional/base/base2.html" %}
+{% extends "base/base2.html" %}
 {% load static %}
 {% load i18n %}
 {% load account socialaccount %}
@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="bg-white uk-height-viewport" style="background-image: url('{{settings.logo_loader.url}}');background-size: cover;">
+<div class="bg-white uk-height-viewport" style="background-image: url('{{settings.background_image.url}}');background-size: cover;">
   <div class="page-header header-filter position-relative text-center " style="">
 
     <div class="card card-login bg-transparent shadow-none mt-4 uk-display-inline-block rounded-md text-center"

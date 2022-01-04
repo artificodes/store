@@ -1,0 +1,52 @@
+<div class="card uk-display-inline-block shadow-none" style="max-width: 500px;width: 100%;">
+    <div class="card-body p-0 pb-4">
+        {% if units %}
+        {% for unit in units %}
+        <div class="row m-0">
+           
+            <div class="col text-right">
+                <a class="uk-icon-button load-content-btn" contenturl="{% url 'admin_add_measurement_unit' %}?edit=1&id={{unit.pk}}">
+                    <i class="material-icons text-dark mr-2 uk-text-small" >edit</i></a>
+            </div>
+           
+        </div>
+        <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+            <div class="col-4 text-left text-bold">
+                Name:
+            </div>
+
+            <div class="col-8 text-right text-capitalize">
+                {{unit.name}}
+            </div>
+
+            <div class="col-6 text-left text-bold">
+                unit:
+            </div>
+
+            <div class="col-6 text-right">
+                {{unit.unit}}
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+
+        {% include 'general/nothing_here.html' %}
+        {% endif %}
+
+    </div>
+</div>
+
+<script>
+      $('.load-content-btn').off('click')
+  {
+    (function ($) {
+      $('.load-content-btn').on('click', function (event) {
+
+        var button = $(this)
+        requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+      });
+    }(jQuery))
+  };
+
+</script>

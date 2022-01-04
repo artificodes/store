@@ -9,7 +9,7 @@
                 class="fa fa-check-circle text-bold text-green mr-2"></i>Paid</span>
         {% endif %}
         {% for product in order.products.all %}
-        {% include 'customers/order_product.html' %}
+        {% include 'app/order_product.html' %}
         {% endfor %}
         <div class="uk-display-inline-block uk-width-1-1 p-2">
             <div class="p-2 bg-secondary rounded-md m-0" style="max-width: 320px;">

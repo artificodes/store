@@ -27,13 +27,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import ValidationError
 from general import models as gmodels
 
-handler500 = 'customers.views.handler500'
-handler404 = 'customers.views.handler404'
+handler500 = 'app.views.handler500'
+handler404 = 'app.views.handler404'
 
 urlpatterns = [
-    path('admin/v2/', admin.site.urls),
+    # path('admin/v2/', admin.site.urls),
                 re_path(r'',include('general.urls')),
-        re_path(r'',include('customers.urls')),
+        re_path(r'',include('app.urls')),
         # re_path(r'',include('padmin.urls')),
 
 re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 

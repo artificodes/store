@@ -1,0 +1,23 @@
+<div class="form-group mb-3 mt-4 shadow-none">
+    <div
+        class="input-group input-group-merge input-group-alternative p-1 shadow-none">
+        <div class="input-group-prepend p-0">
+
+            <span class=" input-group-text text-dark p-0">
+                Measurement unit
+            </span>
+        </div>
+
+            <select class="ui search selection dropdown fluid p-2" data-style="btn btn-link" name="measurement_unit"
+               required>
+                <option value="{{product.measurement_unit.pk}}" selected="selected">
+                    {% if product.measurement_unit %} {{product.measurement_unit.name}} {% else %} select unit {% endif %} 
+             </option>
+             {% for unit in units %}
+                <option value='{{unit.pk}}'>{{unit.name}}</option>
+             {% endfor %}
+            </select>
+      
+
+    </div>
+</div>   

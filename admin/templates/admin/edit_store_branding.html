@@ -1,0 +1,147 @@
+{% load static %}
+
+<div class="card-body uk-width-1-1@s uk-text-left p-0">
+  <form role="form" id='editstorebranding' enctype="multipart/form-data" class="form uk-padding-small" method="POST"
+    action="{% url 'admin_edit_store_branding' %}">
+    {% csrf_token %}
+
+    <div class="card-body">
+      <div class="uk-inline mt-2" style="width: 100%;">
+        <div class="position-relative">
+          <input class="uk-input previewimage form-control p-3 password  rounded-sm position-relative " name="logo"
+            data-jpreview-container="#logo-preview-container" style="z-index: 2;" type="file">
+          <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 mt--4 bg-white text-dark"
+            style="z-index: 3;font-size: 12px;">
+
+            Store logo
+          </span>
+        </div>
+
+
+        <div id="logo-preview-container" class="jpreview-container uk-padding-small rounded-circle"
+          style="background-position: center;min-height: 100px; max-height: 200px;max-width: 200px; float: none;
+            background-image: url('{% if store.logo %} {{site}}{{store.logo.url}} {% endif  %}');background-repeat: no-repeat; background-size: contain;">
+        </div>
+      </div>
+      <div class="uk-inline mt-2" style="width: 100%;">
+        <div class="position-relative">
+          <input class="uk-input previewimage form-control p-3 password  rounded-sm position-relative " name="logo_icon"
+            data-jpreview-container="#logo-icon-preview-container" style="z-index: 2;" type="file">
+          <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 mt--4 bg-white text-dark"
+            style="z-index: 3;font-size: 12px;">
+
+            Browser icon - <i>leave blank to user logo</i>
+          </span>
+        </div>
+
+
+        <div id="logo-icon-preview-container" class="jpreview-container uk-padding-small rounded-circle"
+          style="background-position: center;min-height: 100px; max-height: 200px;max-width: 200px; float: none;
+          background-image: url('{% if store.logo_icon %} {{site}}{{store.logo_icon.url}} {% endif  %}');background-repeat: no-repeat; background-size: contain;">
+        </div>
+      </div>
+      <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+        <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+          style="z-index: 2;" type="text" name="primary_color" value="{{store.primary_color}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label" style="z-index: 1;font-size: 10px;">
+          Primary color
+        </span>
+      </div>
+      <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+        <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+          style="z-index: 2;" type="text" name="background_color" value="{{store.background_color}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label" style="z-index: 1;font-size: 10px;">
+          Background color
+        </span>
+      </div>
+
+      <div class="form-group mb-3 mt-4 shadow-none">
+        <div class="input-group input-group-merge input-group-alternative p-1 shadow-none">
+          <div class="input-group-prepend p-0">
+
+            <span class=" input-group-text text-dark p-0">
+              Theme
+            </span>
+          </div>
+
+          <select class="ui search selection dropdown fluid p-2" data-style="btn btn-link" name="theme" required>
+            <option value="{{store.theme}}" selected="selected">{{store.theme}}
+            </option>
+            <option value='simple'>Simple</option>
+            <option value='functional'>Functional</option>
+
+          </select>
+
+
+        </div>
+      </div>
+
+
+
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{next}}" value="{{nexturl}}" />
+      {% endif %}
+    </div>
+
+    <div class="text-center">
+
+
+      <button type="submit" class="btn btn-primary payment-form-submit pl-4 pr-4 text-capitalize">
+        <i class="text-sm material-icons">edit</i> Submit</button>
+
+    </div>
+  </form>
+
+</div>
+
+<script>
+  $('.ui.dropdown').dropdown()
+  $('.previewimage').jPreview();
+
+</script>
+
+<script>
+
+
+
+  $("#editstorebranding").submit(function (event) {
+    event.preventDefault(); //prevent default action 
+    // tinymceIframe = $('#full_description_ifr')
+    // tinymceContent = tinymceIframe.contents().find("body#tinymce").html()
+    // $('textarea#full_description').val(tinymceContent)
+    var post_url = $(this).attr("action")
+    var request_method = $(this).attr("method"); //get form GET/POST method
+    var form_data = new FormData(this); //Creates new FormData object
+
+    $.ajax({
+      beforeSend: function () {
+        UIkit.modal($('#content-modal')).hide();
+        showLoadingBar()
+      },
+      complete: function () {
+        hideLoadingBar()
+      },
+      url: post_url,
+      type: request_method,
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+
+      success: function (response) {
+        dispatchResponse(response)
+      },
+      error: function (xhr, status, error) {
+        UIkit.notification.closeAll()
+        UIkit.notification('Not sent. Check your internet connection',)
+      }
+    });
+
+
+  });
+
+</script>

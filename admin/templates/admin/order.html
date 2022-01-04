@@ -1,0 +1,76 @@
+<a href="{% url 'admin_order_details' orderid=order.orderid %}" class="nav-link p-0 spa">
+
+    <div class="card p-0 m-0 mt-1 uk-text-left rounded-0 border uk-card-hover" style="">
+        <div class="card-body p-2">
+
+        <div class="row m-0">
+            <div class="col-12 text-left">
+              <p class="text-bold h3">Order id</p>
+            </div>
+
+            <div class="col-12 text-left">
+              <p class="h2 text-bold">{{order.orderid}}</p>
+            </div>
+        </div>
+        <div class="card-body p-2 text-sm">
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> Items</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{{order.products.all | length}}
+                    
+                  </p>
+                </div>
+            </div>
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> 
+                      Payment status</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{% if order.paid %} <span
+                    class="text-green uk-text-bold pr-2 pl-2 rounded-sm bg-white">PAID</span>
+                {% else %} <span
+                    class="text-danger uk-text-bold pr-2 pl-2 rounded-sm bg-white">Not
+                    paid</span>
+                {% endif %}
+                  </p>
+                </div>
+            </div>
+
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> 
+                     Date placed:</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold"> {{order.date_time_added.date}}
+                  </p>
+                </div>
+            </div>
+         
+
+        </div>
+        <div class=" p-2 text-center row m-0">
+            {% if not order.paid %}
+            <div class="col p-1">
+                <a class="btn btn-danger uk-width-1-1 confirm shadow-none text-white"
+                    target="#order-container" contenturl="{% url 'admin_remove_order' orderid=order.orderid %}"
+                    message="You are about to remove this product"><i class="fa fa-times"></i> Cancel</a>
+
+            </div>
+            {% endif %}
+            <div class="col p-1">
+
+                <a href="{% url 'admin_order_details' orderid=order.orderid %}" class="btn btn-primary shadow-none spa  uk-width-1-1"> <i class="fa fa-eye"></i>
+                    View</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </a>
+

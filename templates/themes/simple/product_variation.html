@@ -14,16 +14,16 @@
                             </div>
                 </div>
             </div>
-            <div class="col p-0">
+            <div class="col p-0"> 
                
                     <form class="form" id="" method="POST"
-                        action="{% url 'customer_add_to_cart' productid=product.id %}" style="">
+                        action="{% url 'customer_add_variation_to_cart' productid=product.productid %}" style="">
 
                         {% csrf_token %}
 
                         <div class="card-body p-0 bg-white rounded-md shadow-none">
                             <div class="uk-inline position-relative" style="width: 100%;">
-                                <input type="hidden" name="productid" value="{{product.productid}}" id="">
+                                <input type="hidden" name="variationid" value="{{variation.pk}}" id="">
                                 <input
                                     class="uk-input form-control text-center p-0 bg-secondary  position-relative text-dark "
                                     style="z-index: 1;height: 35px;" id="{{product.productid}}{{variation.pk}}" type="text" min="0"
@@ -87,7 +87,7 @@
         }
         var amount = price * inputValue
         $('#price'+button.attr('uniqueid')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
-        addVariationToCart(inputValue,button.attr('product'),button.attr('variation'),button)
+        addVariationToCart(inputValue,button.attr('product'),button.attr('variation'),button,"{% url 'customer_add_variation_to_cart' productid=product.productid %}")
     })
 
     $(".decrease-quantity").off()
@@ -104,7 +104,7 @@
         }
         var amount = price * inputValue
         $('#price'+button.attr('uniqueid')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
-        addVariationToCart(inputValue,button.attr('product'),button.attr('variation'),button)
+        addVariationToCart(inputValue,button.attr('product'),button.attr('variation'),button,"{% url 'customer_add_variation_to_cart' productid=product.productid %}")
 
     })
 </script>

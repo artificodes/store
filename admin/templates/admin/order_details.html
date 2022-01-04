@@ -1,0 +1,102 @@
+<div class="nav-tabs-navigation p-0">
+    <div class="nav-tabs-wrapper text-center bg-white ">
+        <ul class="nav nav-pills nav-pills-info m-0 text-center row border-bottom">
+            <li class="nav-item  m-0 p-0 col">
+                <a class="nav-link active custom inner-tab-content-btn rounded-0 bg-white tab-content-btn   shadow-none  uk-width-1-1 uk-text-bold"
+                    style="font-weight: bold;" href="#order_products" data-toggle="tab">Products</a>
+            </li>
+
+            <li class="nav-item  m-0 p-0 col">
+                <a class="nav-link  custom inner-tab-content-btn shadow-none bg-white tab-content-btn  rounded-0 uk-width-1-1 uk-text-bold"
+                    style="font-weight: bold;" href="#order_information" data-toggle="tab">
+                    Details</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+<div class="tab-content tab-space pb-0">
+    <div class="tab-pane active slide uk-animation-slide-left " id="order_products">
+        <div class="container-fluid pt-3 pl-2 pr-2">
+
+            {% for product in order.products.all %}
+            {% include 'admin/order_product.html' %}
+            {% endfor %}
+            <div class="uk-display-inline-block uk-width-1-1 p-2">
+                <div class="p-2 bg-secondary rounded-md m-0" style="max-width: 320px;">
+                    <div class="row m-0">
+                        <div class="col h4 p-0 text-left">
+                            TOTAL
+                        </div>
+                        <div class="col text-right h4 p-0" id="order-total" amount="{{order.total}}">
+                            NGN {{order.formatted_total}}
+                        </div>
+                    </div>
+
+                    <div class="row m-0" id="delivery-fee-container">
+                        <div class="col h4 p-0 text-left">
+                            Delivery fee
+                        </div>
+                        <div class="col text-right h4 p-0" id="delivery-fee">
+                            NGN 0
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col h3 p-0 text-darker text-left">
+                            GRAND TOTAL
+                        </div>
+                        <div class="col text-right h3 text-darker p-0" id="grand-total">
+                            NGN {{order.formatted_total}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% if order.paid %}
+            <div class="mt-3">
+                <a href="{'customer_download_order' orderid=order.orderid %}"
+                    class="btn-primary uk-width-1-1 m-0 btn row">
+                    <span class="col"><i class="material-icons uk-position-center-left">download</i></span>
+                    <span class="col">Download receipt</span> </a>
+            </div>
+            {% endif %}
+
+
+
+        </div>
+
+
+
+    </div>
+    <div class="tab-pane slide uk-animation-slide-left " id="order_information">
+        <div class="container-fluid pt-3 pl-2 pr-2">
+            
+            <p class="text-left m-0 text-bold text-darker">#{{order.orderid}}</p>
+
+            {% if order.paid %}
+            <span class="text-bold text-darker uk-position-top-right mt-2 mr-2"><i
+                    class="fa fa-check-circle text-bold text-green mr-2"></i>Paid</span>
+            {% endif %}
+            <div class="text-left">
+                <p><b>CUSTOMER DETAILS</b></p>
+
+                <p> <span style="font-weight: bold;">Name: </span> {{customer.full_name}}</p>
+                <p><span style="font-weight: bold;">Phone Number: </span>{{customer.phone_number_1}}</p>
+                <p><span style="font-weight: bold;">Email Address: </span>{{customer.email}}</p>
+                <br>
+                <p><b>META DETAILS</b></p>
+                
+                <p> <span style="font-weight: bold;">Payment method: </span>{% if order.payment_method == 'pd' %} Pay on delivery {% elif order.payment_method == 'op' %}Online payment {% endif %} </p>
+                <p><span style="font-weight: bold;">Payment status: </span>{% if order.paid %}PAID {% else %} UNPAID {% endif %}</p>
+                <p><span style="font-weight: bold;">Delivery Option: </span> {% if order.delivery_option == 'd' %} delivery {% elif order.delivery_option == 'p' %}Pick up {% endif %} </p>
+                {% if order.delivery_option == 'd' %}
+                <p><span style="font-weight: bold;">Delivery region: </span>  {{order.delivery_location.name}}  </p>
+                <p><span style="font-weight: bold;">Delivery address: </span>  {{customer.full_address}}  </p>
+                
+                {% endif %}
+            </div>
+      
+        </div>
+    </div>
+</div>

@@ -103,7 +103,7 @@
         }
         var amount = price * inputValue
         $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
-        addToCart(inputValue,button.attr('product'))
+        addToCart(inputValue,button.attr('product'),"{% url 'customer_update_cart' %}")
     })
 
     $(".decrease-quantity").off()
@@ -120,7 +120,7 @@
         }
         var amount = price * inputValue
         $('#price'+button.attr('product')).empty().html('₦ '+String(formatCurrency(amount)+'.00'))
-        addToCart(inputValue,button.attr('product'))
+        addToCart(inputValue,button.attr('product'),"{% url 'customer_update_cart' %}")
 
     })
 </script>

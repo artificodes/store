@@ -33,6 +33,7 @@
                 </form>
             </div>
             <div class=" uk-padding-remove col-12 mt-4 text-center" >
+                {% if settings.payment_cards_image %}
                 {% if settings.footer_color == 'white' %}    
                 <img src="{{settings.payment_cards_image.url}}" alt="" style="width: 100%;max-width: 300px;filter: grayscale(100%);">
                  {% elif settings.footer_color == 'dark' %}
@@ -41,7 +42,7 @@
                 <img src="{{settings.payment_cards_image.url}}" alt="" style="width: 100%;max-width: 300px;filter: grayscale(100%);">
                  {% endif %}
              
-                   
+                   {% endif %}
             </div>
         </div>
         <div class="col-12 col-md-4 p-1 col-sm-4 p-3" >
