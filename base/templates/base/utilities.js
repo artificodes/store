@@ -754,57 +754,7 @@ $('.content-modal').addClass('custom-modal-slide-top')
         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
       },
       success: function (response) {
-       
-        if(response.loadcontent){
-            
-          loadContent($('#'+response.container))
-      }
-
-        closeModal()
-        
-        if (response.modal_message) {
-          messageModal(response.modal_message, response.heading)
-
-        }
-
-        
-        if (response.updatecontent) {
-          updateable = $('#'+updateable)
-          updateable.removeClass('uk-animation-fade')
-
-          updateable.addClass('uk-animation-fade')
-          updateable.empty()
-          updateable.append(response.updatecontent)
-        }
-
-        if (response.full_modal) {
-          fullcontentModal(response.full_modal, response.heading)
-
-        }
-        if (response.modal_notification) {
-          notificationModal(response.modal_notification)
-
-        }
-
-        if (response.modal_content) {
-          contentModal(response.modal_content, response.heading)
-
-        }
-        if (response.message) {
-          UIkit.notification.closeAll()
-          UIkit.notification(response.message)
-        }
-        if (response.logout) {
-          setTimeout(logout, 5000)
-        }
-        if (response.redirecturl){
-          showLoadingBar()
-        function callRedirect(){
-                  redirect(response.redirecturl)
-                }
-                setTimeout(callRedirect,3000)
-       }
-
+          dispatchResponse(response)
         // UIkit.modal($('.content-modal.uk-open')).hide();
 
         // $('.content-modal.uk-close').removeClass('uk-transition-slide-bottom')

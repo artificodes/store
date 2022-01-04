@@ -100,7 +100,22 @@
 </div>
 </div>
 
+    
+<script>
+  $('.content-btn').off()
+ {
+   (function ($) {
+     $('.content-btn').on('click', function (event) {
+       event.preventDefault()
+       // UIkit.offcanvas($('#offcanvas-content')).show();
+       var link = $(this);
+      var response = requestContentModal(link.attr('contenturl'), 'get')
 
+     })
+   }(jQuery))
+ }
+
+</script>
 
 
     {% endblock content %}

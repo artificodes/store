@@ -1450,7 +1450,7 @@ def add_to_cart(request,productid=None, *args, **kwargs):
             output_data = {
             'notification': 'Product added to cart',
             'loadcontent':True,
-            'reload_url':redirect('customer_cart_count').url,
+            'contentn':redirect('customer_cart_count').url,
             'container':'cart-count'
                             }
             return JsonResponse(output_data)
