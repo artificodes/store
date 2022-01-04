@@ -1,0 +1,52 @@
+body {
+    padding-bottom: 40px;
+}
+
+hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 600px;
+    width: auto;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+label.error-block {
+    color: red;
+    font-size: 11px;
+}
+
+input.error,
+textarea.error,
+select.error {
+    border-color: red;
+}
+
+input.mismatch,
+textarea.mismatch,
+select.mismatch {
+    border-color: orange;
+}
+
+input.valid,
+textarea.valid,
+select.valid {
+    border-color: green;
+}
+
+label.error {
+    color: red;
+}
+
+label.mismatch {
+    border-color: orange;
+}
+
+label.valid {
+    color: green;
+}

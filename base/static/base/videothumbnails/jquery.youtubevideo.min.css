@@ -1,0 +1,10 @@
+/**
+ * jQuery.youtubeVideo
+ * Version: 1.1.4
+ * Repo: https://github.com/WahaWaher/youtubevideo-js
+ * Author: Sergey Kravchenko
+ * Contacts: wahawaher@gmail.com
+ * License: MIT
+ */
+
+.ytb-video{position:relative}.ytb-video>.ytb-video-container,.ytb-video>.ytb-video-iframe{position:absolute;top:0;left:0;width:100%;height:100%}.ytb-video-container{cursor:pointer;background-position:50%;background-repeat:no-repeat;background-size:cover;background-color:#e3e3e3;position:relative;transition:all .2s ease-out}.ytb-video-container:hover .ytb-video-play-button-bg{transition:fill .1s cubic-bezier(0,0,.2,1),fill-opacity .1s cubic-bezier(0,0,.2,1);fill:red;fill-opacity:1}.ytb-video-wrap{height:0;overflow:hidden}.ytb-video-wrap .ytb-video-container,.ytb-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}.ytb-video-play-button{position:absolute;left:50%;top:50%;width:68px;height:48px;margin:-24px 0 0 -34px;transition:opacity .25s cubic-bezier(0,0,.2,1)}.ytb-video-play-button-bg{transition:fill .1s cubic-bezier(.4,0,1,1),fill-opacity .1s cubic-bezier(.4,0,1,1);fill:#212121;fill-opacity:.8}.ytb-video-duration,.ytb-video-duration-text{font-family:Arial;font-size:12px;letter-spacing:.5px;font-weight:700;line-height:12px;color:#fff}.ytb-video-duration{display:inline-block;position:absolute;bottom:0;right:0;margin:4px;background-color:#111;opacity:.8;padding:2px 4px;border-radius:2px}
