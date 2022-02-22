@@ -1,0 +1,17 @@
+
+  <div class="p-2 text-left">
+    <p class="text-darker h4">{{product.name}}</p>
+    <p class="text-darker h1 position-relative uk-display-inline-block">
+      
+      {% if flashsaleproduct %} {{flashsaleproduct.formatted_price}}                        
+       <span class="p-1 pl-2 pr-2 bg-darker text-white rounded-pill uk-text-normal mr--5 mt--3 uk-position-top-right" style="font-size: xx-small;">Flashsale</span> 
+       {% else %} 
+      {% if product.variations.all %}<span class="uk-text-normal uk-text-small">From</span>  
+      {{cheapestvariations.formatted_price}}
+      {% else %}  {{product.formatted_price}}/{{product.measurement_unit}} 
+       {% endif %} {% endif %}
+     </p>
+  </div>
+
+
+  {% include 'themes/functional/cart_form.html' %}

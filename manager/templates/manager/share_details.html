@@ -1,0 +1,58 @@
+<div class="container-fluid text-primary text-sm">
+    <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Transaction type: </div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">Share</div>
+        </div>
+    </div>
+
+    <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Amount: </div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">N{{share.formatted_amount}}</div>
+        </div>
+    </div>
+
+    <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Beneficiary: </div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">{{share.to_customer.full_name}}</div>
+        </div>
+    </div>
+
+    <!-- <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Beneficiary Bank: </div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">{{share.bank.name}}</div>
+        </div>
+
+    </div> -->
+    <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Transaction ID: </div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">{{share.transactionid}}</div>
+        </div>
+    </div>
+
+    <div class="row m-0 mt-3">
+        <div class="col-5 p-0">
+            <div class="card m-0 shadow-none">Date & Time:</div>
+        </div>
+        <div class="col-7 p-0 text-darker">
+            <div class="card m-0 shadow-none">{{share.date_time_added}}</div>
+        </div>
+    </div>
+
+
+</div>
+</div>

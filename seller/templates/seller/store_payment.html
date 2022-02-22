@@ -1,0 +1,60 @@
+<div class="mt-5">
+
+<div class="card uk-display-inline-block shadow-none border" style="max-width: 500px;width: 100%;">
+<div class="card-body p-0 pb-4">
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left">
+            Payment manager:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{store.get_payment_manager_display}}
+            </div>
+    </div>
+    <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left">
+            Processor:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{store.get_payment_processor_display}}
+            </div>
+    </div>
+
+    <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+      <div class="col-6 text-left">
+          Payment Method:
+          </div>
+          
+          <div class="col-6 text-right">
+
+            {% if store.payment_options == 'both' %}
+            Online and pay on delivery
+            {% else %}
+          {{store.get_payment_options_display}}
+          {% endif %}
+          </div>
+  </div>
+    <div class="row m-0 mt-4">
+        <div class="col-12">
+            <button class="btn btn-primary load-content-btn" contenturl="{% url 'seller_edit_store_payment' %}">Edit store payment </button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+    $('.load-content-btn').off('click')
+{
+  (function ($) {
+    $('.load-content-btn').on('click', function (event) {
+
+      var button = $(this)
+      requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+    });
+  }(jQuery))
+};
+
+</script>
+

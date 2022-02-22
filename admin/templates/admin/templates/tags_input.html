@@ -1,0 +1,24 @@
+<div class="form-group mb-3 mt-4 shadow-none">
+    <div
+        class="input-group input-group-merge input-group-alternative p-1 shadow-none">
+        <div class="input-group-prepend p-0">
+
+            <span class=" input-group-text text-dark p-0">
+               Tag
+            </span>
+        </div>
+
+            <select class="ui search selection dropdown fluid p-2" multiple data-style="btn btn-link" name="tags"
+               required>
+                <option value="{{tag.pk}}">
+                    {% if tag %} {{tag.name}} {% else %} select tag {% endif %} 
+             </option>
+             {% for tag in tags %}
+
+                <option value='{{tag.pk}}' {% if tag in product.tags.all %} selected {% endif %}>{{tag.name}}</option>
+             {% endfor %}
+            </select>
+      
+
+    </div>
+</div>   

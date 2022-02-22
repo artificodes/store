@@ -1,0 +1,60 @@
+<div class="container-fluid text-left">
+    <p class="h2 text-darker ">Orders</p>
+
+    <div class="row m-0 load-content position-relative" identifier="orders" contenturl="{% url 'seller_orders' %}" id="orders">
+
+    </div>
+
+
+
+</div>
+
+<script>
+ 
+ $('.load-content').beacon({
+    enteronce: true,
+    onenter: (el) => {
+      var contentElement = $(el)
+      if (contentObject[contentElement.attr('identifier')]) {
+        contentElement.empty();
+        contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+      }
+      else {
+        $.ajax({
+          beforeSend: function () {
+            contentElement.append(inlineLoader)
+          },
+          complete: function () {
+          },
+          type: 'get',
+          url: contentElement.attr('contenturl'),
+          data: {
+            'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+          },
+          success: function (response) {
+
+            if (response.content) {
+              $(el).empty()
+
+              $(el).append(response.content);
+              contentElement.attr('loaded', '1')
+              contentElement.removeClass('load-content')
+
+            }
+
+            contentObject[contentElement.attr('identifier')] = {}
+            contentObject[contentElement.attr('identifier')]['body'] = response.content
+
+
+          },
+          error: function (xhr, status, error) {
+            //   alert('there was an error')
+          }
+        });
+      }
+    }
+  });
+
+  
+  </script>
+

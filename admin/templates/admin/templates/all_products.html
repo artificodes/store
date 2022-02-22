@@ -1,0 +1,92 @@
+{% extends "base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class=" bg-white pb-5">
+ <div class="text-left mt-4 border-bottom  m-0">
+      <p class="text-bold uk-text-lead text-dark uk-display-inline-block p-2">All products</p>
+
+
+</div>
+<div class="load-content position-relative mt-4" contenturl="{% url 'customer_products' %}" >
+</div>
+ 
+</div>
+
+
+<script>
+
+  $('.load-content').beacon({
+
+    onenter: function (el) {
+      var contentElement = $(el)
+      $.ajax({
+        beforeSend: function () {
+          //  alert(contentElement.attr('id'))
+        },
+        complete: function () {
+        },
+        type: 'get',
+        url: contentElement.attr('contenturl'),
+        data: {
+          'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+        },
+        success: function (response) {
+
+          if (response.content) {
+            $(el).empty()
+
+            $(el).append(response.content);
+          }
+
+
+        },
+        error: function (xhr, status, error) {
+          //   alert('there was an error')
+        }
+      });
+
+    }
+  });
+
+
+
+</script>
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

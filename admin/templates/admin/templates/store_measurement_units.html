@@ -1,0 +1,65 @@
+<div class="container-fluid pt-3 pl-2 pr-2">
+
+    <div class="bg-lighter pt-4  pb-4  p-1">
+        <div class="mt-5">
+            <div class="card uk-display-inline-block shadow-none" style="max-width: 500px;width: 100%;">
+                <div class="card-body p-0 pb-4">
+                    {% if units %}
+                    {% for unit in units %}
+                    <div class="row m-0">
+
+                        <div class="col text-right">
+                            <button class="load-content-btn btn-primary btn btn-sm m-2 pl-3 pr-3 rounded-md"
+                                contenturl="{% url 'admin_add_measurement_unit' %}?edit=1&id={{unit.pk}}">
+                                Edit </button>
+                        </div>
+
+                    </div>
+                    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+                        <div class="col-4 text-left text-bold">
+                            Name:
+                        </div>
+
+                        <div class="col-8 text-right text-capitalize">
+                            {{unit.name}}
+                        </div>
+
+                        <div class="col-6 text-left text-bold">
+                            Unit:
+                        </div>
+
+                        <div class="col-6 text-right">
+                            {{unit.unit}}
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                    {% else %}
+
+                    {% include 'general/nothing_here.html' %}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-bottom text-right">
+        <button
+         class="load-content-btn btn-primary btn m-2 pl-3 pr-3 rounded-md" 
+        contenturl="{% url 'admin_add_measurement_unit' %}?add=1">
+          <i class="fa fa-plus mr-2"></i>  Add unit </button>
+    </div>
+</div>
+<script>
+    $('.load-content-btn').off('click')
+    {
+        (function ($) {
+            $('.load-content-btn').on('click', function (event) {
+
+                var button = $(this)
+                requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+            });
+        }(jQuery))
+    };
+
+</script>

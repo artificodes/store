@@ -1,0 +1,221 @@
+<div class="navbar navbar-expand-lg  p-0 mt-0 p-0 col-md-3 col-lg-2 uk-position-fixed shadow-lg" style="z-index: 4;min-height: 0;">
+  <nav class=" navbar navbar-expand-lg uk-width-1-1  p-0 bg-white uk-height-viewport collapse navbar-collapse "
+    style="z-index: 5;align-items: unset;">
+    <div class="uk-width-1-1">
+
+      <div class="card mt-4 bg-transparent mb-0 shadow-none text-left" style="width: 100%;">
+
+        <div class="card-body p-0 text-left">
+            <p
+              class="m-0 bg-transparent uk-display-inline-block ml-2 bg-white overflow-hidden border position-relative"
+              style="">
+              {% if store.logo %}
+              <img src="{{site}}{{store.logo.url}}" alt="" style="max-width: 100px;display: inline-block;"
+                class="ml-2">
+              {% else %}
+              <span class="text-light uk-position-center h1" style="font-size: 30px;">
+                {{store.store_name.0}}
+              </span>
+              {% endif %}
+
+            </p>
+            <p class="h2 text-dark p-2">
+              {{store.store_name}}
+            </p>
+         
+
+
+
+        </div>
+
+      </div>
+
+      <div class="collapse navbar-collapse mt-1 overflow-hidden uk-animation-slide-bottom-medium"
+      id="navbarNav">
+
+      <div class="col-12 p-0">
+        <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+          <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_dashboard' %}" style="font-size: 14px;"
+            class=" uk-padding-small spa ">
+            <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+              <i class="material-icons-round uk-position-center text-primary">home</i></span>
+            <span class="p-1  text-dark">Dashboard</span></a>
+        </li>
+          <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+            <a class="uk-padding-small" style="font-size: 14px;">
+               
+            <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+              <i class="material-icons uk-position-center text-indigo" >shopping_cart_checkout </i></span>
+            <span class="p-1 text-dark">Orders</span>
+            </a>
+            <div uk-dropdown="mode:click;animation:uk-animation-slide-top-small" style="min-width: 100%;"
+            class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-darker uk-animation-slide-top-small">
+              <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+
+              <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_orders' filters='all' %}"style="font-size: 14px;"
+                class="uk-padding-small spa ">
+                <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+                  <i class="fa fa-th-large uk-position-center "></i></span>
+                <span class="p-1 text-dark">All orders</span></a>
+              </li>
+              <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_orders' filters='new' %}" style="font-size: 14px;"
+                class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="fa fa-cart-plus uk-position-center "></i></span>
+                <span class="p-1  text-dark">New orders</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_orders' filters='paid' %}" style="font-size: 14px;"
+                class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="fas fa-check-double uk-position-center "></i></span>
+                <span class="p-1  text-dark">Paid orders</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_orders' filters='unpaid' %}" style="font-size: 14px;"
+              class=" uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                <i class="fa fa-check uk-position-center "></i></span>
+              <span class="p-1  text-dark">Unpaid orders</span></a>
+          </li>
+            </ul>
+            </div>
+        </li>
+        <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+          <a class="uk-padding-small" style="font-size: 14px;">
+             
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+            <i class="material-icons uk-position-center text-orange" >list_alt</i></span>
+          <span class="p-1 text-dark">Products</span>
+          </a>
+          <div uk-dropdown="mode:click;animation:uk-animation-slide-left-small" style="min-width: 100%;"
+          class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-darker uk-animation-slide-top-small">
+            <ul class="uk-nav uk-nav-primary uk-nav-left " style="">
+
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_products_page' %}" reload contenturl="" style="font-size: 14px;"
+              class="uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+                <i class="fa fa-th-large uk-position-center "></i></span>
+              <span class="p-1 text-dark">All products</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1">
+              <a href="{% url 'seller_add_product' %}" style="font-size: 14px;"
+              class=" uk-padding-small spa">
+              <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                <i class="fa fa-plus uk-position-center "></i></span>
+              <span class="p-1  text-dark">Add product</span></a>
+          </li>
+         
+          </ul>
+          </div>
+      </li>
+      <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+        <a class="uk-padding-small" style="font-size: 14px;">
+
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+            <i class="material-icons uk-position-center text-indigo">business_center</i></span>
+          <span class="p-1 text-dark">Deals</span>
+        </a>
+        <div uk-dropdown="mode:click;animation:uk-animation-slide-left-small" style="min-width: 100%;"
+          class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-dark uk-animation-slide-left-small">
+          <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_flash_sales' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons material-icons-outlined uk-position-center ">timer</i></span>
+                <span class="p-1  text-dark">Flash sales</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_stores' filter='pending' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="fas fa-cart-plus uk-position-center "></i></span>
+                <span class="p-1  text-dark">Buy 1 get 1</span></a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+      <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+        <a class="uk-padding-small" style="font-size: 14px;">
+
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+            <i class="material-icons uk-position-center text-indigo">home</i></span>
+          <span class="p-1 text-dark">Home page</span>
+        </a>
+        <div uk-dropdown="mode:click;animation:uk-animation-slide-left-small" style="min-width: 100%;"
+          class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-dark uk-animation-slide-left-small">
+          <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_homegroups_page' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons material-icons-outlined uk-position-center ">splitscreen</i></span>
+                <span class="p-1  text-dark">Sections</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_homegroups_page' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons uk-position-center ">crop_landscape</i></span>
+                <span class="p-1  text-dark">Slideshows</span></a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+      <li class="dropdown-item pt-2 pb-2 pl-1 uk-width-1-1">
+        <a class="uk-padding-small" style="font-size: 14px;">
+
+          <span class="p-3 pl-4 pr-4  position-relative rounded-sm default text-dark">
+            <i class="material-icons uk-position-center text-green">settings</i></span>
+          <span class="p-1 text-dark">Settings</span>
+        </a>
+        <div uk-dropdown="mode:click;animation:uk-animation-slide-left-small" style="min-width: 100%;"
+          class="uk-dropdown uk-width-1-1 bg-transparent border-bottom border-light shadow-none p-0 position-relative text-dark uk-animation-slide-left-small">
+          <ul class="uk-nav uk-nav-primary uk-nav-left bg-transparent ">
+
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_store_information' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons material-icons-outlined uk-position-center ">sticky_note_2</i></span>
+                <span class="p-1  text-dark">Information</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_store_payment' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="fas fa-credit-card uk-position-center "></i></span>
+                <span class="p-1  text-dark">Payment</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_store_branding' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons uk-position-center ">branding_watermark</i></span>
+                <span class="p-1  text-dark">Branding</span></a>
+            </li>
+            <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_store_measurement_units' %}"
+                style="font-size: 14px;" class=" uk-padding-small spa">
+                <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+                  <i class="material-icons uk-position-center ">horizontal_rule</i></span>
+                <span class="p-1  text-dark">Measurement units</span></a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+          <li class="dropdown-item  pt-2 pb-2 pl-1"><a href="{% url 'seller_account_logout' %}" style="font-size: 14px;"
+            class=" uk-padding-small spa ">
+            <span class="p-3 pl-4 pr-4 position-relative rounded-sm indigo text-dark">
+              <i class="material-icons-round uk-position-center text-danger">logout</i></span>
+            <span class="p-1  text-dark">Logout</span></a>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+  
+    </div>
+
+
+
+  </nav>
+</div>

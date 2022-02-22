@@ -1,0 +1,51 @@
+{% extends "themes/simple/base/ubase.html" %}
+{% load static %}
+{% block content %}
+
+<div class=" bg-white pb-5 rounded-sm">
+ <div class="text-left mt-4 border-bottom  m-0">
+      <p class="text-bold uk-text-lead text-dark uk-display-inline-block p-2">All products</p>
+
+
+</div>
+<div class="load-content position-relative mt-4 row m-0" id="all-products" identifier="all-products" contenturl="{% url 'customer_all_products' %}" >
+</div>
+ 
+</div>
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

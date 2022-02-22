@@ -1,0 +1,99 @@
+<div class="container-fluid recent text-center m-0 p-0" id="">
+  <div class="">
+    {% if products %}
+    <div class="row m-0 p-0 mt-2 text-center" id="products">
+      
+      {% for product in products %}
+      {% include 'customers/product.html' %}
+      {% endfor %}
+
+    </div>
+    {% else %}
+        <p class="text-center text-danger text-bold">No product here. Check  back later</p>
+      {% endif %}
+  </div>
+
+</div>
+
+
+{% if products.has_next %}
+<div class="load-more text-light text-center mt-0 position-relative col-cmd-14 mt-4" next-page="{{products.next_page_number}}"
+    target="#products" contenturl="{% url 'customer_paginated_products' %}">
+
+    
+    <span class="text-sm p-1">
+        Loading more</span>
+
+</div>
+{% endif %}
+
+
+<script>
+
+
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function () {
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+    $('.load-more').off()
+
+
+</script>
+<script>
+    $('.load-more').beacon({
+        enteronce:true,
+        onenter: function (el) {
+            var link = $(el)
+            var targetElement = $(link.attr('target'))
+            var contentElement = $(el)
+      $.ajax({
+        beforeSend: function () {
+          contentElement.append(loader)
+        },
+                complete: function () {
+                },
+                type: 'get',
+                url: link.attr('contenturl'),
+                data: {
+                    'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+                    'page': link.attr('next-page'),
+
+                },
+                success: function (response) {
+
+                    if (response.content) {
+                        link.remove()
+                        targetElement.append(response.content);
+                    }
+
+
+                },
+                error: function (xhr, status, error) {
+                    messageModal('We encountered an error. Try again')
+                }
+            });
+
+        }
+    });
+</script>
+
+<script>
+  {
+    (function ($) {
+      $('.content-btn').on('click', function (event) {
+        event.preventDefault()
+        // UIkit.offcanvas($('#offcanvas-content')).show();
+        var link = $(this);
+        requestContentModal(link.attr('contenturl'), 'get')
+      })
+    }(jQuery))
+  }
+</script>

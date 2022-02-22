@@ -1,0 +1,75 @@
+<div class="container-fluid text-left">
+
+
+{% if categories %}
+    {% for category in categories %}
+<div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-4  mt-3
+ p-2" identifier="{{category.categoryid}}">
+
+  <div class="card p-0 m-0 mt-1 uk-text-left rounded-md border uk-card-hover" style="">
+      <div class="card-body p-2">
+
+      <div class="row m-0">
+          <div class="col-12 text-left">
+            <p class="text-bold h3">{{category.name}}</p>
+          </div>
+
+      </div>
+      <div class="card-body p-2 text-sm">
+          <div class="row m-0 mt-2 ">
+              <div class="col text-left">
+                <p class="text-bold"> Products</p>
+              </div> 
+
+              <div class="col text-right">
+                <p class="h4 text-bold">{{category.products.all | length}}
+                  
+                </p>
+              </div>
+          </div>
+      
+          <div class=" p-2 text-center row m-0">
+            <div class="col p-1">
+                <a class="btn btn-secondary uk-width-1-1 confirm shadow-none text-darker"
+                    target="#category-container" contenturl=""
+                    message="You are about to remove this category"><i class="fa fa-times"></i> Remove</a>
+
+            </div>
+            <div class="col p-1">
+
+                <a contenturl="{% url 'admin_add_category' %}?edit=1&id={{category.pk}}" class="btn btn-primary shadow-none spa  uk-width-1-1 content-btn"> <i class="fa fa-edit"></i>
+                    Edit</a>
+            </div>
+        </div>
+      </div>
+    
+      </div>
+  </div>
+
+
+</div>
+
+{% endfor %}
+{% else %}
+{% include 'general/nothing_here.html' %}
+{% endif %}
+<div class="fixed-bottom text-right">
+  <button class="btn btn-primary rounded-md mb-3 mr-3 content-btn" contenturl="{% url 'admin_add_category' %}">Add category</button>
+</div>
+
+</div>
+
+
+<script>
+  $('.content-btn').off('click')
+{
+(function ($) {
+  $('.content-btn').on('click', function (event) {
+
+    var button = $(this)
+    requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+  });
+}(jQuery))
+};
+
+</script>

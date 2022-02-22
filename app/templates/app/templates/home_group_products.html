@@ -1,0 +1,143 @@
+
+{% include 'themes/functional/products.html' %}
+
+<script>
+
+
+
+  // $('.load-content').beacon({
+  //   enteronce: true,
+  //   onenter: (el) => {
+  //     var contentElement = $(el)
+  //     if (contentObject[contentElement.attr('identifier')]) {
+  //     contentElement.empty();
+  //     contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+  //   }
+  //   else {
+  //     $.ajax({
+  //       beforeSend: function () {
+  //         contentElement.append(loader)
+  //       },
+  //       complete: function () {
+  //       },
+  //       type: 'get',
+  //       url: contentElement.attr('contenturl'),
+  //       data: {
+  //         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+  //       },
+  //       success: function (response) {
+
+  //         if (response.content) {
+  //           $(el).empty()
+
+  //           $(el).append(response.content);
+  //           contentElement.attr('loaded', '1')
+  //           contentElement.removeClass('load-content')
+
+  //         }
+
+  //         contentObject[contentElement.attr('identifier')] = {}
+  //         contentObject[contentElement.attr('identifier')]['body'] = response.content
+
+
+  //       },
+  //       error: function (xhr, status, error) {
+  //         //   alert('there was an error')
+  //       }
+  //     });
+  //   } 
+  // }
+  // });
+
+</script>
+<script>
+  // $('.ui.rating')
+  //   .rating('disable')
+  //   ;
+</script>
+
+<script>
+
+  // {
+  //   (function ($) {
+  //     $('.uk-card-hover').on('mouseover', function () {
+  //       $(this).find('.action').removeClass('hide')
+  //     })
+  //   }(jQuery))
+  // }
+
+  // {
+  //   (function ($) {
+  //     $('.uk-card-hover').on('mouseout', function () {
+  //       $(this).find('.action').addClass('hide')
+  //     })
+  //   }(jQuery))
+  // }
+
+  // $('.off-canvas-btn').off()
+  // {
+  //   (function ($) {
+  //     $('.off-canvas-btn').on('click', function () {
+  //       UIkit.offcanvas($('#offcanvas-content')).show();
+  //       var link = $(this);
+  //       loadOffCanvasContent(link)
+  //     })
+  //   }(jQuery))
+  // }
+
+
+  // $('.load-more').off()
+
+
+</script>
+<script>
+  // $('.load-more').beacon({
+  //   enteronce: true,
+  //   onenter: function (el) {
+  //     var link = $(el)
+  //     var targetElement = $(link.attr('target'))
+  //     var contentElement = $(el)
+  //     $.ajax({
+  //       beforeSend: function () {
+  //         contentElement.append(loader)
+  //       },
+  //       complete: function () {
+  //       },
+  //       type: 'get',
+  //       url: link.attr('contenturl'),
+  //       data: {
+  //         'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+  //         'page': link.attr('next-page'),
+
+  //       },
+  //       success: function (response) {
+
+  //         if (response.content) {
+  //           link.remove()
+  //           targetElement.append(response.content);
+  //         }
+
+
+  //       },
+  //       error: function (xhr, status, error) {
+  //         messageModal('We encountered an error. Try again')
+  //       }
+  //     });
+
+  //   }
+  // });
+
+</script>
+
+<script>
+  // {
+  //   (function ($) {
+  //     $('.content-btn').on('click', function (event) {
+  //       event.preventDefault()
+  //       // UIkit.offcanvas($('#offcanvas-content')).show();
+  //       var link = $(this);
+  //       requestContentModal(link.attr('contenturl'), 'get')
+  //     })
+  //   }(jQuery))
+  // }
+</script>

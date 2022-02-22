@@ -1,0 +1,174 @@
+<div class="container-fluid text-left">
+
+
+{% if orders %}
+    {% for order in orders %}
+<div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-4  mt-3
+ load-order p-2" contenturl="{% url 'seller_order' orderid=order.cartedproductid %}" identifier="{{order.cartedproductid}}">
+
+    <div class="card p-0 m-0 mt-1 uk-text-left shadow-none rounded-0 border" style="">
+        <div class="card-body p-2">
+
+            <div class="order">
+
+                <header></header>
+
+                <main></main>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% else %}
+{% include 'general/nothing_here.html' %}
+{% endif %}
+{% if orders.has_next %}
+<div class="load-more text-light text-center mt-0 position-relative col-cmd-14 mt-4"
+  next-page="{{orders.next_page_number}}" target="#{{section}}" contenturl="{{paginated}}">
+  <script>
+  // alert("{{paginatedorders}}")
+  </script>
+  <span class="text-sm p-1">
+    Loading more</span>
+
+</div>
+{% endif %}
+
+</div>
+<script>
+    $('.order').avnSkeleton({
+
+
+
+        // default configs
+
+        cssPrefix: 'avn-skeleton',
+
+        header: {
+
+            selector: '> ',
+
+            lines: 2,
+
+            icon: false,
+
+            loader: true
+
+        },
+
+        main: {
+
+            selector: '> main',
+
+            paragraphs: 1,
+
+            lines: 5,
+            loader: true
+
+        }
+
+
+
+    });
+
+
+</script>
+<script>
+
+
+    $('.load-order').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        if (contentObject[contentElement.attr('identifier')]) {
+          contentElement.empty();
+          contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+        }
+        else {
+          $.ajax({
+            beforeSend: function () {
+              contentElement.append(inlineLoader)
+            },
+            complete: function () {
+              contentElement.remove('.loading')
+            },
+            type: 'get',
+            url: contentElement.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+            },
+            success: function (response) {
+  
+              if (response.content) {
+                $(el).empty()
+  
+                $(el).append(response.content);
+                contentElement.attr('loaded', '1')
+                contentElement.removeClass('load-order')
+  
+              }
+  
+              updatePage()
+
+              contentObject[contentElement.attr('identifier')] = {}
+              contentObject[contentElement.attr('identifier')]['body'] = contentElement.html()
+                
+            },
+            error: function (xhr, status, error) {
+              //   alert('there was an error')
+            }
+          });
+        }
+      }
+    });
+  
+  </script>
+
+<script>
+
+    $('.load-more').beacon({
+      enteronce: true,
+      onenter: function (el) {
+        var link = $(el)
+        var targetElement = $(link.attr('target'))
+        var contentElement = $(el)
+        link.remove()
+  
+  
+          $.ajax({
+            beforeSend: function () {
+              link.removeClass('load-more')
+  
+              contentElement.append(inlineLoader)
+            },
+            complete: function () {
+            },
+            type: 'get',
+            url: link.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+              'page': link.attr('next-page'),
+  
+            },
+            success: function (response) {
+              link.removeClass('load-more')
+              if (response.content) {
+  
+                  targetElement.append(response.content);
+  
+                
+              }
+  
+  
+            },
+            error: function (xhr, status, error) {
+              messageModal('We encountered an error. Try again')
+            }
+          });
+        }
+    
+    });
+  </script>

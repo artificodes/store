@@ -1,0 +1,1506 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Bad Request: /
+"GET / HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 400 143
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Found: /
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 448, in home
+    allObject = inherit(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 97, in inherit
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET / HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+Found: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 851, in error500page
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET /error_500 HTTP/1.1" 302 0
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 500 59
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+"GET / HTTP/1.1" 500 59
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 57483)
+
+"GET / HTTP/1.1" 500 59
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+C:\Users\Clinton\intelbyt\store\store\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 2762, in index
+    allObject = inherit(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 147, in inherit
+    settings = list(gmodels.General.objects.all())[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.ProgrammingError: (1146, "Table 'store.settings' doesn't exist")
+"GET / HTTP/1.1" 500 169384
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64779)
+
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 58298
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /static/base/imagepreview/css/jpreview.css HTTP/1.1" 200 650
+"GET /static/base/skeleton/avnSkeleton/avnSkeleton.css HTTP/1.1" 200 2483
+"GET /static/base/inputcounter/css/handle-counter.min.css HTTP/1.1" 200 1845
+"GET /static/base/videomodal/modal-video.min.css HTTP/1.1" 200 2069
+"GET /static/base/argon/vendor/nucleo/css/nucleo.css HTTP/1.1" 200 9015
+"GET /static/base/country/dist/css/bootstrap-select-country.min.css HTTP/1.1" 200 10294
+"GET /static/fontawesome/css/all.min.css HTTP/1.1" 200 58935
+"GET /static/base/semantic/semantic.css HTTP/1.1" 200 828900
+"GET /static/base/argon/css/nucleo-svg.css HTTP/1.1" 200 2253
+"GET /static/base/uikit/css/uikit.css HTTP/1.1" 200 374423
+"GET /static/base/videothumbnails/jquery.youtubevideo.css HTTP/1.1" 200 2325
+"GET /static/base/countrycodes/css/intlTelInput.css HTTP/1.1" 200 25260
+"GET /static/base/custom/custom.css HTTP/1.1" 200 10983
+"GET /static/base/uikit/js/uikit-icons.min.js HTTP/1.1" 200 63986
+"GET /static/base/custom/custom.min.css HTTP/1.1" 200 24215
+"GET /static/base/uikit/js/uikit.min.js HTTP/1.1" 200 133511
+"GET /static/base/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 200 80698
+"GET /static/base/material/assets/js/plugins/moment.min.js HTTP/1.1" 200 58687
+"GET /static/base/material/assets/js/core/popper.min.js HTTP/1.1" 200 33477
+"GET /static/base/argon/vendor/js-cookie/js.cookie.js HTTP/1.1" 200 3886
+"GET /static/base/material/assets/js/core/jquery.min.js HTTP/1.1" 200 145741
+"GET /static/base/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js HTTP/1.1" 200 4636
+"GET /static/base/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js HTTP/1.1" 200 13026
+"GET /static/base/argon/js/argon.js?v=1.2.0 HTTP/1.1" 200 21706
+"GET /static/base/argon/css/argon.css HTTP/1.1" 200 490593
+"GET /static/base/countrycodes/js/intlTelInput-jquery.min.js HTTP/1.1" 200 29962
+"GET /static/base/countrycodes/js/intlTelInput.min.js HTTP/1.1" 200 29521
+"GET /static/base/material/assets/js/plugins/nouislider.min.js HTTP/1.1" 200 21163
+"GET /static/base/material/assets/js/buttons.js HTTP/1.1" 200 15345
+"GET /static/base/formvalidation/DjValidator.js HTTP/1.1" 200 20970
+"GET /static/base/argon/vendor/chart.js/dist/Chart.extension.js HTTP/1.1" 200 3552
+"GET /static/base/countdown/js/jQuery.countdownTimer.js HTTP/1.1" 200 37155
+"GET /static/base/material/assets/js/plugins/bootstrap-datetimepicker.min.js HTTP/1.1" 200 40201
+"GET /static/base/argon/vendor/chart.js/dist/Chart.min.js HTTP/1.1" 200 172812
+"GET /static/base/custom/paystack.js HTTP/1.1" 200 7856
+"GET /static/base/idle/jquery.idle.js HTTP/1.1" 200 3865
+"GET /static/base/girly/js/main.js HTTP/1.1" 200 1146
+"GET /static/base/girly/js/owl.carousel.min.js HTTP/1.1" 200 44342
+"GET /static/base/visibility/jquery-beacons.js HTTP/1.1" 200 5342
+"GET /static/base/visible/jquery.visible.js HTTP/1.1" 200 3778
+"GET /static/base/inputcounter/js/handleCounter.js HTTP/1.1" 200 3524
+"GET /static/base/argon/vendor/headroom/jQuery.headroom.min.js HTTP/1.1" 200 589
+"GET /static/base/argon/vendor/headroom/headroom.min.js HTTP/1.1" 200 5359
+"GET /static/base/imagepreview/js/jpreview.js HTTP/1.1" 200 1217
+"GET /static/base/lga/lga.js HTTP/1.1" 200 20400
+"GET /static/base/tinymce/tinymce.min.js HTTP/1.1" 200 389621
+"GET /static/base/tinymce/jquery.tinymce.min.js HTTP/1.1" 200 6687
+"GET /static/base/skeleton/avnSkeleton/avnSkeleton.js HTTP/1.1" 200 3032
+"GET /static/base/sammy/sammy.template.js HTTP/1.1" 200 5703
+"GET /static/base/semantic/semantic.min.js HTTP/1.1" 200 275730
+"GET /static/base/bootstrap/js/bootstrap-datetimepicker.js HTTP/1.1" 200 59909
+"GET /static/base/skeleton/avnPlugin.js HTTP/1.1" 200 2648
+"GET /static/base/sammy/sammy.min.js HTTP/1.1" 200 27206
+"GET /dashboard?csrfmiddlewaretoken=P197DmEBh9tvE5Pik5TBMXsfHoTwubezAG2hvbm9f7v58R2ZpniwAV26fKDSXRvx HTTP/1.1" 302 0
+"GET /accounts/login/?next=/dashboard%3Fcsrfmiddlewaretoken%3DP197DmEBh9tvE5Pik5TBMXsfHoTwubezAG2hvbm9f7v58R2ZpniwAV26fKDSXRvx HTTP/1.1" 200 14797
+Not Found: /example.com
+Not Found: /favicon.ico
+"GET /example.com HTTP/1.1" 404 17333
+"GET /favicon.ico HTTP/1.1" 404 17333
+Internal Server Error: /new/accounts/signup
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 3660, in signup
+    user = User.objects.get(email=email)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 3664, in signup
+    profile = amodels.Customer.objects.get(email=email)
+AttributeError: module 'admin.models' has no attribute 'Customer'
+"POST /new/accounts/signup HTTP/1.1" 500 88227
+"GET / HTTP/1.1" 200 58298
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /dashboard?csrfmiddlewaretoken=k9hlzV9eb58hkEvfHyYgySo3IDU57ltU5OavrKRM93aROqIWMQnbmQYUgZErA1KS HTTP/1.1" 302 0
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 64810)
+
+"GET /accounts/login/?next=/dashboard%3Fcsrfmiddlewaretoken%3Dk9hlzV9eb58hkEvfHyYgySo3IDU57ltU5OavrKRM93aROqIWMQnbmQYUgZErA1KS HTTP/1.1" 200 14797
+Not Found: /example.com
+"GET /example.com HTTP/1.1" 404 17333
+"POST /login HTTP/1.1" 200 47
+"POST /login HTTP/1.1" 200 47
+"POST /login HTTP/1.1" 200 47
+Internal Server Error: /error_500
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\app\views.py", line 906, in error500page
+    content_template = 'themes/'+allObject['settings'].theme+'/500.html'
+AttributeError: 'list' object has no attribute 'theme'
+"GET /error_500 HTTP/1.1" 500 70072
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 50187)
+
+Internal Server Error: /new/accounts/signup
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 3660, in signup
+    user = User.objects.get(email=email)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 3664, in signup
+    profile = amodels.Customer.objects.get(email=email)
+AttributeError: module 'admin.models' has no attribute 'Customer'
+"POST /new/accounts/signup HTTP/1.1" 500 88227
+C:\Users\Clinton\intelbyt\store\admin\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 58298
+"GET /static/base/material/assets/js/core/jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit-icons.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/core/popper.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/moment.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/js-cookie/js.cookie.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput-jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.extension.js HTTP/1.1" 304 0
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /static/base/argon/js/argon.js?v=1.2.0 HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/bootstrap-datetimepicker.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/buttons.js HTTP/1.1" 304 0
+"GET /static/base/countdown/js/jQuery.countdownTimer.js HTTP/1.1" 304 0
+"GET /static/base/formvalidation/DjValidator.js HTTP/1.1" 304 0
+"GET /static/base/semantic/semantic.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/owl.carousel.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/jQuery.headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/main.js HTTP/1.1" 304 0
+"GET /static/base/custom/paystack.js HTTP/1.1" 304 0
+"GET /static/base/idle/jquery.idle.js HTTP/1.1" 304 0
+"GET /static/base/visible/jquery.visible.js HTTP/1.1" 304 0
+"GET /static/base/visibility/jquery-beacons.js HTTP/1.1" 304 0
+"GET /static/base/inputcounter/js/handleCounter.js HTTP/1.1" 304 0
+"GET /static/base/bootstrap/js/bootstrap-datetimepicker.js HTTP/1.1" 304 0
+"GET /static/base/imagepreview/js/jpreview.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/jquery.tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/lga/lga.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.min.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.template.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnPlugin.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnSkeleton/avnSkeleton.js HTTP/1.1" 304 0
+"GET /static/fontawesome/css/all.min.css HTTP/1.1" 200 58935
+"GET / HTTP/1.1" 200 58298
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /static/base/material/assets/js/core/jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit-icons.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/core/popper.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/moment.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/js-cookie/js.cookie.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput.min.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput-jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.extension.js HTTP/1.1" 304 0
+"GET /static/base/argon/js/argon.js?v=1.2.0 HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/bootstrap-datetimepicker.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/buttons.js HTTP/1.1" 304 0
+"GET /static/base/countdown/js/jQuery.countdownTimer.js HTTP/1.1" 304 0
+"GET /static/base/formvalidation/DjValidator.js HTTP/1.1" 304 0
+"GET /static/base/semantic/semantic.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/owl.carousel.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/jQuery.headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/main.js HTTP/1.1" 304 0
+"GET /static/base/custom/paystack.js HTTP/1.1" 304 0
+"GET /static/base/idle/jquery.idle.js HTTP/1.1" 304 0
+"GET /static/base/visible/jquery.visible.js HTTP/1.1" 304 0
+"GET /static/base/visibility/jquery-beacons.js HTTP/1.1" 304 0
+"GET /static/base/inputcounter/js/handleCounter.js HTTP/1.1" 304 0
+"GET /static/base/bootstrap/js/bootstrap-datetimepicker.js HTTP/1.1" 304 0
+"GET /static/base/imagepreview/js/jpreview.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/jquery.tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/lga/lga.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.min.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.template.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnPlugin.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnSkeleton/avnSkeleton.js HTTP/1.1" 304 0
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 50214)
+
+"GET / HTTP/1.1" 200 58298
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /dashboard?csrfmiddlewaretoken=pwwkkyc1hqG1jDN2ZPmLep2IdfQNikvlabpucnUzfoIBNp0J47LG2nCzLBA9L0Mj HTTP/1.1" 302 0
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61384)
+
+- Broken pipe from ('127.0.0.1', 50210)
+
+"GET /accounts/login/?next=/dashboard%3Fcsrfmiddlewaretoken%3Dpwwkkyc1hqG1jDN2ZPmLep2IdfQNikvlabpucnUzfoIBNp0J47LG2nCzLBA9L0Mj HTTP/1.1" 200 14797
+- Broken pipe from ('127.0.0.1', 50213)
+
+Not Found: /example.com
+"GET /example.com HTTP/1.1" 404 17333
+- Broken pipe from ('127.0.0.1', 61382)
+
+- Broken pipe from ('127.0.0.1', 61390)
+
+- Broken pipe from ('127.0.0.1', 61391)
+
+- Broken pipe from ('127.0.0.1', 61392)
+
+"GET /static/base/material/assets/js/plugins/bootstrap-datetimepicker.min.js HTTP/1.1" 200 40201
+"GET /static/base/material/assets/js/buttons.js HTTP/1.1" 200 15345
+"GET / HTTP/1.1" 200 58298
+"POST /new/accounts/signup HTTP/1.1" 200 48
+Not Found: /undefined
+"GET /undefined HTTP/1.1" 404 17327
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 17333
+Not Found: /undefined
+"GET /undefined HTTP/1.1" 404 17327
+"GET / HTTP/1.1" 200 58297
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+Internal Server Error: /dashboard
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 2801, in adminstatus
+    store = gmodels.General.objects.all()[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 318, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"GET /dashboard?csrfmiddlewaretoken=JXWaqwAL6XWZWc8sgj3JOS45YCiPSX7SOoMkU1U4H9t79AVA5K36vcGNoVM0WKBn HTTP/1.1" 500 98673
+"GET / HTTP/1.1" 200 58297
+"GET /static/base/formvalidation/js/jquery.validity.css HTTP/1.1" 404 1995
+"GET /static/base/material/assets/js/core/jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit.min.js HTTP/1.1" 304 0
+"GET /static/base/uikit/js/uikit-icons.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/core/popper.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/moment.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/js-cookie/js.cookie.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput.min.js HTTP/1.1" 304 0
+"GET /static/base/countrycodes/js/intlTelInput-jquery.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/chart.js/dist/Chart.extension.js HTTP/1.1" 304 0
+"GET /static/base/argon/js/argon.js?v=1.2.0 HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/bootstrap-datetimepicker.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0
+"GET /static/base/material/assets/js/buttons.js HTTP/1.1" 304 0
+"GET /static/base/countdown/js/jQuery.countdownTimer.js HTTP/1.1" 304 0
+"GET /static/base/formvalidation/DjValidator.js HTTP/1.1" 304 0
+"GET /static/base/semantic/semantic.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/owl.carousel.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/argon/vendor/headroom/jQuery.headroom.min.js HTTP/1.1" 304 0
+"GET /static/base/girly/js/main.js HTTP/1.1" 304 0
+"GET /static/base/custom/paystack.js HTTP/1.1" 304 0
+"GET /static/base/idle/jquery.idle.js HTTP/1.1" 304 0
+"GET /static/base/visible/jquery.visible.js HTTP/1.1" 304 0
+"GET /static/base/visibility/jquery-beacons.js HTTP/1.1" 304 0
+"GET /static/base/inputcounter/js/handleCounter.js HTTP/1.1" 304 0
+"GET /static/base/bootstrap/js/bootstrap-datetimepicker.js HTTP/1.1" 304 0
+"GET /static/base/imagepreview/js/jpreview.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/jquery.tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/tinymce/tinymce.min.js HTTP/1.1" 304 0
+"GET /static/base/lga/lga.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.min.js HTTP/1.1" 304 0
+"GET /static/base/sammy/sammy.template.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnPlugin.js HTTP/1.1" 304 0
+"GET /static/base/skeleton/avnSkeleton/avnSkeleton.js HTTP/1.1" 304 0
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 61412)
+
+Internal Server Error: /dashboard
+Traceback (most recent call last):
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Clinton\intelbyt\store\admin\views.py", line 2801, in adminstatus
+    store = gmodels.General.objects.all()[0]
+  File "C:\Users\Clinton\intelbyt\store\venv\lib\site-packages\django\db\models\query.py", line 318, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+"GET /dashboard?csrfmiddlewaretoken=28fCxF89JxHQHHQSsj67voiPbhKcvved7z5M1asskJeYU5D0hK6ucIUxBAenziII HTTP/1.1" 500 98673
+C:\Users\Clinton\intelbyt\store\admin\views.py changed, reloading.

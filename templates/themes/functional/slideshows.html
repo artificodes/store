@@ -1,0 +1,20 @@
+<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+    
+    <ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@"  style="height: 100%;">
+      {% for slideshow in slideshows %}
+      <li class=" p-0 text-center col-csxx-x-14 col-csxx-14 col-csx-7  col-csm-14 p-1" style="height: 100%;">
+        <div class="uk-display-inline-block" style="width: 100%;height: 100%;">
+    <a class="uk-button uk-button-default" href="{% url 'customer_slideshow_page' slug=slideshow.slug %}" style="height: 100%;width: 100%;">
+                    <img src="{{slideshow.image.url}}" alt="" class=" shadow-none rounded-md m-0" 
+                    style="height: 100%;width: 100%;">
+                    </a>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="uk-display-inline-block">
+      <ul class="uk-slider-nav uk-dotnav "></ul>
+
+    </div>
+</div>

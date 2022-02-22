@@ -1,0 +1,230 @@
+<div class="rounded-md position-relative p-0" style="z-index: 3;">
+  <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <nav class="uk-navbar-container bg-white border-bottom border" uk-navbar>
+      <div class="row m-0  bg-white uk-width-1-1" style="">
+        <div class=" bg-transparent col-4 pr-0 pl-0 pt-2 pb-2" style="display: inline-block;z-index: 3;" id="top">
+  
+          <div class="uk-flex-inline ml-2">
+            <div class="uk-text-center uk-padding-remove p-3" style="">
+              <a href="{% url 'customer_home' %}"><img src="{{settings.logo.url}}" alt="" style="width: 70px"></a>
+            </div>
+            <!-- <a class="uk-icon-button "  uk-toggle="target: #offcanvas-nav-primary"
+          style="box-shadow: none;z-index: 3;top: 0;">
+          <i class="fa fa-bars uk-text-bold text-darker" style=""></i></a>     -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 p-2 col-12">
+          <div class=" position-relative" style="width: 100%;">
+            <input class="uk-input form-control p-0  pl-5  rounded-pill position-relative border text-dark "
+              style="z-index: 1;height: 40px;;" id="search" type="text" name="search" placeholder="Search Jeme's Delight"
+              required>
+  
+            <div class="uk-dropdown uk-width-1-1 rounded-lg p-0 pt-2 shadow-none" id="search-result"
+              uk-dropdown="mode:click">
+  
+            </div>
+            <i class="fa fa-search m-0 text-lighter uk-position-center-left ml-2"
+              style="font-size: medium;z-index: 2;"></i>
+          </div>
+        </div>
+  
+        <div class="col text-right pr-0 pl-0 pt-2 uk-position-top-right" style="">
+  
+          <a class="uk-icon-button position-relative text-danger bg-transparent rounded-circle uk-margin-small-right uk-margin-remove-top border-0 shadow-none"
+            style="width: 35px !important;height: 35px !important;" href="{% url 'customer_cart' %}">
+            <i class="fa fa-cart-arrow-down m-0 text-darker uk-position-center" style="font-size: medium;"></i>
+            <span class="uk-position-top-right rounded-circle bg-red mt-1 mr--1 p-0"
+              style="height: 18px;width: 18px;font-size: 9px;border: 1.5px solid white;">
+  
+              <span class="uk-position-center load-content text-white" reload contenturl="{% url 'customer_cart_count' %}" id="cart-count">
+  
+              </span>
+            </span>
+          </a>
+  
+          <a class="btn btn-light rounded-circle uk-margin-small-right uk-margin-remove-top bg-white border-0 shadow-none"
+            style="width: 35px !important;height: 35px !important;">
+            <i class="fa fa-user m-0 text-dark uk-position-center" style="font-size: medium;"></i></a>
+          <div class="uk-dropdown pl-0 pr-0 pb-0 pt-0" uk-dropdown="mode:click">
+            {% if user.is_authenticated %}
+            <p class="text-sm text-dark border-bottom p-3 text-left bg-secondary">{{customer.first_name}}
+              {{customer.last_name}}</p>
+            {% endif %}
+            <div class="text-left mt-0 p-0">
+              <ul class="nav flex-column m-0 p-0">
+  
+                {% if user.is_authenticated %}
+  
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link  rounded-0 shadow-none pl-4 text-left p-3 m-0 to-top text-sm bg-white"
+                    href="{% url 'customer_account_logout' %}" style="line-height: 1;">
+                    <i class="fa fa-sign-out-alt mb-1 mr-3" style="font-size: small;"></i> Log out</a>
+                </li>
+                {% else %}
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_account_login' %}" style="line-height: 1;">
+                    <i class="fa fa-sign-in-alt mb-1 mr-3" style="font-size: small;"></i> Sign in</a>
+                </li>
+                {% endif %}
+  
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_my_orders' %}" style="line-height: 1;">
+                    <i class="fa fa-box-open mb-1 mr-2" style="font-size: small;"></i> My orders ({{orders | length}})</a>
+                </li>
+  
+              </ul>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-primary p-2" style="z-index: 3;min-height: 50px;">
+    <div class="container-fluid">
+      <button class="navbar-toggler btn bg-transparent shadow-none uk-position-top-right mt-2" style="z-index: 2;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon material-icons text-white">menu_open</span>
+      </button>
+      <div class="collapse navbar-collapse uk-animation-fade row" id="navbarNav">
+        <ul class="navbar-nav col-cmd-6">
+          <li class="nav-item mt-4 mt-md-0">
+            <a class="nav-link  p-2 m-2 pl-3 pr-3 text-white text-bold" aria-current="page" href="{% url 'customer_home' %}">HOME</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link  p-2 m-2 pl-3 pr-3 text-white text-bold" href="{% url 'customer_all_products' %}">PRODUCTS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link p-2 m-2 dropdown-toggle pl-3 pr-3 text-white text-bold" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               
+              OUR OFFERS
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+              {% for offer in groupproducts %}
+              <a href="{% url 'customer_our_offers' name=offer.name %}"
+              class="position-relative card shadow-none m-0 dropdown-item">
+              <div class="card m-0 mb-1 shadow-none uk-display-inline-block" id="{{productid}}"
+                style="width: 100%;">
+                <div class="card-body p-1 border-bottom">
+                  <div class="row m-0">
+                    <div
+                      class="col-cmd-11 col-csm-5-e col-css-7 col-csx-14 col-csxx-9 col-csxx-x-14 p-0 text-left">
+                      <div class="row m-0 pl-2 pt-0">
+                        <div class="col-12 text-left p-0 h4 m-0">
+                          {{offer.name}} ({{offer.products.count}})
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div
+                      class="col-cmd-3-e col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-right"
+                      style="">
+
+                      <img src="{{offer.image.url}}" alt="" class="rounded-md shadow-none" style="width: 40px; ">
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+            </div>
+        </li>
+        
+  
+        </ul>
+        <div class="col-md-6 text-right" style="">
+          <div class="row m-0" style="max-width: 320px;">
+            <div class="col text-center p-1"> <a target="_blank" href="https://web.facebook.com/jemesdelight"
+                class="bg-white  uk-icon-button">
+                <i class="fab fa-facebook text-blue"> </i></a></div>
+
+            <div class="col text-center p-1"><a target="_blank"
+                href="https://instagram.com/jemes_delightfoods"
+                class="bg-white  uk-icon-button">
+                <i class="fab fa-instagram text-purple"> </i> </a></div>
+            <div class="col text-center p-1"><a target="_blank"
+                href="https://api.whatsapp.com/send?phone=2347053704655"
+                class="bg-white  uk-icon-button">
+                <i class="fab fa-whatsapp text-green"> </i> </a></div>
+            <div class="col text-center p-1"> <a target="_blank" href="mailto:jemea22@gmail.com"
+                class="bg-white  uk-icon-button">
+                <i class="fa fa-envelope text-darker"> </i></a></div>
+          </div>
+        </div>
+  
+      </div>
+  
+  
+    </div>
+  </nav>
+</div>
+
+<!-- <div class=" p-1 position-relative text-center">
+ <div class="uk-display-inline-block position-relative" style="width: 100%;max-width: 320px">
+    <input class="uk-input form-control p-0  pl-5  rounded-pill position-relative border  text-dark "
+      style="z-index: 1;height: 30px;;" id="search" type="text" name="search" placeholder="Search Jeme's Delight"
+      required>
+
+    <div class="uk-dropdown uk-width-1-1 rounded-bottom p-1 shadow-none" id="search-result" uk-dropdown="mode:click">
+
+    </div>
+    <i class="fa fa-search m-0 text-lighter uk-position-center-left ml-2" style="font-size: medium;z-index: 2;"></i>
+  </div>
+
+</div> -->
+
+<div class="fixed-top text-center">
+  <div class="text-white text-center bg-green pt-2 pb-2 pl-4 pr-4 success hide uk-position-top-center top-0"
+    id="success-alert" style="max-width: 320px;width: 100%;">
+    <p class=""><i class="fa fa-check mr-1"> </i> <span id="success-alert-inner"></span></p>
+  </div>
+</div>
+
+
+<!-- <div class="text-white text-center bg-red fixed-top p-2 warning" >
+  <p class=""><i class="fa fa-exclamation mr-1"> </i>  Product updated</p>
+</div> -->
+
+<script>
+
+  $("#search").on('input', function (event) {
+    if ($('#search').val()) {
+      $.ajax({
+        beforeSend: function () {
+
+          showLoadingBar()
+        },
+        complete: function () {
+          hideLoadingBar()
+
+        },
+        url: "{% url 'customer_search_products' %}",
+        type: 'post',
+        data: {
+          'csrfmiddlewaretoken': '{{csrf_token}}',
+          'query': $('#search').val(),
+        },
+
+        success: function (response) {
+          $('#search-result').empty()
+          $('#search-result').append(response.content)
+          $('#search-result').show()
+
+
+        },
+
+        error: function (xhr, status, error) {
+          alert(status)
+        }
+      });
+    }
+  });
+
+
+</script>

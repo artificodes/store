@@ -1,0 +1,172 @@
+<div class="container-fluid text-left p-1 p-sm-1">
+{% if products %}
+    {% for product in products %}
+    {% if product.productid %}
+<div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-7 col-css-5-e col-csm-4-e col-cmd-4-e col-lg-2  mt-3
+ load-product p-2" contenturl="{% url 'seller_product' productid=product.productid %}" identifier="{{product.productid}}">
+
+    <div class="card p-0 m-0 mt-1 uk-text-left shadow-none rounded-0 bproduct" style="">
+        <div class="card-body p-2">
+
+            <div class="product">
+
+                <header></header>
+
+                <main></main>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endfor %}
+{% else %}
+{% include 'general/nothing_here.html' %}
+{% endif %}
+{% if products.has_next %}
+<div class="load-more text-light text-center mt-0 position-relative col-cmd-14 mt-4"
+  next-page="{{products.next_page_number}}" target="#{{section}}" contenturl="{{paginated}}">
+  <script>
+  // alert("{{paginatedproducts}}")
+  </script>
+  <span class="text-sm p-1">
+    Loading more</span>
+
+</div>
+{% endif %}
+
+</div>
+<script>
+    $('.product').avnSkeleton({
+
+
+
+        // default configs
+
+        cssPrefix: 'avn-skeleton',
+
+        header: {
+
+            selector: '> ',
+
+            lines: 2,
+
+            icon: false,
+
+            loader: true
+
+        },
+
+        main: {
+
+            selector: '> main',
+
+            paragraphs: 1,
+
+            lines: 5,
+            loader: true
+
+        }
+
+
+
+    });
+
+
+</script>
+<script>
+
+
+    $('.load-product').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        if (contentObject[contentElement.attr('identifier')]) {
+          contentElement.empty();
+          contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+        }
+        else {
+          $.ajax({
+            beforeSend: function () {
+              contentElement.append(inlineLoader)
+            },
+            complete: function () {
+            },
+            type: 'get',
+            url: contentElement.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+            },
+            success: function (response) {
+  
+              if (response.content) {
+                $(el).empty()
+  
+                $(el).append(response.content);
+                contentElement.attr('loaded', '1')
+                contentElement.removeClass('load-product')
+              }
+              updatePage()
+
+              contentObject[contentElement.attr('identifier')] = {}
+              contentObject[contentElement.attr('identifier')]['body'] = contentElement.html()
+  
+  
+            },
+            error: function (xhr, status, error) {
+              //   alert('there was an error')
+            }
+          });
+        }
+      }
+    });
+  
+  </script>
+
+<script>
+
+    $('.load-more').beacon({
+      enteronce: true,
+      onenter: function (el) {
+        var link = $(el)
+        var targetElement = $(link.attr('target'))
+        var contentElement = $(el)
+        link.remove()
+  
+  
+          $.ajax({
+            beforeSend: function () {
+              link.removeClass('load-more')
+  
+              contentElement.append(inlineLoader)
+            },
+            complete: function () {
+            },
+            type: 'get',
+            url: link.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+              'page': link.attr('next-page'),
+  
+            },
+            success: function (response) {
+              link.removeClass('load-more')
+              if (response.content) {
+  
+                  targetElement.append(response.content);
+  
+                
+              }
+  
+  
+            },
+            error: function (xhr, status, error) {
+              messageModal('We encountered an error. Try again')
+            }
+          });
+        }
+    
+    });
+  </script>

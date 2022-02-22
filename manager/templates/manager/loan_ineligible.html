@@ -1,0 +1,16 @@
+{% autoescape off %}
+<div class="p-2 text-center">
+    <p class="h2 text-primary">...Ooops!</p>
+    <p class="h4 text-darker">You are ineligle to apply at this time for the following reason(s)</p>
+    <div class="text-left mt-4">
+        {% for reason in reasons %}
+        <div class="card bg-secondary mb-2 text-darker text-sm shadow-none border">
+            <div class="card-body p-2">
+                {{reason}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endautoescape %}

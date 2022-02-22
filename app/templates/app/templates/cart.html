@@ -1,0 +1,72 @@
+{% extends "app/base/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id="cart-container" class="text-center load-content" contenturl="{% url 'customer_cart' %}">
+
+
+</div>
+
+
+
+<div class="bg-white rounded-sm p-2 mt-4">
+    <div class="text-left border-bottom">
+        <p class="text-bold text-darker uk-display-inline-block p-2">Products you may like</p>
+    </div>
+    <div class="load-content position-relative mt-4 row m-0" style="min-height: 20px;" identifier='customer_products_you_may_like' contenturl="{% url 'customer_products_you_may_like' %}">
+        
+    </div>
+</div>
+
+
+
+<script>
+
+
+
+    $('.load-content').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        if (contentObject[contentElement.attr('identifier')]) {
+        contentElement.empty();
+        contentElement.append(contentObject[contentElement.attr('identifier')]['body']);
+      }
+      else {
+        $.ajax({
+          beforeSend: function () {
+            contentElement.append(loader)
+          },
+          complete: function () {
+          },
+          type: 'get',
+          url: contentElement.attr('contenturl'),
+          data: {
+            'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+          },
+          success: function (response) {
+  
+            if (response.content) {
+              $(el).empty()
+  
+              $(el).append(response.content);
+              contentElement.attr('loaded', '1')
+              contentElement.removeClass('load-content')
+  
+            }
+  
+            contentObject[contentElement.attr('identifier')] = {}
+            contentObject[contentElement.attr('identifier')]['body'] = response.content
+  
+  
+          },
+          error: function (xhr, status, error) {
+            //   alert('there was an error')
+          }
+        });
+      } 
+    }
+    });
+  
+  </script>
+{% endblock content %}

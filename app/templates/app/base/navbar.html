@@ -1,0 +1,228 @@
+<div class="rounded-md position-relative p-0" style="z-index: 3;">
+  <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+
+    <nav class="uk-navbar-container bg-white" uk-navbar>
+      <div class="row m-0  bg-gold uk-width-1-1" style="">
+        <div class=" bg-transparent col-4 pr-0 pl-0 pt-2 pb-2" style="display: inline-block;z-index: 3;" id="top">
+  
+          <div class="uk-flex-inline ml-2">
+            <div class="uk-text-center uk-padding-remove p-3" style="">
+              <a href="{% url 'customer_home' %}"><img src="{{store.logo.url}}" alt="" style="width: 90px;max-height: 30px;"></a>
+            </div>
+            <!-- <a class="uk-icon-button "  uk-toggle="target: #offcanvas-nav-primary"
+          style="box-shadow: none;z-index: 3;top: 0;">
+          <i class="fa fa-bars uk-text-bold text-darker" style=""></i></a>     -->
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-12 p-2 col-12">
+          <div class=" position-relative" style="width: 100%;">
+            <input class="uk-input form-control p-0  pl-5  rounded-lg position-relative border-lighter border text-dark "
+              style="z-index: 1;height: 45px;font-size: larger;" id="search" type="text" name="search" placeholder="Search {{store.store_name}}"
+              required>
+  
+            <div class="uk-dropdown uk-width-1-1 rounded-lg p-0 pt-2 shadow-none bg-transparent" 
+              uk-dropdown="mode:click" id="search-result-container" style="max-height: 500px;min-height: max-content;">
+              <div class="card" id="search-result">
+                
+
+              </div>
+  
+            </div>
+            <i class="fa fa-search m-0 text-lighter uk-position-center-left ml-2"
+              style="font-size:large;z-index: 2;"></i>
+          </div>
+        </div>
+  
+        <div class="col text-right pr-0 pl-0 pt-3 uk-position-top-right" style="">
+  
+          <a class="uk-icon-button mr-4 position-relative text-danger bg-transparent rounded-circle uk-margin-small-right uk-margin-remove-top border-0 shadow-none"
+            style="width: 35px !important;height: 35px !important;" href="{% url 'customer_cart_page' %}">
+            <i class="fa fa-cart-arrow-down m-0 text-darker uk-position-center fa-2x"></i>
+            <span class="uk-position-top-right rounded-circle bg-darker mt-1 mr--1 p-0"
+              style="height: 20px;width: 20px;font-size: 12px; border: 1.5px solid black;">
+  
+              <span class="uk-position-center load-content text-white" identifier="cartcount" contenturl="{% url 'customer_cart_count' %}" id="cart-count">
+  
+              </span>
+            </span>
+          </a>
+  
+          <a class="btn rounded-circle mr-3 uk-margin-remove-top bg-transparent border-0 shadow-none"
+            style="">
+
+            <i class="fa fa-user m-0 text-darker uk-position-center fa-2x" style=""></i>
+          
+          </a>
+          <div class="uk-dropdown pl-0 pr-0 pb-0 pt-0 shadow-none bg-transparent overflow-hidden" uk-dropdown="mode:click">
+            <div class="mt-4 overflow-hidden  p-1">
+            <div class="bg-white border rounded-sm overflow-hidden  uk-animation-slide-top-medium">
+                <!-- 
+            <p class="text-sm text-dark border-bottom p-3 text-left bg-secondary">{{customer.first_name}}
+              {{customer.last_name}}</p> -->
+            <div class="text-left mt-0 p-0">
+              <ul class="nav flex-column m-0 p-0">
+  
+                {% if user.is_authenticated %}
+                <p class="p-2 m-0 text-center"><span class="text-dark text-left text-darker text-bold m-0 text-capitalize">{{customer.first_name}} {{customer.last_name}}
+                </span></p>
+                
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link  rounded-0 shadow-none pl-4 text-left p-3 m-0 to-top text-sm bg-white"
+                    href="{% url 'customer_logout' %}" style="line-height: 1;">
+                    <i class="fa fa-sign-out-alt mb-1 mr-3" style="font-size: small;"></i> Log out</a>
+                </li>
+                {% else %}
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_login' %}" style="line-height: 1;">
+                    <i class="fa fa-sign-in-alt mb-1 mr-3" style="font-size: small;"></i> Sign in</a>
+                </li>
+                {% endif %}
+  
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_my_orders' %}" style="line-height: 1;">
+
+                    <i class="fa fa-box-open mb-1 text-green mr-3" style="font-size: small;"></i>My orders <span class="float-right text-bold">{{orders | length}}</span> 
+                  </a>
+                </li>
+                <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_saved_items_page' %}" style="line-height: 1;">
+                    <i class="fa fa-heart text-red mb-1 mr-3" style="font-size: small;"></i> Saved items <span class="float-right text-bold">{{saved}} </span></a>
+                </li>
+                <!-- <li class="nav-item p-0 m-0 text-left">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-left m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_my_orders' %}" style="line-height: 1;">
+                    <i class="fa fa-user text-darker mb-1 mr-3" style="font-size: small;"></i> My profile</a>
+                </li>
+   -->
+              </ul>
+              <!-- <ul class="nav flex-row m-0 p-0 border-top">
+  
+                <li class="nav-item p-0 m-0 text-center col">
+                  <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-center m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_my_orders' %}" style="line-height: 1;">
+                    Privacy</a>
+                </li>
+                
+                <li class="nav-item p-0 m-0 text-center col">
+                
+                    <a class="nav-link rounded-0 shadow-none p-3 pl-4 text-center m-0 to-top text-sm tab-content-btn tab-btn bg-white"
+                    href="{% url 'customer_my_orders' %}" style="line-height: 1;">
+                    Terms</a>
+          
+                
+                </li>
+  
+  
+              </ul> -->
+  
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-darker p-0" style="z-index: 3; min-height: 40px;">
+    <div class="uk-width-1-1">
+      <button class="navbar-toggler btn bg-transparent shadow-none uk-position-top-right" style="z-index: 2;"
+        type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon fa fa-ellipsis-h fa-2x mt-2 text-lighter"></span>
+      </button>
+      <div class="collapse navbar-collapse uk-animation-fade mt-5 mt-md-0 mt-sm-5" id="navbarNav">
+        <ul class="navbar-nav p-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link p-3 pl-3 pr-3 pl-md-5 pr-md-5 text-white text-bold dropdown-item main" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               
+              All categories <i class="fa fa-bars ml-3"></i>
+            </a>
+            <div class="dropdown-menu pl-2 pr-2 pt-1 bg-transparent shadow-none rounded-0" aria-labelledby="navbar-default_dropdown_1">
+              <div class="card m-0 rounded-0" style="min-width: 200px;max-width: 250px;">
+               {% for category in categories %}
+              <a class="nav-link  p-3 text-dark text-capitalize dropdown-item border-bottom" aria-current="page" 
+              href="{% url 'customer_our_categorys' name=category.name %}"> 
+              <i class="fa fa-{{category.icon}}" style="width: 20px;"></i>  <span class="">{{category.name}}</span>
+             </a>
+
+            
+            {% endfor %}  
+              </div>
+             
+            </div>
+        </li>
+         
+          {% for category in topcategories %}
+          <li class="nav-item mt-md-0">
+            <a class="nav-link  p-3 pl-3 pr-3 pr-md-5 pl-md-5 text-white text-bold text-capitalize dropdown-item rounded-0 main" aria-current="page" href="{% url 'customer_our_categorys' name=category.name %}">{{category.name}}</a>
+          </li>
+          {% endfor %}
+          
+        
+  
+        </ul>
+       
+    </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<div class="fixed-top text-center">
+  <div class="text-white text-center bg-green pt-2 pb-2 pl-2 pr-2 success uk-box-shadow-medium  uk-position-top-center uk-animation-slide-top-medium hide uk-position-top-center top-0 rounded-bottom"
+    id="success-alert" style="max-width: 320px;width: 100%;">
+    <p class=""><i class="fa fa-check mr-1"> </i> <span id="success-alert-inner"></span></p>
+  </div>
+</div>
+
+
+<!-- <div class="text-white text-center bg-red fixed-top p-2 warning" >
+  <p class=""><i class="fa fa-exclamation mr-1"> </i>  Product updated</p>
+</div> -->
+
+<script>
+
+  $("#search").on('input', function (event) {
+    if ($('#search').val()) {
+      $.ajax({
+        beforeSend: function () {
+
+          showLoadingBar()
+        },
+        complete: function () {
+          hideLoadingBar()
+
+        },
+        url: "{% url 'customer_search_products' %}",
+        type: 'post',
+        data: {
+          'csrfmiddlewaretoken': '{{csrf_token}}',
+          'query': $('#search').val(),
+        },
+
+        success: function (response) {
+          $('#search-result').empty()
+          $('#search-result').append(response.content)
+          $('#search-result').show()
+          $('#search-result-container').show()
+
+
+
+        },
+
+        error: function (xhr, status, error) {
+          alert(status)
+        }
+      });
+    }
+  else{
+    $('#search-result-container').hide()
+  }
+  });
+
+
+</script>

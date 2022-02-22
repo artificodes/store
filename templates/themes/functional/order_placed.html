@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="rounded-sm bg-secondary p-2">
+  <p class="text-dark text-center"> 
+    <i class="fa fa-check-circle fa-2x mr-3"></i> <br> <span class="text-dark"> 
+       You are one step away from completing your order.</span> <br>
+      <span class="text-bold">Select one of the payment options below to complete your order.</span> </p>
+</div>
+
+<div class="mt-3">
+  {% if settings.payment_options == 'both' %}
+    <button class="btn-success uk-width-1-1 m-0 btn" onclick="payWithPaystack('{% if customer %}{{customer.email}}{% else %}none@gmail.com{% endif %}','{{order.total}}','{{order.orderid}}')"> <i class="fa fa-credit-card mr-3">
+
+  </i> PAY NOW (Paystack)</button> 
+
+    <button class="btn-primary uk-width-1-1 m-0 content-btn mt-3 btn" contenturl="{% url 'customer_pay_on_delivery' orderid=order.orderid %}"> <i class="fa fa-check mr-3"></i>PAY ON DELIVERY</button>
+  {% elif  settings.payment_options == 'on' %}
+  <button class="btn-success uk-width-1-1 m-0  btn" onclick="payWithPaystack('{% if customer %}{{customer.email}}{% else %}none@gmail.com{% endif %}','{{order.total}}','{{order.orderid}}')"> 
+    <i class="fa fa-credit-card mr-3"> </i> PAY NOW (Paystack)</button> 
+    {% elif  settings.payment_options == 'od' %}
+    <button class="btn-primary uk-width-1-1 m-0 content-btn mt-3 btn" contenturl="{% url 'customer_pay_on_delivery' orderid=order.orderid %}"> <i class="fa fa-check mr-3"></i>PAY ON DELIVERY</button>
+{% endif %}
+  </div>
+  <script>
+    $('.content-btn').off()
+   {
+     (function ($) {
+       $('.content-btn').on('click', function (event) {
+         event.preventDefault()
+         // UIkit.offcanvas($('#offcanvas-content')).show();
+         var link = $(this);
+        var response = requestContentModal(link, link.attr('contenturl'), 'get')
+ 
+       })
+     }(jQuery))
+   }
+ </script>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="{% static 'base/custom/paystack.js' %}"></script>

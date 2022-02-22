@@ -1,0 +1,121 @@
+{% extends "themes/simple/base/ubase.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-transparent pt-md-4  pb-4 ">
+  <div class="uk-display-block uk-width-1-1 rounded-md p-0" id="">
+    <div class="row m-0">
+      <div class="col-cmd-7 col-csm-5-e col-css-7 col-csx-14 col-csxx-14 col-csxx-x-14 p-1">
+        <div class="card m-0 pb-3 bg-white rounded-md"  style="height: 100%;">
+          <div class="card-body text-center">
+          {% if productimages %}
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@ pb-3 pt-0" uk-lightbox="">
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{product.image.url}}">
+                  <img src="{{product.image.url}}" alt="" class="card shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+              {% for image in productimages %}
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{image.image.url}}">
+                  <img src="{{image.image.url}}" alt="" class="rounded-md shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+              {% endfor %}
+
+            </ul>
+            <div class="uk-display-inline-block">
+              <ul class="uk-slider-nav uk-dotnav "></ul>
+
+            </div>
+          </div>
+          {% else %}
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@ pb-3 pt-0" uk-lightbox="">
+              <li class="col-cmd-8 col-csm-5-e col-css-7 col-csx-7 col-csxx-13 p-2">
+                <a class="uk-button uk-button-default" href="{{product.image.url}}">
+                  <img src="{{product.image.url}}" alt="" class="card shadow-none"
+                    style="max-height: 300px; height: 100%;">
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+      </div>
+
+      <div class="col-cmd-7 col-csm-5-e col-css-7 col-csx-14 col-csxx-14 col-csxx-x-14 text-left p-1">
+        <div class="card m-0 bg-white rounded-md" style="height: 100%;">
+          <div class="card-body">
+            <p class="text-darker h4">{{product.name}}</p>
+            <p class="text-darker h1">{% if product.variations.all %} <span
+                class="uk-text-normal uk-text-small">From</span> {{variations.formatted_price}} {% else %}
+              {{product.formatted_price}}/{{product.measurement_unit}} {% endif %}</p>
+
+
+              <div class="col-md-12 col-sm-12 col-xs-12 p-0 position-relative  " style="height: 40px;">
+                <div class="row m-0 action">
+                             
+            
+                  <div class="p-1 col-12 pt-0">
+                    <button class="btn btn-primary m-0 uk-width-1-1 content-btn p-2"
+                      contenturl="{% url 'customer_add_to_cart' productid=product.productid %}">
+            
+                      <span class="p-0 pr-2 text-left">
+                        <i class="fa fa-cart-plus"></i>
+            
+                      </span>
+                      <span class="p-0 text-right pr-2">
+                        Add to cart
+                      </span>
+            
+                    </button>
+                  </div>
+            
+                </div>
+              </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+</div>
+<div class="bg-white rounded-md pb-4">
+  <div class="text-left mt-4 border-bottom">
+      <p class="text-bold text-darker uk-display-inline-block p-2">Similar products</p>
+  </div>
+  <div class="load-content position-relative mt-4 row m-0" style="min-height: 20px;" identifier='customer_similar_products' 
+  contenturl="{% url 'customer_similar_products' productid=product.productid %}">
+      
+  </div>
+</div>
+</div>
+
+    
+<script>
+  $('.content-btn').off()
+ {
+   (function ($) {
+     $('.content-btn').on('click', function (event) {
+       event.preventDefault()
+       // UIkit.offcanvas($('#offcanvas-content')).show();
+       var link = $(this);
+      var response = requestContentModal(link.attr('contenturl'), 'get')
+
+     })
+   }(jQuery))
+ }
+
+</script>
+
+
+    {% endblock content %}

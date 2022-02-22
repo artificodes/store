@@ -1,0 +1,19 @@
+{% autoescape off %}
+<div style="text-align: center; background-color: silver; padding: 20px;">
+    <div
+        style="display: inline-block;background-color: white; background-image: url('cid:background');background-size: contain; text-align: left;">
+        {% include 'templates/email_header.html' %}
+        <div
+            style="display: inline-block; padding: 10px; color: black;font-weight: 14px;max-width: 500px;text-align: left;">
+
+        An order with the following details has been cancelled.<br> <br>
+
+        Order ID: <b> {{order.orderid}}</b> <br>
+        Date Ordered: <b> {{order.date_time_added}}</b> <br>
+        <br>
+        {{settings.store_name}}
+        </div>
+        {% include 'templates/email_footer.html' %}
+    </div>
+</div>
+{% endautoescape %}

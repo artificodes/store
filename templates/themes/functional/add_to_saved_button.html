@@ -1,0 +1,22 @@
+<button
+class="btn bg-transparent m-0 content-btn position-relative rounded-circle uk-icon-button uk-box-shadow-medium"
+contenturl="{% url 'customer_add_to_saved' productid=product.productid %}">
+
+<i class="icon heart outline text-darker shadow-sm uk-position-center"></i>
+
+</button>
+<script>
+    $('.content-btn').off()
+    {
+      (function ($) {
+        $('.content-btn').on('click', function (event) {
+          event.preventDefault()
+          // UIkit.offcanvas($('#offcanvas-content')).show();
+          var link = $(this);
+  
+         request = requestContentModal(link, link.attr('contenturl'), 'get')
+         
+        })
+      }(jQuery))
+    }
+  </script>

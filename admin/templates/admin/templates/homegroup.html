@@ -1,0 +1,45 @@
+<a href="#{% url 'admin_homegroup_details' slug=homegroup.slug %}" class="nav-link p-0 spa">
+
+    <div class="card p-0 m-0 mt-1 uk-text-left rounded-md border uk-card-hover" style="">
+        <div class="card-body p-2">
+
+        <div class="row m-0">
+            <div class="col-12 text-left">
+              <p class="text-bold h3">{{homegroup.name}}</p>
+            </div>
+
+        </div>
+        <div class="card-body p-2 text-sm">
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> Products</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{{homegroup.products.all | length}}
+                    
+                  </p>
+                </div>
+            </div>
+        
+
+        </div>
+        <!-- <div class=" p-2 text-center row m-0">
+            {% if not order.paid %}
+            <div class="col p-1">
+                <a class="btn btn-warning uk-width-1-1 confirm shadow-none text-white"
+                    target="#order-container" contenturl="{% url 'seller_remove_order' orderid=homegroup.pk %}"
+                    message="You are about to remove this product"><i class="fa fa-times"></i> Cancel</a>
+
+            </div>
+            {% endif %}
+            <div class="col p-1">
+
+                <a href="{% url 'seller_order_details' orderid=homegroup.pk %}" class="btn btn-secondary shadow-none spa  uk-width-1-1"> <i class="fa fa-eye"></i>
+                    View</a>
+            </div>
+        </div> -->
+        </div>
+    </div>
+    </a>
+

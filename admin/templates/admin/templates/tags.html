@@ -1,0 +1,66 @@
+<div class="container-fluid text-left">
+
+
+{% if tags %}
+    {% for tag in tags %}
+<div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-4  mt-3
+ p-2">
+
+ <a href="#{% url 'admin_homegroup_details' slug=tag.name %}" class="nav-link p-0 spa">
+
+  <div class="card p-0 m-0 mt-1 uk-text-left rounded-md border uk-card-hover" style="">
+      <div class="card-body p-2">
+
+      <div class="row m-0">
+          <div class="col-12 text-left">
+            <p class="text-bold h3">{{tag.name}}</p>
+          </div>
+
+      </div>
+      <div class="card-body p-2 text-sm">
+          <div class="row m-0 mt-2 ">
+              <div class="col text-left">
+                <p class="text-bold"> Products</p>
+              </div> 
+
+              <div class="col text-right">
+                <p class="h4 text-bold">{{tag.products.all | length}}
+                  
+                </p>
+              </div>
+          </div>
+      
+
+      </div>
+    
+      </div>
+  </div>
+  </a>
+
+
+</div>
+
+{% endfor %}
+{% else %}
+{% include 'general/nothing_here.html' %}
+{% endif %}
+<div class="fixed-bottom text-right">
+  <button class="btn btn-primary rounded-md mb-3 mr-3 content-btn" contenturl="{% url 'admin_add_tag' %}">Add tag</button>
+</div>
+
+</div>
+
+
+<script>
+  $('.content-btn').off('click')
+{
+(function ($) {
+  $('.content-btn').on('click', function (event) {
+
+    var button = $(this)
+    requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+  });
+}(jQuery))
+};
+
+</script>

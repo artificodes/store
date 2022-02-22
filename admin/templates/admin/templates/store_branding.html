@@ -1,0 +1,93 @@
+<div class="mt-5">
+    <div class="card uk-display-inline-block shadow-none border" style="max-width: 500px;width: 100%;">
+        <div class="card-body p-0 pb-4">
+            <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+                <div class="col-6 text-left">
+                    Store logo:
+                </div>
+    
+                <div class="col-6 text-right">
+                    <img src="{{site}}{{store.logo.url}}" class="rounded-sm border" alt="" style="max-width: 80px;">
+                    
+                </div>
+            </div>
+            <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+                <div class="col-6 text-left">
+                    Browser icon:
+                </div>
+    
+                <div class="col-6 text-right">
+                    {% if store.logo_icon %}
+                    <img src="{{site}}{{store.logo_icon.url}}" class="rounded-sm border" alt="" style="max-width: 80px;">
+    
+                   {% endif %}
+                </div>
+            </div>
+            <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+                <div class="col-6 text-left">
+                    Primary color:
+                </div>
+    
+                <div class="col-6 text-right">
+                    <div class="row m-0 float-right">
+    
+                        {{store.primary_color}}
+    
+    
+                        <p class="ml-2 rounded-circle"
+                            style="height: 20px;width: 20px;background-color:{{store.primary_color}} ;"></p>
+    
+    
+                    </div>
+                </div>
+            </div>
+            <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+                <div class="col-6 text-left">
+                    Background color:
+                </div>
+    
+                <div class="col-6 text-right">
+                    <div class="row m-0 float-right">
+    
+                        {{store.background_color}}
+    
+    
+                        <p class="ml-2 rounded-circle"
+                            style="height: 20px;width: 20px;background-color:{{store.background_color}} ;"></p>
+    
+    
+                    </div>
+                </div>
+            </div>
+            <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+                <div class="col-6 text-left">
+                    Theme:
+                </div>
+    
+                <div class="col-6 text-right">
+                    {{store.theme}}
+                </div>
+            </div>
+            <div class="row m-0 mt-4">
+                <div class="col-12">
+                    <button class="btn btn-primary load-content-btn" contenturl="{% url 'admin_edit_store_branding' %}">Edit store branding </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.load-content-btn').off('click')
+{
+  (function ($) {
+    $('.load-content-btn').on('click', function (event) {
+
+      var button = $(this)
+      requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+    });
+  }(jQuery))
+};
+
+</script>

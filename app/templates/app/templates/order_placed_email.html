@@ -1,0 +1,50 @@
+{% autoescape off %}
+<div style="text-align: center; background-color: silver; padding: 20px;">
+    <div style="display: inline-block;background-color: white; background-image: url('cid:background');background-size: contain; text-align: left;">
+        {% include 'templates/email_header.html' %}
+
+        <div
+            style="display: inline-block; padding: 10px; color: black;font-weight: 14px;max-width: 500px;text-align: left;">
+
+            An order with the following details has been placed.<br> <br>
+
+            Order ID: <b> {{order.orderid}}</b> <br>
+            Date Ordered: <b> {{order.date_time_added}}</b> <br>
+            <p><b>PRODUCTS</b></p>
+            <ol style="list-style: decimal;">
+                {% for product in order.products.all %}
+                <li style="list-style: decimal;">{{product.product.name}} - {{product.formatted_quantity}} 
+                    {% if product.variation %} - {{product.variation.name}} {% endif %}</li>
+                <br>
+                {% endfor %}
+            </ol>
+
+            <p><b>CUSTOMER DETAILS</b></p>
+
+            <p> <span style="font-weight: bold;">Name: </span> {{customer.full_name}}</p>
+            <p><span style="font-weight: bold;">Phone Number: </span>{{customer.phone_number_1}}</p>
+            <p><span style="font-weight: bold;">Email Address: </span>{{customer.email}}</p>
+            <br>
+            <p><b>META DETAILS</b></p>
+
+            <p> <span style="font-weight: bold;">Payment method: </span>{% if order.payment_method == 'pd' %} Pay on
+                delivery {% elif order.payment_method == 'op' %}Online payment {% endif %} </p>
+            <p><span style="font-weight: bold;">Payment status: </span>{% if order.paid %}PAID {% else %} UNPAID 
+                {% endif %}</p>
+            <p><span style="font-weight: bold;">Delivery Option: </span> {% if order.delivery_option == 'd' %} delivery
+                {% elif order.delivery_option == 'p' %}Pick up {% endif %} </p>
+            {% if order.delivery_option == 'd' %}
+            <p><span style="font-weight: bold;">Delivery region: </span> {{order.delivery_location.name}} </p>
+            <p><span style="font-weight: bold;">Delivery address: </span> {{customer.full_address}} </p>
+
+            {% endif %}
+            <br>
+            {{settings.store_name}}
+
+
+        </div>
+        {% include 'templates/email_footer.html' %}
+    </div>
+</div>
+
+{% endautoescape %}

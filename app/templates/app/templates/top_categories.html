@@ -1,0 +1,40 @@
+<div class="col-12 p-2 ">
+    <div class="bg-white rounded-sm overflow-hidden">
+      <div class="text-left  ">
+        <p class="text-darker uk-display-inline-block p-2 text-bold">Top Categories</p>
+      </div>
+      <div class="container-fluid m-0 p-0" id="">
+
+        <div class="row m-0 p-2 mt-0 pt-4 pb-4 bg-white">
+          {% for category in topcategories %}
+          <div class="col-cmd-2-e col-csm-5-e col-css-7 col-csx-7 col-csxx-7 p-1 position-relative">
+            <a href="{% url 'customer_our_categorys' name=category.name %}">
+
+              <div class="rounded-md position-relative p-1 overflow-hidden  m-0"
+                style="max-height: 230px;max-width: 230px;">
+                <div class=" p-0 uk-card-hover rounded-md">
+                  <img class="" src="{{category.image.url}}" alt=""
+                    style="max-height: 80px;max-width: 230px;width: 95%;">
+
+                  <div class=" text-center">
+                    <h1 class="text-sm text-darker uk-text-normal">{{category.name}}</h1>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+            </a>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>

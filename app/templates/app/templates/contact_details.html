@@ -1,0 +1,168 @@
+<!-- <div class="bg-secondary p-2 text-left text-darker mb-3">
+    <div class="">
+        <i class="fa fa-address-book " style=""></i>
+        <span class="p-1">
+            Contact Details
+        </span>
+    </div>
+</div> -->
+<div class="p-1">
+    <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> -->
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="email"
+            type="text" name="email" value="{{customer.email}}">
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            Email (Recommended)
+        </span>
+    </div>
+
+
+    <div class="uk-inline mt-4" style="width: 100%;">
+<!-- 
+            <span class="position-relative col-csxx-x-4 col-csxx-xx-7  col-csxx-6 pr-1 uk-child-width-1-1"
+                style="z-index: 2;height: max-content;z-index: 4;">
+                <input type="tel" required class="rounded-md form-control pt-3 pb-3" name="call_code" id="phone_id"
+                    style="width: 100%;"
+                    value="{% if customer.call_code %}{{customer.call_code}} {% else %}+234{% endif %}">
+            </span> -->
+
+
+            <div class="position-relative  col-csxx-x-14">
+                <input class=" form-control p-3 password  rounded-md position-relative" style="z-index: 2;"
+                    id="phone_number_1" type="tel" name="phone_number_1" required value="{{customer.phone_number_1}}">
+                <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                    style="z-index: 1;font-size: 12px;">
+                    Phone no.
+                </span>
+            </div>
+
+    </div>
+
+
+    <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> -->
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="email"
+            type="text" name="street_number" value="{{customer.street_number}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            House Number
+        </span>
+    </div>
+
+    <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> -->
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="street"
+            type="text" name="street" value="{{customer.street}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            Street
+        </span>
+    </div>
+    <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> -->
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="street"
+            type="text" name="nearest_bus_stop" value="{{customer.nearest_bus_stop}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            Nearest bus stop
+        </span>
+    </div>
+
+    <div class="uk-inline mt-4" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> -->
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="city"
+            type="text" name="city" value="{{customer.city}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            City
+        </span>
+    </div>
+
+    <!--   <div class="uk-inline mt-4" style="width: 100%;">
+
+      <span class="uk-position-center-left ml-2"> <i class="fa fa-envelope"></i></span> 
+        <input class="uk-input form-control p-3 password  rounded-md position-relative " style="z-index: 2;" id="state"
+            type="text" name="state" value="{{customer.state}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 c-label" style="z-index: 1;font-size: 12px;">
+            state
+        </span>
+    </div>-->
+    <div class="form-group mb-3 mt-4">
+        <div
+            class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    State:
+                </span>
+            </div>
+
+
+            <div class="col-csxx-x-14">
+                <select class="ui fluid search dropdown" onchange="toggleLGA(this);" data-style="btn btn-link"
+                    name="state" id="state" class="form-control" required>
+                    <option value="{{customer.state}}" selected="selected">{{customer.state}}</option>
+                    <option value='Abia'>Abia</option>
+                    <option value='Adamawa'>Adamawa</option>
+                    <option value='AkwaIbom'>AkwaIbom</option>
+                    <option value='Anambra'>Anambra</option>
+                    <option value='Bauchi'>Bauchi</option>
+                    <option value='Bayelsa'>Bayelsa</option>
+                    <option value='Benue'>Benue</option>
+                    <option value='Borno'>Borno</option>
+                    <option value='Cross River'>Cross River</option>
+                    <option value='Delta'>Delta</option>
+                    <option value='Ebonyi'>Ebonyi</option>
+                    <option value='Edo'>Edo</option>
+                    <option value='Ekiti'>Ekiti</option>
+                    <option value='Enugu'>Enugu</option>
+                    <option value='Gombe'>Gombe</option>
+                    <option value='Imo'>Imo</option>
+                    <option value='Jigawa'>Jigawa</option>
+                    <option value='Kaduna'>Kaduna</option>
+                    <option value='Kano'>Kano</option>
+                    <option value='Katsina'>Katsina</option>
+                    <option value='Kebbi'>Kebbi</option>
+                    <option value='Kogi'>Kogi</option>
+                    <option value='Kwara'>Kwara</option>
+                    <option value='Lagos'>Lagos</option>
+                    <option value='Nasarawa'>Nasarawa</option>
+                    <option value='Niger'>Niger</option>
+                    <option value='Ogun'>Ogun</option>
+                    <option value='Ondo'>Ondo</option>
+                    <option value='Osun'>Osun</option>
+                    <option value='Oyo'>Oyo</option>
+                    <option value='Plateau'>Plateau</option>
+                    <option value='Rivers'>Rivers</option>
+                    <option value='Sokoto'>Sokoto</option>
+                    <option value='Taraba'>Taraba</option>
+                    <option value='Yobe'>Yobe</option>
+                    <option value='Zamfara'>Zamafara</option>
+                    <option value='Abuja'>Abuja</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <div
+            class="input-group input-group-merge input-group-alternative border rounded-md p-1 shadow-sm border rounded-md p-1 shadow-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    LGA:
+                </span>
+            </div>
+            <div class="col-csxx-x-14">
+                <select name="lga" id="lga" class="form-control select-lga" required>
+                    <option value="{{customer.lga}}" selected="selected">Select</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $("#phone_id").intlTelInput({
+
+    });
+</script>

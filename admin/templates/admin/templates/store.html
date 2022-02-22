@@ -1,0 +1,71 @@
+<a href="{% url 'admin_store_details' storeid=store.pk %}" class="nav-link p-0 spa">
+
+    <div class="card p-0 m-0 mt-1 uk-text-left shadow-lg rounded-md border uk-card-hover" style="">
+        <div class="card-body p-2">
+            <div class="uk-position-top-right mt-2 mr-2">
+                <p class="h4 text-bold">{% if store.is_approved %} <i class="fa fa-check text-green fa-2x"></i> 
+                    {% else %} <i class="fa fa-exclamation-triangle text-danger fa-2x"></i> {% endif %}
+                  
+                </p>
+                </div>
+        <div class="row m-0">
+            <div class="col-12 text-left">
+              <img src="{{site}}{{store.logo.url}}" alt="" style="max-width: 100px;">
+            </div>
+
+            <div class="col-12 text-left border-bottom">
+              <p class="text-blue">{{store.store_name}}</p>
+            </div>
+        </div>
+    
+        <div class=" p-2 text-center row m-0 ">
+            {% if not store.is_approved %}
+            <div class="col p-1">
+                <a contenturl="{% url 'admin_approve_store' storeid=store.pk %}"
+                class="btn btn-primary shadow-none spa rounded-md uk-width-1-1 content-btn text-white">
+                    Approve</a>
+            </div>
+            {% endif %}
+            <div class="col p-1">
+
+                <a href="" 
+                class="btn btn-secondary shadow-none spa rounded-md uk-width-1-1"> <i class="fa fa-eye"></i>
+                    View</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </a>
+
+<script>
+  {
+        (function ($) {
+            $('.uk-card-hover').on('mouseover', function () {
+                $(this).find('.action').removeClass('hide')
+            })
+        }(jQuery))
+    }
+
+    {
+        (function ($) {
+            $('.uk-card-hover').on('mouseout', function () {
+                $(this).find('.action').addClass('hide')
+            })
+        }(jQuery))
+    }
+</script>
+
+<script>
+    $('.content-btn').off()
+   {
+     (function ($) {
+       $('.content-btn').on('click', function (event) {
+         event.preventDefault()
+         // UIkit.offcanvas($('#offcanvas-content')).show();
+         var link = $(this);
+        var response = requestContentModal(link, link.attr('contenturl'), 'get')
+ 
+       })
+     }(jQuery))
+   }
+ </script>

@@ -1,0 +1,27 @@
+{% autoescape off %}
+<div class="check_mark">
+    <div class="sa-icon sa-success animate">
+        <span class="sa-line sa-tip animateSuccessTip"></span>
+        <span class="sa-line sa-long animateSuccessLong"></span>
+        <div class="sa-placeholder"></div>
+        <div class="sa-fix"></div>
+    </div>
+</div>
+
+<div class="uk-padding-small uk-text-bold text-black uk-text-center" style="">
+    <span class="text-primary uk-text-bold h2">Application successfull</span>
+    <br> You have recieved N{{loan.formatted_amount}}. <br> Your repayment due date is {{loan.due_date}}. Kindly ensure
+    to repay this loan and on time to maintain a good <b>credit rating</b>
+</div>
+
+<script>
+
+
+    $(".sa-success").addClass("hide");
+    setTimeout(function () {
+        $(".sa-success").removeClass("hide");
+    }, 10);
+
+</script>
+
+{% endautoescape %}

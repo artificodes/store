@@ -1,0 +1,86 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" class="bg-transparent">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+
+<style>
+{% include 'themes/functional/uikit.css' %}
+
+{% include 'themes/functional/argon.css' %}
+
+</style>
+
+
+</head>
+
+<body style="min-width: 100%;" class="bg-white position-relative text-left pl-9 pr-9 pt-0">
+  <div id="top">
+
+  </div>
+
+
+  <div id="cart-container" class="text-center text-sm">
+    <div class="bg-white pt-0">
+      <div
+        class="container uk-display-block uk-width-1-1 rounded-md shadow-lg bg-white pb-3 pt-2 border border-success position-relative"
+        id="" style="max-width: 320px;border-style: dashed !important;">
+        <p class="text-left m-0 text-bold text-darker">#{{allObject.order.orderid}}</p>
+
+        <p class="text-left m-0 text-bold text-sm">Order Items ({{allObject.order.products.all | length}})</p>
+        {% if allObject.order.paid %}
+        <span class="text-bold text-darker uk-position-top-right mt-2 mr-2"><i
+            class="fa fa-check-circle text-bold text-green mr-2"></i>Paid</span>
+        {% endif %}
+        {% for product in allObject.order.products.all %}
+        {% include 'themes/functional/download_product.html' %}
+        {% endfor %}
+        <div class="uk-display-inline-block uk-width-1-1 p-2">
+          <div class="p-2 bg-secondary rounded-md m-0" style="max-width: 320px;">
+            <div class="m-0 position-relative p-2">
+              <div class="col h4 p-0 text-left uk-position-center-left">
+                TOTAL
+              </div>
+              <div class="col text-right h4 p-0 uk-position-center-right" id="order-total" amount="{{allObject.order.total}}">
+                NGN {{allObject.order.formatted_total}}
+              </div>
+            </div>
+
+            <div class="m-0 position-relative p-2" id="delivery-fee-container">
+              <div class="col h4 p-0 text-left uk-position-center-left">
+                Delivery fee
+              </div>
+              <div class="col text-right h4 p-0 uk-position-center-right" id="delivery-fee">
+                NGN 0
+              </div>
+            </div>
+            <div class="position-relative p-2">
+              <div class="col h5 p-0 text-darker text-left uk-position-center-left">
+                GRAND TOTAL
+              </div>
+              <div class="col text-right h4 text-darker p-0 uk-position-center-right" id="grand-total">
+                NGN {{allObject.order.formatted_total}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+</body>
+
+</html>

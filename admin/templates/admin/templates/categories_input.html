@@ -1,0 +1,23 @@
+<div class="form-group mb-3 mt-4 shadow-none">
+    <div
+        class="input-group input-group-merge input-group-alternative p-1 shadow-none">
+        <div class="input-group-prepend p-0">
+
+            <span class=" input-group-text text-dark p-0">
+               Category
+            </span>
+        </div>
+
+            <select class="ui search selection dropdown fluid p-2" data-style="btn btn-link" name="category"
+               required>
+                <option value="{{category.pk}}" selected="selected">
+                    {% if category %} {{category.name}} {% else %} select category {% endif %} 
+             </option>
+             {% for category in categories %}
+                <option value='{{category.pk}}'>{{category.name}}</option>
+             {% endfor %}
+            </select>
+      
+
+    </div>
+</div>   

@@ -1,0 +1,79 @@
+<div class="card uk-display-inline-block shadow-none border" style="max-width: 500px;width: 100%;">
+<div class="card-body p-0 pb-4">
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Name:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.name}}
+            </div>
+    </div>
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Price:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.formatted_price}}
+            </div>
+    </div>
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Unit:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.measurement_unit.name}}
+            </div>
+    </div>
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Weight:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.weight}}
+            </div>
+    </div>
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Available stock:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.available_stock}}
+            </div>
+    </div>
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left text-bold">
+            Variations:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{product.variations.count}}
+            </div>
+    </div>
+
+    <div class="row m-0 mt-4">
+        <div class="col-12">
+            <a class="btn btn-primary spa" href="#{% url 'admin_edit_product_information' productid=product.productid %}">Edit Information </a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+    $('.load-content-btn').off('click')
+{
+  (function ($) {
+    $('.load-content-btn').on('click', function (event) {
+
+      var button = $(this)
+      requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+    });
+  }(jQuery))
+};
+
+</script>

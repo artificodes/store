@@ -1,0 +1,77 @@
+<div class="p-2 text-center">
+    <div class="text-center">
+        <div class="container-fluid text-primary uk-text-small p-1 rounded-sm text-left">
+            <div class="row m-0 mt-0">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">Loan Amount: </div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">₦{{loan.formatted_amount}}</div>
+                </div>
+            </div>
+        
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">Interest: </div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">₦{{loan.formatted_interest}}</div>
+                </div>
+            </div>
+        
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">Amount payable: </div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">{{loan.formatted_total}}</div>
+                </div>
+            </div>
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">Loan ID: </div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">{{loan.loanid}}</div>
+                </div>
+            </div>
+        
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">D/T approved:</div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">{{loan.date_time_added}}</div>
+                </div>
+            </div>
+            {% if loan.repaid %}
+            {% else %}    
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">Due D/T:</div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none">{{loan.due_date}}</div>
+                </div>
+            </div>
+      
+            <div class="row m-0 mt-3">
+                <div class="col-6 p-0">
+                    <div class="card bg-transparent m-0 shadow-none">M/D to Due Date:</div>
+                </div>
+                <div class="col-6 p-0 text-darker">
+                    <div class="card bg-transparent m-0 shadow-none" style="font-size: smaller;">{{months_days_remaining}}</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+    {% if loan.repaid %}
+    {% else %}
+    <div class="text-center mt-4 border-top pt-3">
+        <button class="btn btn-primary shadow-sm m-0 off-canvas-btn" id="loan_apply" reload="true"
+            contenturl="{% url 'customer_loan_apply' %}"> <i class="fa fa-plus mr-1"></i> Pay now</button>
+    </div>
+    {% endif %}
+</div>

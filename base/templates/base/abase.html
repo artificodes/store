@@ -1,0 +1,100 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" class="bg-transparent">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  {% if store.logo_icon %}
+  <link rel="icon" href="{{site}}{{store.logo_icon.url}}">
+  {% endif %}
+  <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+  {% endblock %}
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="{% static 'base/boomerang/assets/css/theme.css' %}"> -->
+  <!--  <link rel="stylesheet" href="{% static 'base/countdown/css/jQuery.countdownTimer.css' %}">-->
+  <link rel="stylesheet" href="{% static 'base/inputcounter/css/handle-counter.min.css' %}">
+  <link rel="stylesheet" href="{% static 'base/imagepreview/css/jpreview.css' %}">
+  <link rel="stylesheet" href="{% static 'base/formvalidation/js/jquery.validity.css' %}">
+  <link rel="stylesheet" href="{% static 'base/country/dist/css/bootstrap-select-country.min.css' %} ">
+
+  <link rel="stylesheet" href="{% static 'base/skeleton/avnSkeleton/avnSkeleton.css' %} ">
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.mind1f1.css' %}">-->
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minb68f.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minf27d.css' %}">  -->
+  <!-- <link rel="stylesheet" href="{% static 'base/searchselect/css/jquery-customselect-1.9.1.css' %}">    -->
+  <link rel="stylesheet" href="{% static 'base/uikit/css/uikit.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}"> -->
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/reset.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/styles.css' %}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+  <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videothumbnails/jquery.youtubevideo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videomodal/modal-video.min.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/vendor/nucleo/css/nucleo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/nucleo-svg.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/argon.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'base/argon/css/argon-design-system.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'base/custom/custom.css' %}">
+
+
+  <link rel="stylesheet" href="{% static 'base/custom/custom.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans">
+  <link rel="stylesheet" href="{% static 'base/countrycodes/css/intlTelInput.css' %}">
+
+  {% include 'base/scripts.html' %}
+
+
+  <script type="text/javascript">
+
+    window.CSRF_TOKEN = "{{csrf_token}}";
+  </script>
+</head>
+
+<body style="min-width: 100%;background-image: url('{{settings.background_image.url}}');background-size: cover;background-attachment: fixed;" 
+class="bg-white p-0 position-relative text-left">
+  <div id="top">
+
+  </div>
+  <div class="uk-width-1-1 text-center fixed-top hide top-0" id='progress-container' 
+  style="margin-top:0px;z-index: 2000;">
+    <div class="ui tiny col-csxx-x-14 rounded-0 bg-transparent active progress uk-display-inline-block m-0"
+        style="border: none;height: 3px;" id="progress">
+       
+             <div class="bar rounded-0 elevation-2 rounded-right" style="background-color: green !important;"></div>
+    </div>
+</div>
+  <div class="fixed-top text-left uk-width-1-1 hide mt-0"  id="body-loader"  style="z-index: 2000;">
+    <div class=" uk-display-inline-block uk-position-left ml-2 mt-3">
+      <i class="ui loader active tiny" ></i>
+    </div>
+    </div>
+ 
+    <div id="main">
+
+    </div>
+
+  {% include 'base/modals.html' %}
+<script>
+      {% include 'base/utilities.js' %}
+
+  {% include 'base/main.js' %}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+
+    <div class="card bg-secondary p-0 m-0 mt-1 uk-text-left shadow-sm rounded-md border uk-card-hover" style="">
+        <div class="card-body p-2">
+
+        <div class="row m-0">
+            <div class="col-12 text-left">
+              <p class=""></p>
+            </div>
+
+            <div class="col-12 text-left">
+              <p class="h2 text-bold">{{order.product.name}}</p>
+            </div>
+        </div>
+        <div class="card-body p-2 text-sm">
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> Quantity</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{{order.quantity}}
+                    
+                  </p>
+                </div>
+            </div>
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> 
+                      Payment status</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{% if order.paid %} <span
+                    class="text-green uk-text-bold pr-2 pl-2 rounded-sm bg-white">PAID</span>
+                {% else %} <span
+                    class="text-danger uk-text-bold pr-2 pl-2 rounded-sm bg-white">Not
+                    paid</span>
+                {% endif %}
+                  </p>
+                </div>
+            </div>
+
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> 
+                     Date ordered:</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold"> {{order.date_time_added.date}}
+                  </p>
+                </div>
+            </div>
+
+            <div class="row m-0 mt-2 ">
+                <div class="col text-left">
+                  <p class="text-bold"> 
+                      Delivered</p>
+                </div> 
+  
+                <div class="col text-right">
+                  <p class="h4 text-bold">{% if order.delivered %} <span
+                    class="text-green uk-text-bold pr-2 pl-2 rounded-sm bg-white">Yes</span>
+                {% else %} <span
+                    class="text-danger uk-text-bold pr-2 pl-2 rounded-sm bg-white">No</span>
+                {% endif %}
+                  </p>
+                </div>
+            </div>
+
+        </div>
+        <div class=" p-2 text-center row m-0">
+    
+            <div class="col p-1">
+
+                <a href="{% url 'seller_order_details' orderid=order.cartedproductid %}" 
+                class="btn btn-primary shadow-none spa rounded-md uk-width-1-1"> <i class="fa fa-eye"></i>
+                    View</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<script>
+  {
+        (function ($) {
+            $('.uk-card-hover').on('mouseover', function () {
+                $(this).find('.action').removeClass('hide')
+            })
+        }(jQuery))
+    }
+
+    {
+        (function ($) {
+            $('.uk-card-hover').on('mouseout', function () {
+                $(this).find('.action').addClass('hide')
+            })
+        }(jQuery))
+    }
+</script>

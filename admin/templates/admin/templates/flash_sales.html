@@ -1,0 +1,37 @@
+<div class="container-fluid text-left p-0">
+
+    <div class="row m-0 position-relative" identifier="flashsales" id="flashsales">
+        {% if products %}
+        {% for product in products %}
+        <div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-2  mt-3
+   p-2" identifier="flashsales{{flashsales.id}}">
+
+            {% include 'admin/templates/flashsales_product.html' %}
+        </div>
+        {% endfor %}
+        {% else %}
+        {% include 'general/nothing_here.html' %}
+        {% endif %}
+
+    </div>
+    <div class="fixed-bottom text-right">
+        <button class="btn btn-primary rounded-pill mb-3 mr-3 uk-icon-button bg-primary p-0 content-btn"
+        contenturl="{% url 'admin_edit_flash_sales' id=flashsale.pk %}"><i class="material-icons uk-position-center loading">settings</i></button> <br>
+           <button class="btn btn-primary rounded-pill mb-3 mr-3 content-btn"
+            contenturl="{% url 'admin_add_flash_sales_products' id=flashsale.pk %}">Add product</button>
+    </div>
+</div>
+
+<script>
+    $('.content-btn').off('click')
+  {
+  (function ($) {
+    $('.content-btn').on('click', function (event) {
+  
+      var button = $(this)
+      requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+    });
+  }(jQuery))
+  };
+  
+  </script>

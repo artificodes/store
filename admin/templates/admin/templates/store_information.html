@@ -1,0 +1,46 @@
+<div class="mt-5">
+
+  <div class="card uk-display-inline-block shadow-none border" style="max-width: 500px;width: 100%;">
+<div class="card-body p-0 pb-4">
+    <div class="row m-0 p-1 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left">
+            Store name:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{store.store_name}}
+            </div>
+    </div>
+    <div class="row p-1 m-0 border-bottom pt-2 pb-2 mt-2">
+        <div class="col-6 text-left">
+            Location:
+            </div>
+            
+            <div class="col-6 text-right">
+            {{store.full_address}}
+            </div>
+    </div>
+
+    <div class="row m-0 mt-4">
+        <div class="col-12">
+            <button class="btn btn-primary load-content-btn" contenturl="{% url 'admin_edit_store_information' %}">Edit store information </button>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+<script>
+    $('.load-content-btn').off('click')
+{
+  (function ($) {
+    $('.load-content-btn').on('click', function (event) {
+
+      var button = $(this)
+      requestContentModal(button,button.attr('contenturl'), 'get', button.attr('updatectn'))
+    });
+  }(jQuery))
+};
+
+</script>
+

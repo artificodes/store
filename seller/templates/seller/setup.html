@@ -1,0 +1,167 @@
+
+<div class="bg-secondary p-3 text-center">
+    <div class="card uk-display-inline-block" style="max-width: 500px;">
+        <div class="card-body">
+            <div class="text-center">
+                <img src="{{settings.logo.url}}" class="card-img-top m-0" alt=""
+                    style="width:100px;display: inline-block;">
+                <p class="text-darker h1 mt-3">Store setup</p>
+
+            </div>
+
+            <div id="signup-error" class="text-sm text-center text-dark p-4 hide pb-0 uk-animation-slide-bottom-medium">
+
+            </div>
+            <form class="form uk-animation-slide-top-medium" id="setupform" method="POST" enctype="multipart/form-data"
+                action="{% url 'seller_store_setup' %}" style="">
+
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
+                    <strong>Ooops!</strong>
+                    {{form.errors}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+
+                <div class="card-body">
+                    <div class="border-bottom pt-2 pb-2 text-left text-darker mb-3">
+                        <div class="">
+                            <span class="h2 text-darker">
+                                Store information
+                            </span>
+                        </div>
+                    </div>
+                    <div class="uk-inline mt-2" style="width: 100%;">
+
+                        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+                        <input
+                            class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+                            style="z-index: 2;" id="storename" type="text" name="store_name" 
+                            value="{{store.store_name}}"  required>
+                        <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                            style="z-index: 1;font-size: 10px;">
+                            Store name
+                        </span>
+                    </div>
+                    <div class="uk-inline mt-4" style="width: 100%;">
+                        <div class="position-relative">
+                            <input
+                                class="uk-input previewimage form-control p-3 password  rounded-sm position-relative "
+                                name="logo" data-jpreview-container="#preview-container" style="z-index: 2;"
+                                type="file">
+                            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 mt--4 bg-white text-dark"
+                                style="z-index: 3;font-size: 12px;">
+
+                                Store logo
+                            </span>
+                        </div>
+
+
+                        <div id="preview-container" class="jpreview-container uk-padding-small rounded-circle"
+                            style="background-position: center; max-height: 200px;max-width: 200px; float: none;
+                            background-image: url('{% if store.logo %} {{store.logo.url}} {% endif  %}');background-repeat: no-repeat; background-size: contain;">
+                        </div>
+                    </div>
+
+
+                    {% include 'seller/contact_details.html' %}
+
+
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{next}}" value="{{nexturl}}" />
+                    {% endif %}
+                </div>
+                <div class="mt-1 text-center bg-transparent">
+                    <button class="btn btn-primary shadow-none btn-flat " type="submit" style="">
+                        Submit</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    {
+        (function ($) { //Most read async
+            $('.reveal-password').on('click', function (event) {
+                var iconEl = $(this)
+                if ($('.password').attr('type') == 'password') {
+                    $('.password').attr('type', 'text')
+                    iconEl.removeClass('fa-eye')
+                    iconEl.addClass('fa-eye-slash')
+
+                }
+                else {
+                    $('.password').attr('type', 'password')
+                    iconEl.removeClass('fa-eye-slash')
+                    iconEl.addClass('fa-eye')
+
+                }
+            }
+            )
+        }
+            (jQuery))
+    }
+    $("#setupform").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.modal_message) {
+                    messageModal(response.modal_message)
+
+                }
+                if (response.modal_content) {
+                    contentModal(response.modal_content,response.heading)
+
+                }
+                if (response.redirecturl) {
+                    function callRedirect() {
+                        redirect(response.redirecturl)
+                    }
+                    setTimeout(callRedirect, 5000)
+                }
+            },
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+    {
+        (function ($) { //Most read async
+            $('.form-check.form-check-radio').on('click', function () {
+                $('.form-check.form-check-radio').attr('style', 'background-color:white !important;color:black !important')
+                $('.form-check.form-check-radio').removeClass('uk-animation-fade')
+                $(this).attr('style', 'background-color:rgb(5, 51, 94) !important;color:white !important')
+                $(this).addClass('uk-animation-fade')
+
+            });
+        }(jQuery))
+    };
+
+</script>

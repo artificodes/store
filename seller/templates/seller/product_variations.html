@@ -1,0 +1,67 @@
+<div class="container-fluid text-left">
+
+
+
+  {% if variations %}
+  {% for variation in variations %}
+  <div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-14 col-css-7 col-csm-7 col-cmd-7 col-lg-4  mt-3
+ p-2" contenturl="" identifier="{{order.orderid}}">
+
+      <div class="card p-0 m-0 mt-1 uk-text-left shadow-none rounded-0 border" style="">
+        <div class="card-body p-2">
+
+          <div class="row m-0">
+            <div class="col-12 text-left">
+              <p class="text-bold h3">Name</p>
+            </div>
+
+            <div class="col-12 text-left">
+              <p class="h2 text-bold">{{variation.name}}</p>
+            </div>
+          </div>
+          <div class="card-body p-2 text-sm">
+            <div class="row m-0 mt-2 ">
+              <div class="col text-left">
+                <p class="text-bold"> Price</p>
+              </div>
+
+              <div class="col text-right">
+                <p class="h4 text-bold">{{variation.formatted_price}}
+
+                </p>
+              </div>
+            </div>
+            <div class="row m-0 mt-2 ">
+              <div class="col text-left">
+                <p class="text-bold">
+                  Discount</p>
+              </div>
+
+              <div class="col text-right">
+                <p class="h4 text-bold">{{variation.discount}}
+
+                </p>
+              </div>
+            </div>
+
+
+
+          </div>
+<div class="row">
+  <div class="col text-right">
+    <button class="btn load-content-btn" contenturl="{% url 'seller_edit_product_variation' productid=product.productid variationid=variation.pk %}">Edit</button>
+  </div>
+</div>
+        </div>
+      </div>
+    
+
+
+  </div>
+
+  {% endfor %}
+  {% else %}
+
+  {% include 'general/nothing_here.html' %}
+{% endif %}
+</div>

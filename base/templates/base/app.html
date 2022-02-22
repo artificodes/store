@@ -1,0 +1,53 @@
+
+{% if request.user.is_authenticated %}
+
+  {% include 'base/side_navbar.html' %}
+
+
+  <div class="text-center offset-lg-2 p-0 bg-white" >
+    {% include 'base/anavbar.html' %}
+
+    <div class=" col-csxx-x-14" style="width: 100%;">
+      <div id="major"
+        class="position-relative  bg-transparent col-csxx-x-14"
+        style="">
+
+        <div id="app" class="position-relative bg-transparent p-0 overflow-hidden" style="z-index: 2;">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+{% include 'base/mobile_side_nav.html' %}
+
+
+  <script>
+
+
+        var app=$('#app')
+        var spa_links = $('.spa')
+
+
+    UIkit.offcanvas($('#offcanvas-nav'));
+
+    function flip() {
+      $('.logo-loader')
+        .transition('pulse')
+    }
+
+    setInterval(flip, 1000)
+
+
+  </script>
+
+
+<script>
+  {% include 'base/app.js' %}
+
+</script>
+{% endif %}

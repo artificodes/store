@@ -1,0 +1,32 @@
+<div class="container-fluid pt-5 pl-2 pr-2">
+   <p class="h2 text-darker text-left p-4">Overview</p>
+  <div class="row m-0 load-content position-relative" identifier="yearlysalesverview"  contenturl ="{% url 'admin_overview' %}">
+
+  </div>
+ 
+</div>
+
+
+  <div class="" style="min-height: 200px;"  >
+    <div class="card p-4 shadow-none">
+      <div class="card-header">
+        <p class="text-darker h2 text-left">{{year}} sales on graph</p>
+      </div>
+      <div class="card-body load-content position-relative" identifier="yeargraph"  contenturl="{% url 'admin_monthly_graph' %}">
+  </div>
+  </div>
+  </div>
+
+<script>
+
+$('.load-content').beacon({
+    enteronce: true,
+    onenter: (el) => {
+      var contentElement = $(el)
+loadContent(contentElement)
+}
+  });
+
+
+
+</script>

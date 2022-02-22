@@ -1,0 +1,222 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-transparent m-0 row">
+  <div class="col-cmd-3 col-csm-3 col-csxx-14 col-csxx-x-14 p-1">
+
+    <div class="bg-white rounded-sm overflow-hidden" style="height: 100%;">
+      <div class="text-left border-bottom">
+        <h1 class="text-darker uk-display-inline-block p-3 uk-text-normal uk-text-lead">
+          Categories</h1>
+      </div>
+      <nav class="navbar navbar-expand-lg bg-transparent p-0" style="z-index: 3;">
+        <div class="uk-width-1-1">
+          <button class="navbar-toggler btn bg-transparent shadow-none uk-position-top-right mt--5" style="z-index: 2;"
+            type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon material-icons text-darker">menu_open</span>
+          </button>
+          <div class="collapse navbar-collapse uk-animation-fade" id="navbarNav">
+            <div class="row m-0">
+              <div class="col-12 p-0">
+                <ul class="navbar-nav uk-width-1-1 flex-column text-left p-0">
+                  <li class="nav-item  mt-md-0">
+                    <a href="{% url 'customer_all_products_page' %}"
+                      class="position-relative shadow-none m-0 dropdown-item nav-link p-2 text-darker">
+                      <i class="fa fa-th mr-2 ml-3" style="font-size: large;"></i> <span>All products</span>
+                    </a>
+                  </li>
+                  {% for category in groupproducts %}
+                  <li class="nav-item  mt-md-0">
+                    <a href="{% url 'customer_our_categorys' name=category.name %}"
+                      class="position-relative shadow-none m-0 dropdown-item nav-link p-0">
+                      <div class="shadow-none uk-display-inline-block" id="{{productid}}" style="width: 100%;">
+                        <div class="p-1">
+                          <div class="row m-0">
+                            <div class="uk-width-1-1 p-0 text-left mt-2">
+                              <div class="row m-0 pl-2 pt-0">
+                                <div class="col-12 text-left p-0 h4 m-0 text-capitalize uk-text-normal"
+                                  style="font-weight: normal;">
+                                  <span class="mr-2"> <img src="{{category.image.url}}" alt=""
+                                      class="rounded-circle shadow-none" style="width: 30px; "></span>
+                                  {{category.name}}
+                                  <!-- ({{category.products.count}}) -->
+                                </div>
+
+                              </div>
+                            </div>
+
+                            <!-- <div class="col-cmd-3-e col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-right"
+                              style="">
+    
+                              <img src="{{category.image.url}}" alt="" class="rounded-circle shadow-none"
+                                style="width: 30px; ">
+    
+                            </div> -->
+
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+
+
+
+                </ul>
+              </div>
+              <div class="col-12 p-0">
+                <div class="text-left p-2">
+                  <button class="btn btn-outline-dark m-0 mt-3 uk-width-1-1">
+                    <i class="fa fa-plus-square"></i> See all Categories
+                  </button>
+                 
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+      </nav>
+    </div>
+
+  </div>
+  <div class="col-cmd-8 col-csm-8 col-csxx-14 col-csxx-x-14  p-1">
+    <div class="bg-transparent rounded-sm" style="height: 100%;">
+      <div class="container-fluid m-0 p-0 load-content" contenturl="{% url 'customer_slideshows' %}"
+        identifier="slideshows">
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <div class="col-cmd-3 col-csm-3 col-csxx-14 col-csxx-x-14 p-1">
+    <div class="bg-white rounded-sm overflow-hidden" style="height: 100%;">
+      <div class="text-center">
+        <h3 class="text-darker uk-display-inline-block p-2 text-bold">
+          New arrivals </h3>
+      </div>
+      <div class="load-content position-relative mt-0" id="new-products" contenturl="{% url 'customer_new_products' %}">
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="p-0">
+
+  <div class="col-12 p-2 ">
+    <div class="bg-white rounded-sm overflow-hidden">
+      <div class="text-left border-bottom ">
+        <p class="text-darker uk-display-inline-block p-2 text-bold">Top Categories</p>
+      </div>
+      <div class="container-fluid recent m-0 p-0" id="">
+
+        <div class="row m-0 p-0 mt-0 pt-4 pb-4 bg-white">
+          {% for product in groupproducts %}
+          <div class="col-cmd-2-e col-csm-5-e col-css-7 col-csx-7 col-csxx-7 p-1 position-relative">
+            <a href="{% url 'customer_our_categorys' name=product.name %}">
+
+              <div class="rounded-0 position-relative p-0 overflow-hidden card shadow-none m-0"
+                style="max-height: 230px;max-width: 230px;">
+                <div class="card-body p-0">
+                  <img class="" src="{{product.image.url}}" alt=""
+                    style="max-height: 230px;max-width: 230px;width: 95%;">
+
+                  <div class=" text-center">
+                    <h1 class="text-sm text-darker uk-text-normal">{{product.name}}</h1>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+            </a>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  {% if flashsale %}
+  {% include 'themes/functional/flash_sales.html' %}
+  {% endif %}
+  <div class="">
+    <div class="load-content position-relative mt-4 row m-0" identifier="home-group-sections"
+      contenturl="{% url 'all_customer_home_group_sections'%}">
+    </div>
+  </div>
+  <div class="col-12 p-1">
+    <div class="bg-white mt-4 rounded-sm overflow-hidden" style="height: 100%;">
+      <div class="text-center">
+        <h1 class="text-darker uk-display-inline-block p-2 text-bold uk-text-large">Available brands</h1>
+      </div>
+
+      {% include 'themes/functional/brands.html' %}
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

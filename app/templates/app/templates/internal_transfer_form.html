@@ -1,0 +1,155 @@
+<form class="form" id="transfer-form" method="POST" action="{% url 'customer_internal_transfer' %}" style="">
+
+    {% csrf_token %}
+
+    <div class="card-body p-1">
+
+        <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-md position-relative border border-light text-dark "
+                style="z-index: 2;" id="account_number" type="number" name="account_number" required autofocus>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                style="z-index: 1;font-size: 10px;">
+                Account number
+            </span>
+        </div>
+        <div class="uk-inline mt-2 uk-animation-fade hide bg-default text-lighter p-2 text-center rounded-md text-sm" style="width: 100%;" id="verified-details">
+
+        <div class="rounded-md bg-info mt-2" style="height: 30px;">
+
+        </div>
+        </div>
+        <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-md position-relative border border-light text-dark "
+                style="z-index: 2;" id="last_name" type="number" name="amount" required>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                style="z-index: 1;font-size: 10px;">
+                Amount
+            </span>
+        </div>
+
+
+        <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-lock"></i></span> -->
+            <input
+                class="uk-input form-control p-3 pr-5 password   rounded-md position-relative border border-light text-dark "
+                style="z-index: 2;" id="tpin" type="password" name="tpin" required>
+
+            <span class="uk-position-center-right mr-2" style="z-index: 2;">
+                <i class="fa fa-eye reveal-password "></i>
+            </span>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                style="z-index: 1;font-size: 10px;">
+                Transaction pin
+            </span>
+        </div>
+
+    </div>
+    <div class="mt-1 text-center bg-white">
+        <button class="btn btn-primary shadow-none btn-flat " type="submit" style=""> Submit </button>
+    </div>
+
+</form>
+
+
+<script>
+$('.ui.dropdown')
+  .dropdown()
+;
+
+
+$("#account_number").on('change', function (event) {
+    
+    $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: "{% url 'customer_check_fetch_account_details' %}",
+            type: 'post',
+            data: { 'csrfmiddlewaretoken': '{{csrf_token}}',
+            'account_number':$('#account_number').val(),
+            'account_bank':$('#bank').val()},
+
+            success: function (response) {
+                    $('#verified-details').empty()
+                    $('#verified-details').append(response.full_name)
+                    $('#verified-details').show()
+
+                
+            },
+
+            error: function (xhr, status, error) {
+                alert(status)
+            }
+        });
+
+});
+
+
+
+
+    $("#transfer-form").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.full_modal) {
+                    fullcontentModal(response.full_modal, response.heading)
+
+                }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+                if (response.modal_notification) {
+                    notificationModal(response.modal_notification)
+
+                }
+
+                if (response.modal_content) {
+                    contentModal(response.modal_content, response.heading)
+
+                }
+                if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

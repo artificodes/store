@@ -1,0 +1,108 @@
+{% load qr_code %}
+<div>
+    <p class="h3 mt--4 uk-text-bold m-0">
+      Share Amount</p>
+        <p class="h1 text-primary uk-text-bold m-0">N{{pin.formatted_amount}}</p>
+</div>
+<div class="position-relative pt-2 pl-2 pr-2 pb-0 uk-display-block ">
+    <div id="qr-reader2" class=" overflow-hidden uk-display-inline-block bg-darker rounded-md position-relative"
+        style="max-width: 180px;padding: 3px;">
+
+
+
+        <video id="qrcodestream2" class="position-relative uk-display-block rounded-md"
+            contenturl="{% url 'pin_credit_account' %}" style="width: 100%; max-width: 100%; z-index: 2;"></video>
+
+        <span class="bg-translucent-darker uk-icon-button hide uk-position-bottom-right mb-3 mr-3"
+            style="height: 25px;width: 25px;z-index: 2;">
+            <i class="material-icons  text-white  uk-position-center camera-switch" value='1' style="font-size: small;">
+                switch_camera</i>
+
+        </span>
+        <div class="hide uk-position-top-left mt-0 ml-0 qrcodeborder" style="width: 25px;height: 25px;z-index: 1;">
+
+        </div>
+        <div class="hide uk-position-top-right mt-0 mr-0 qrcodeborder" style="width: 25px;height: 25px;z-index: 1;">
+        </div>
+        <div class="hide uk-position-bottom-left  mb-0 ml-0 qrcodeborder" style="width: 25px;height: 25px;z-index: 1;">
+
+        </div>
+        <div class=" hide uk-position-bottom-right  mb-0 mr-0 qrcodeborder"
+            style="width: 25px;height: 25px;z-index: 1;">
+
+        </div>
+
+    </div>
+
+</div>
+<div class="card shadow-none m-1 bg-transparent rounded-0 text-white text-center">
+    <div class="card-body p-1 text-center">
+        
+        <div class="p-1 uk-display-inline-block position-relative overflow-hidden mt-1"
+            style="min-width:90%;min-height: 150px;">
+            <div class=" uk-position-center" style="width:100% ;height: 70%;">
+                <div class="uk-position-center" style="width: 100%;max-width: 200px;">
+                    {% qr_from_text text=qrtext options=qrc_options %}
+                </div>
+            </div>
+        </div>
+        <p class="h2 text-darker uk-text-bold">{{pin.formatted_pin}}</p>
+
+    </div>
+</div>
+
+<script>
+  var qrCodeVerificationUrl = "{% url 'customer_direct_qrc_credit' pin=pin.formatted_pin %}"
+
+    try {
+scanner = new Instascan.Scanner({ video: document.getElementById('qrcodestream2'), mirror: false, continuous: false });
+scanner.addListener('scan', function (qrresult) {
+
+});
+Instascan.Camera.getCameras().then(function (cameras) {
+  if (cameras.length > 0) {
+    scanner.start(cameras[0]);
+    function displayBorders() {
+      document.getElementById('qrcodestream2').onplay = () => {
+        $('.qrcodeborder').show()
+        $('.camera-switch').parent().show()
+      }
+    }
+    displayBorders()
+    function scanQr() {
+      var scanresult = scanner.scan()
+      if (scanresult == null) {
+      }
+      else {
+        verifyQrc(scanresult.content)
+      }
+    }
+    cameraShots = setInterval(scanQr, 500)
+    $('.camera-switch').on('click', function () {
+      $('.qrcodeborder').hide()
+      $('.camera-switch').parent().hide()
+      if ($(this).attr('value') == 1) {
+        if (cameras[0] != "") {
+          scanner.start(cameras[0]);
+        } else {
+          alert('No Front camera found!');
+        }
+      } else if ($(this).attr('value') == 2) {
+        if (cameras[1] != "") {
+          scanner.start(cameras[1]);
+        } else {
+          alert('No Back camera found!');
+        }
+      }
+    });
+  } else {
+    alert('No cameras found.');
+  }
+}).catch(function (e) {
+  console.error(e);
+  alert(e);
+});
+} catch (ReferenceError) {
+
+}
+</script>

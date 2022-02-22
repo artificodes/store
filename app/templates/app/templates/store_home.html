@@ -1,0 +1,60 @@
+{% extends "app/base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="p-0">
+
+  <div class="">
+    <div class="load-content position-relative mt-4 row m-0" identifier="store_products"
+      contenturl="{% url 'customer_store_products' slug=currentstore.slug %}">
+    </div>
+  </div>
+  <div class="col-12 p-1">
+    <div class="bg-white mt-4 rounded-sm overflow-hidden" style="height: 100%;">
+      <div class="text-center">
+        <h1 class="text-darker uk-display-inline-block p-2 text-bold uk-text-large">Available brands</h1>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

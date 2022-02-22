@@ -1,0 +1,180 @@
+{% extends "themes/functional/base/ubase.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-transparent row m-0">
+  <div class="col-md-2 p-2">
+    <div class="bg-white rounded-md">
+      <div class="text-center">
+        <h1 class="text-darker uk-display-inline-block p-2 text-bold uk-text-large"> <i class="fa fa-star text-gold text-sm " ></i> Top rated</h1>
+      </div>
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+        <ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@ pb-3 pt-3" uk-lightbox="">
+          {% for product in bestdeals %}
+          <li class="">
+            {% include 'customers/best_deal_product.html' %}
+
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-8  p-2">
+    <div class="bg-white rounded-md">
+      <div class="container-fluid recent m-0 p-0 load-content" contenturl="{% url 'customer_slideshows' %}" id="">
+
+      </div>
+
+
+      <div class="text-left mt-4  border-bottom">
+        <p class="text-darker uk-display-inline-block p-2 text-bold">Top Categories</p>
+      </div>
+      <div class="container-fluid recent m-0 p-0" id="">
+
+        <div class="row m-0 p-0 mt-0 pt-4 pb-4 bg-white">
+          {% for product in groupproducts %}
+          <div class="col-cmd-2-e col-csm-5-e col-css-7 col-csx-7 col-csxx-7 p-1 position-relative">
+            <a href="{% url 'customer_our_offers' name=product.name %}">
+
+              <div class="rounded-0 position-relative p-0 overflow-hidden card shadow-none m-0"
+                style="max-height: 230px;max-width: 230px;">
+                <div class="card-body p-0">
+                  <img class="" src="{{product.image.url}}" alt=""
+                    style="max-height: 230px;max-width: 230px;width: 95%;">
+
+                  <div class=" text-center">
+                    <h1 class="text-sm text-darker uk-text-normal">{{product.name}}</h1>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+            </a>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+      <div class="text-left mt-4 border-bottom row m-0">
+        <div class="col p-0">
+          <p class="text-bold text-dark uk-display-inline-block p-2">Our Products</p>
+
+        </div>
+        <div class="col text-right">
+          <a href="{% url 'customer_all_products' %}" class="text-primary text-bold">SEE ALL</a>
+        </div>
+      </div>
+      <div class="load-content position-relative mt-4" contenturl="{% url 'customer_products' %}">
+      </div>
+
+
+      <div class="text-left mt-4 border-bottom">
+        <p class="text-bold uk-text-lead text-dark uk-display-inline-block p-2">Special packages</p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-2 p-2">
+    <div class="bg-white rounded-md">
+      <div class="text-center">
+        <h1 class="text-darker uk-display-inline-block p-2 text-bold uk-text-large">Available brands</h1>
+      </div>
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay:true">
+
+        <ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@ pb-3 pt-3" uk-lightbox="">
+          {% for brand in brands %}
+          <li class="">
+            {% include 'customers/brands.html' %}
+
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+  $('.load-content').beacon({
+    enterone: true,
+    onenter: function (el) {
+      var contentElement = $(el)
+      $.ajax({
+        beforeSend: function () {
+          //  alert(contentElement.attr('id'))
+        },
+        complete: function () {
+        },
+        type: 'get',
+        url: contentElement.attr('contenturl'),
+        data: {
+          'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+        },
+        success: function (response) {
+
+          if (response.content) {
+            $(el).empty()
+
+            $(el).append(response.content);
+          }
+
+
+        },
+        error: function (xhr, status, error) {
+          //   alert('there was an error')
+        }
+      });
+
+    }
+  });
+
+
+
+</script>
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

@@ -1,0 +1,150 @@
+<div class="p-2 uk-width-1-1 bg-{{settings.footer_color}} 
+{% if settings.footer_color == 'white' %} text-dark {% elif settings.footer_color == 'dark' %} text-lighter
+{% elif settings.footer_color == 'lighter' %} text-dark {% endif %}">
+    <div class="row m-0">
+        <div class="col-12 col-md-4 p-3 col-sm-4" >
+            <div class=" m-0" style="min-height: 100px">
+            
+                <div class="p-2">
+    
+                    <div class="row m-0 text-left">
+                        <div class=" uk-padding-remove col-12" style="">
+                            <a href="{% url 'customer_home' %}"><img src="{{settings.logo.url}}" alt=""
+                                    style="width: 100px"></a>
+                        </div>
+                        <div class="col-12 mt-2 p-0">
+                            <p class="text-bold  text-capitalize uk-text-lead text-light">{{settings.store_name}}</p>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-1 col-12 col-md-4 p-3 col-sm-4" >
+            <div class="bg-translucent-light p-3 rounded-sm">
+                <form id="newsletter-form" method="post" action="{% url 'customer_news_letter_subscription' %}" class="form">
+                    <p class="text-bold uk-text-lead text-dark">GET LATEST UPDATE</p>
+                   {% csrf_token %}
+                    <div class="input-group" >
+                        <input type="email" name="email" class="form-control rounded-sm bg-transparent" placeholder="Enter your email address"> <button class="btn btn-primary">SUBSCRIBE</button>
+                    </div>
+                   
+
+                </form>
+            </div>
+            <div class=" uk-padding-remove col-12 mt-4 text-center" >
+                {% if settings.footer_color == 'white' %}    
+                <img src="{{settings.payment_cards_image.url}}" alt="" style="width: 100%;max-width: 300px;filter: grayscale(100%);">
+                 {% elif settings.footer_color == 'dark' %}
+                 <img src="{{settings.payment_cards_image.url}}" alt="" style="width: 100%;max-width: 300px;">
+                {% elif settings.footer_color == 'lighter' %} 
+                <img src="{{settings.payment_cards_image.url}}" alt="" style="width: 100%;max-width: 300px;filter: grayscale(100%);">
+                 {% endif %}
+             
+                   
+            </div>
+        </div>
+        <div class="col-12 col-md-4 p-1 col-sm-4 p-3" >
+            <div class=" m-0" style="min-height: 100px">
+                <div class=" row m-0">
+                    <div class="col-12 p-0">
+                        <p class="text-bold text-light">Get in touch </p>
+                    </div>
+                    <div class="col-12 p-0 mt-3">
+                        <p class=""><i class="fa fa-map-marker-alt mr-2"></i> {{settings.address}}
+                        </p>
+                        <p class=""><i class="fa fa-phone-alt mr-2"></i> {{settings.phone_number_1}}, {{settings.phone_number_2}}
+                        </p>
+                        <p class=""><i class="fa fa-envelope-open mr-2"></i> {{settings.email}}
+                        </p>
+                    </div>
+                    <div class="col-md-12 text-right p-0 mt-3" style="">
+                        <div class="row m-0" style="max-width: 150px;">
+                                {% for social in socialmediaplatforms %}
+
+                            <div class="col text-left p-0"> <a target="_blank"
+                                    href="{{social.link}}" class=" uk-icon-button bg-gray-dark">
+                                    <i class="fab fa-{{social.name}} text-white " style="font-size: large;"> </i></a></div>
+                                    {% endfor %}
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 p-0">
+            <div class="row m-0">
+                <div class="col-12 col-md-8 pt-1 pb-1 col-sm-4" >
+                    Copyright Notice © {{settings.store_name}}. All rights reserved.        
+    
+                </div>
+                <div class="col-12 col-md-4 p-1 col-sm-4 p-1 text-right" >
+                    <a class="bg-lighter rounded-md p-1 text-sm uk-display-inline-block pr-2 pl-2 text-darker" target="_blank"  href="https://www.intelbyt.com">
+                                          Powered by intel<span style="color: rgb(117, 209, 25);">byt</span>    
+  
+                    </a>
+    
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<script>
+     
+    $("#newsletter-form").submit(function (event) {
+           event.preventDefault(); //prevent default action 
+           var post_url = $(this).attr("action"); //get form action url
+           var request_method = $(this).attr("method"); //get form GET/POST method
+           var form_data = new FormData(this); //Creates new FormData object
+           $.ajax({
+               beforeSend: function () {
+
+                   showLoadingBar()
+               },
+               complete: function () {
+                   hideLoadingBar()
+   
+               },
+               url: post_url,
+               type: request_method,
+               data: form_data,
+               contentType: false,
+               cache: false,
+               processData: false,
+   
+               success: function (response) {
+                   if (response.full_modal) {
+                       fullcontentModal(response.full_modal, response.heading)
+   
+                   }
+               
+                   if (response.notification) {
+                       notify(response.notification)
+   
+                   }
+                   if (response.modal_notification) {
+                       notificationModal(response.modal_notification)
+   
+                   }
+   
+                   if (response.modal_content) {
+                       contentModal(response.modal_content, response.heading)
+   
+                   }
+                   if (response.message) {
+                       UIkit.notification.closeAll()
+                       UIkit.notification(response.message)
+                   }
+               },
+   
+               error: function (xhr, status, error) {
+                   UIkit.notification.closeAll()
+                   UIkit.notification('Operation not successful. Check your internet connection',)
+               }
+           });
+       });
+   
+   </script>

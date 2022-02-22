@@ -1,0 +1,80 @@
+{% load static %}
+
+<div class="card-body uk-width-1-1@s uk-text-left p-0">
+  <form role="form" id='editstoreinformation' enctype="multipart/form-data" class="form uk-padding-small" method="POST"
+    action="{% url 'seller_edit_store_information' %}">
+    {% csrf_token %}
+
+    <div class="card-body">
+    
+      <div class="uk-inline mt-2" style="width: 100%;">
+
+        <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+        <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+          style="z-index: 2;" type="text" name="store_name" value="{{store.store_name}}" required>
+        <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label" style="z-index: 1;font-size: 10px;">
+          Store name
+        </span>
+      </div>
+      {% include 'seller/contact_details.html' %}
+
+    </div>
+
+    <div class="text-center">
+
+
+      <button type="submit" class="btn btn-primary payment-form-submit pl-4 pr-4 text-capitalize">
+        <i class="text-sm material-icons">edit</i> Submit</button>
+
+    </div>
+  </form>
+
+</div>
+
+<script>
+  $('.ui.dropdown').dropdown()
+  $('.previewimage').jPreview();
+
+</script>
+
+<script>
+
+
+
+  $("#editstoreinformation").submit(function (event) {
+    event.preventDefault(); //prevent default action 
+    // tinymceIframe = $('#full_description_ifr')
+    // tinymceContent = tinymceIframe.contents().find("body#tinymce").html()
+    // $('textarea#full_description').val(tinymceContent)
+    var post_url = $(this).attr("action")
+    var request_method = $(this).attr("method"); //get form GET/POST method
+    var form_data = new FormData(this); //Creates new FormData object
+
+    $.ajax({
+      beforeSend: function () {
+        UIkit.modal($('#content-modal')).hide();
+        showLoadingBar()
+      },
+      complete: function () {
+        hideLoadingBar()
+      },
+      url: post_url,
+      type: request_method,
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+
+      success: function (response) {
+        dispatchResponse(response)
+      },
+      error: function (xhr, status, error) {
+        UIkit.notification.closeAll()
+        UIkit.notification('Not sent. Check your internet connection',)
+      }
+    });
+
+
+  });
+
+</script>

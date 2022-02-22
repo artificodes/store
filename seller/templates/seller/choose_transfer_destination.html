@@ -1,0 +1,59 @@
+<div class="row m-0 uk-text-center bg-white p-5"
+id="" style="box-shadow: none;">
+<div
+  class="col-12 uk-text-center p-1">
+
+  <a class="pl-1 pr-1 pb-3 pt-2 text-left off-canvas-btn rounded-sm btn shadow-none  bg-primary 
+    uk-width-1-1" contenturl="{% url 'customer_internal_transfer' %}" id="internal-transfer" reload="true">
+      <i class="fa fa-arrows-alt-h text-white " style="font-size: medium;"></i>
+
+
+    <br>
+    <span style="" class="text-white text-sm m-0">Fetch Account</span>
+  </a>
+
+</div>
+
+<div
+  class="col-12  uk-text-center p-1">
+
+  <a class="pl-1 pr-1 pb-3 pt-2 text-left off-canvas-btn rounded-sm btn shadow-none btn-blue
+   uk-width-1-1" contenturl="{% url 'customer_external_transfer' %}" id="external-transfer" reload='true'>
+    
+      <i class="fa fa-arrow-up text-white " style="font-size: medium;"></i>
+
+
+
+    <br>
+    <span style="" class="text-white text-sm m-0 ">Other banks</span>
+  </a>
+
+</div>
+<!-- <div class="col-csx-5-e  col-css-4-e col-csm-3-e  col-cmd-2   col-csxx-7 col-csxx-x-7 col-csxx-xx-7  uk-text-center p-1">
+
+  <a class="uk-box-shadow-small main-content-redirect rounded-md text-left btn col-csxx-14 pl-1 pr-1 pb-2 pt-2 "
+   >
+    <i class="fa fa-arrow-right text-warning fa-2x" style=""></i> <br>
+    <span style="" class="text-darker float-right">Transfer</span>
+  </a>
+</div> -->
+
+
+</div>
+
+<script>
+    
+    $('.off-canvas-btn').off()
+    {
+        (function ($) {
+            $('.off-canvas-btn').on('click', function (event) {
+                event.preventDefault()
+                UIkit.offcanvas($('#offcanvas-content')).show();
+                var link = $(this);
+                loadOffCanvasContent(link)
+            })
+        }(jQuery))
+    }
+
+
+</script>

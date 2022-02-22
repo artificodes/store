@@ -1,0 +1,102 @@
+{% extends "app/base/base.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-transparent m-0 row">
+  <div class="col-cmd-11 col-csm-11 col-csxx-14 col-csxx-x-14  p-1">
+    <div class="bg-transparent rounded-sm" style="height: 100%;">
+      <div class="container-fluid m-0 p-0 load-content" contenturl="{% url 'customer_slideshows' %}"
+        identifier="slideshows">
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <div class="col-cmd-3 col-csm-3 col-csxx-14 col-csxx-x-14 p-1">
+    <div class="bg-white rounded-sm overflow-hidden">
+      <div class="text-center">
+        <h3 class="text-darker uk-display-inline-block p-2 text-bold">
+          New arrivals </h3>
+      </div>
+      <div class="load-content position-relative mt-0" id="new-products" contenturl="{% url 'customer_new_products' %}">
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="p-0">
+
+  <div class="">
+    <div class="load-content position-relative mt-4 row m-0" identifier="topcategories"
+      contenturl="{% url 'customer_top_categories'%}">
+    </div>
+  </div>
+
+  {% if flashsale %}
+  {% include 'app/templates/flash_sales.html' %}
+  {% endif %}
+  <div class="">
+    <div class="load-content position-relative mt-4 row m-0" identifier="home-group-sections"
+      contenturl="{% url 'all_customer_home_group_sections'%}">
+    </div>
+  </div>
+  <!-- <div class="col-12 p-1">
+    <div class="bg-white mt-4 rounded-sm overflow-hidden" style="height: 100%;">
+      <div class="text-center">
+        <h1 class="text-darker uk-display-inline-block p-2 text-bold uk-text-large">Available brands</h1>
+      </div>
+
+      {% include 'app/templates/brands.html' %}
+
+
+    </div>
+
+  </div> -->
+</div>
+
+
+
+<script>
+    // jQuery(document).ready(function () {
+    //          $.ajax({
+    //            beforeSend: function () {
+
+    //            },
+    //            complete: function () {
+    //            },
+    //            type: 'get',
+    //            url: '',
+    //            data: {
+    //              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+    //            },
+    //            success: function (response) {
+
+    //              if (response.content) {
+    //                $('#payments').empty()
+
+    //                $('#payments').append(response.content);
+    //              }
+
+
+    //            },
+    //            error: function (xhr, status, error) {
+    //            //   alert('there was an error')
+    //            }
+    //          });
+    //        })
+
+
+
+</script>
+
+
+
+{% endblock content %}

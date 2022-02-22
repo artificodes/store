@@ -1,0 +1,53 @@
+<div class=" p-1 p-0 text-center">
+    <div class="p-2 uk-display-inline-block rounded-lg bg-white overflow-hidden card shadow-none m-0" style="z-index: 2;">
+      <a href="{% url 'customer_product_details' productid=product.productid %}" class="position-relative">
+        <div class="rounded-0 position-relative p-0 overflow-hidden  shadow-none m-0 text-center card">
+          <div class="pb-0 pl-2 pt-2 pr-2">
+            <img class="card-img" src="{{product.image.url}}" alt="" style=" ">
+
+          </div>
+
+          <div class=" rounded-md p-0 mt-2 m-0 text-sm text-center">
+            <div class="pl-1 pr-1 pt-0 pb-0">
+              <p class="text-sm text-darker">{{product.name | truncatechars:15}} </p>
+            </div>
+            <div class=" pl-1 pr-1 pt-0 pb-0 text-center">
+              <p class="text-bold text-sm text-darker">{{product.formatted_price}}</p>
+
+            </div>
+
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-14 col-sm-12 col-xs-12 p-0 position-relative">
+      <div class="row m-0">
+  <div class="p-2 col-4">
+    <button class="btn bg-transparent m-0 content-btn position-relative rounded-circle uk-icon-button uk-box-shadow-medium"
+    contenturl="{% url 'customer_add_to_cart' productid=product.productid %}">
+   
+        <i class="fa fa-heart text-red shadow-sm uk-position-center"></i>
+        
+  </button>
+  </div>
+         
+ <div class="p-2 col-8 pt-3">
+  <button class="btn btn-primary m-0 uk-width-1-1 content-btn p-1 btn-sm"
+  contenturl="{% url 'customer_add_to_cart' productid=product.productid %}">
+ 
+    <span class="p-0 pr-2 text-left">
+      <i class="fa fa-cart-plus"></i>
+
+    </span>
+    <span class="p-0 text-right pr-2">
+      Add to cart
+    </span>
+
+</button>
+ </div>
+       
+      </div>
+     
+    </div>
+</div> 

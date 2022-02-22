@@ -1,0 +1,94 @@
+<div class="card m-0 mb-1 shadow-none uk-display-inline-block" id="{{product.cartedproductid}}-containter" style="max-width: 320px;">
+    <div class="card-body pb-1 pl-0 pr-0 border-bottom">
+        <div class="row m-0">
+            <div class="col-cmd-3-e col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-left"
+                style="">
+                <a href="{% url 'customer_product_details' productid=product.product.productid %}"
+                    class="position-relative">
+                    <img src="{{product.product.image.url}}" alt="" class="rounded-md shadow-none"
+                        style="max-width:100%;; height: 100%;">
+                </a>
+            </div>
+            <div class="col-cmd-11 col-csm-5-e col-css-7 col-csx-14 col-csxx-9 col-csxx-x-14 p-0 text-left">
+                <div class="row m-0 pl-2 pt-0">
+                    <div class="col-12 text-left p-0 h4 m-0">
+                        {{product.product.name}} {% if product.variation %} <span class="text-green">({{product.variation.name}})</span> {% endif %}
+                    </div>
+                    <div class="col-12 text-left p-0 h3" id="price{{product.cartedproductid}}">
+                        {{product.formatted_amount}}
+                    </div>
+                </div>
+            </div>
+            <span class="uk-position-top-right text-light text-sm">{% if product.variation %} {{product.variation.formatted_price}}{% else %} {{product.product.formatted_price}} {% endif %}/{{product.product.measurement_unit}}</span>
+        </div>
+        <div class="row m-0 mt-2">
+            <div class="col p-0">
+               
+                    <form class="form" id="" method="POST"
+                        action="{% url 'customer_add_to_cart' productid=product.cartedproductid %}" style="">
+
+                        {% csrf_token %}
+
+                        <div class="card-body p-0 bg-white rounded-md shadow-none">
+                            <div class="uk-inline position-relative" style="width: 100%;">
+                                <input type="hidden" name="productid" value="{{product.cartedproductid}}" id="">
+                                <input
+                                    class="uk-input form-control text-center p-0  rounded-pill position-relative border border-primary text-dark "
+                                    style="z-index: 1;height: 25px;" id="{{product.cartedproductid}}" type="text" min="0"
+                                    value="{{product.quantity}}" name="quantity" price=" {% if product.variation %} {{product.variation.price}}{% else %} {{product.product.price}} {% endif %}"
+                                    unit="{{product.measurement_unit}}" required>
+                                <!-- <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-5 c-label"
+                                    style="z-index: 1;font-size: 10px;">
+                                    Qty
+                                </span> -->
+                                    <button
+                                        class="btn-primary btn rounded-circle m-0 p-0
+                                        decrease-quantity text-white h2 uk-position-center-left ml-1" style="z-index: 3;height: 20px;width: 20px;"
+                                        product="{{product.cartedproductid}}" inputfield="#{{product.cartedproductid}}"> <span
+                                            class="uk-position-center text-white"
+                                            style="font-size: large !important;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">-</span></button>
+                            
+                                    <button
+                                        class="btn-primary btn p-0 rounded-circle uk-position-center-right m-0 
+                                        increase-quantity mr-1" style="z-index: 3;height: 20px; width: 20px;" product="{{product.cartedproductid}}" inputfield="#{{product.cartedproductid}}">
+                                        <span class="h2 uk-position-center text-white">+</span></button>
+                           
+
+                            </div>
+
+
+                        </div>
+
+                    </form>
+               
+            </div>
+            <div class="col text-right p-0">
+                    <button class="btn btn-warning m-0 btn-sm confirm" target="#cart-container"
+                    contenturl="{% url 'customer_remove_carted_product' id=product.cartedproductid %}"  
+                    message="You are about to remove this product" type=""><i class="fa fa-times mr-2"></i>
+                        Remove</button>
+              
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<br>
+
+<script>
+    {
+        (function ($) {
+            $('.confirm').on('click', function () {
+
+                var link = $(this);
+                $('#confirm-modal-inner').empty()
+                $('#confirm-modal-inner').append(link.attr('message'))
+                $('#yes').attr('contenturl', link.attr('contenturl'))
+                $('#yes').attr('target', link.attr('target'))
+                UIkit.modal($('#confirm-modal')).show();
+            }
+            );
+        }(jQuery))
+    };
+</script>

@@ -1,0 +1,166 @@
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+<div class="bg-secondary uk-height-viewport"
+  style="background-image: url('{{site}}{{store.background_image.url}}');background-size: cover;">
+  <div class="page-header header-filter position-relative text-center " style="">
+
+    <div class="card card-login bg-transparent shadow-none m-0 uk-display-inline-block rounded-md text-center mt-5"
+      style="width: 100%;">
+      <div class="card-body p-1">
+        <img src="{{site}}{{store.logo.url}}" class="card-img-top m-0" alt=""
+          style="width:100px;display: inline-block;">
+
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="container uk-text-center position-relative p-0 mt-5" style="z-index:3">
+
+    <div class="col-lg-4 col-md-6 p-0 float-none uk-display-inline-block">
+      <div class="card card-login uk-display-inline-block rounded-md" style="max-width: 320px;width: 100%;">
+        <div class="card-body">
+          <p class="h2 text-darker" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ">Welcome back, <span class="text-primary">Admin</span>
+          </p>
+          <p><i class="material-icons text-light">lock</i></p>
+
+          <div id="form-container" class="" style="">
+
+            <form class="form" id="lookupform" method="POST" action="{% url 'admin_login' %}">
+
+              {% csrf_token %}
+              <div class="card-body p-2">
+                <p class="text-darker h3">Sign in</p>
+
+                <div class="uk-inline mt-3" style="width: 100%;">
+
+                  <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+                  <input class="uk-input form-control border pt-5 pb-5 pl-3 pr-3 rounded-sm position-relative"
+                    style="z-index: 2;" id="secretpin" type="text" placeholder="" name="identifier" required>
+
+
+
+                  <span class=" uk-position-center-left rounded-sm pl-2 pr-2 ml-2 mt--1 c-label bg-transparent"
+                    style="z-index: 1;font-size: 12px;">
+                    Email or phone
+                  </span>
+                </div>
+
+
+
+                <div class=" mt-3 text-center" style="z-index: 3;">
+                  <button class="btn btn-flat btn-default m-0  pl-3 pr-3  uk-width-1-1" style="" type="submit">
+                    Proceed</button>
+                </div>
+
+
+                <div id="error" class="text-danger text-sm text-center">
+
+                </div>
+                <!-- <div class="text-left">
+          <a class="bg-transparent rounded-sm shadow-none uk-text-bold rounded-lg m-0 ml-1 text-primary"
+            style="border-radius: 50px;">Forgot account?</a>
+        </div> -->
+                <input type="hidden" name="next" value="{{nexturl}}" />
+
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+              </div>
+              <div class="text-center p-2 mt-4">
+                No account?
+                <a href="#{% url 'admin_signup' %}"
+                  class="bg-transparent rounded-sm shadow-none uk-text-bold rounded-lg m-0 ml-1 text-primary spa"
+                  style="border-radius: 50px;color: #8FD400 !important;">Sign up</a>
+                <!-- <button class="btn btn-flat rounded-circle uk-icon-button mt--5 btn-primary m-0 shadow-none p-2 pl-3 pr-3 float-right mt--2"
+          type="submit"><i class="fa fa-arrow-right"></i></button> -->
+                <!-- <button class="btn btn-flat btn-primary m-0 shadow-none p-2 pl-3 pr-3 float-right mt--2"
+          type="submit">Proceed</button> -->
+              </div>
+
+              <br> <br>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="bg-primary fixed-bottom" style="height: 50%;z-index: 1;">
+
+</div> -->
+
+
+
+<script>
+
+  $("#lookupform").submit(function (event) {
+    event.preventDefault(); //prevent default action 
+    var post_url = $(this).attr("action"); //get form action url
+    var request_method = $(this).attr("method"); //get form GET/POST method
+    var form_data = new FormData(this); //Creates new FormData object
+    $.ajax({
+      beforeSend: function () {
+
+        showLoadingBar()
+      },
+      complete: function () {
+        hideLoadingBar()
+
+      },
+      url: post_url,
+      type: request_method,
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+
+      success: function (response) {
+        if (response.form_content) {
+          $('#form-container').empty()
+          $('#form-container').append(response.form_content)
+        }
+        if (response.error) {
+          $('#error').empty()
+          $('#error').append(response.error)
+        }
+        if (response.url) {
+          window.location = response.url
+
+        }
+        if (response.modal_message) {
+          messageModal(response.modal_message, response.heading)
+
+        }
+        if (response.modal_notification) {
+          notificationModal(response.modal_notification)
+
+        }
+
+        if (response.modal_content) {
+          contentModal(response.modal_content, response.heading)
+
+        }
+        if (response.message) {
+          UIkit.notification.closeAll()
+          UIkit.notification(response.message)
+        }
+      },
+
+      error: function (xhr, status, error) {
+        UIkit.notification.closeAll()
+        UIkit.notification('Operation not successful. Check your internet connection',)
+      }
+    });
+  });
+
+
+
+
+</script>

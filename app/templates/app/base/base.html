@@ -1,0 +1,226 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en" class="bg-transparent">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+  <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {% if settings.logo_icon %}
+  <link rel="icon" href="{{settings.logo_icon.url}}">
+  {% endif %}
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+  {% endblock %}
+
+  <link rel="stylesheet" href="{% static 'base/fontawesome/css/fontawesome.min.css' %} ">
+  <!-- <link rel="stylesheet" href="{% static 'base/boomerang/assets/css/theme.css' %}"> -->
+  <!--  <link rel="stylesheet" href="{% static 'base/countdown/css/jQuery.countdownTimer.css' %}">-->
+  <!-- <link rel="stylesheet" href="{% static 'base/inputcounter/css/handle-counter.min.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'base/imagepreview/css/jpreview.css' %}">
+  <link rel="stylesheet" href="{% static 'base/formvalidation/js/jquery.validity.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.mind1f1.css' %}">-->
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minb68f.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/material/assets/css/material-kit.minf27d.css' %}">  -->
+  <!-- <link rel="stylesheet" href="{% static 'base/searchselect/css/jquery-customselect-1.9.1.css' %}">    -->
+  <link rel="stylesheet" href="{% static 'base/uikit/css/uikit.css' %}">
+
+  <!-- <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}"> -->
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/reset.css' %}"> -->
+
+  <!-- <link rel="stylesheet" href="{% static 'base/qrc/js/src/styles.css' %}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+  <link rel="stylesheet" href="{% static 'base/girly/css/girly.css' %}">
+  <link rel="stylesheet" href="{% static 'base/semantic/semantic.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videothumbnails/jquery.youtubevideo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/videomodal/modal-video.min.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/vendor/nucleo/css/nucleo.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/nucleo-svg.css' %}">
+  <link rel="stylesheet" href="{% static 'base/argon/css/argon.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'base/argon/css/argon-design-system.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'base/custom/custom.css' %}">
+
+
+  <link rel="stylesheet" href="{% static 'base/custom/custom.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans">
+  <link rel="stylesheet" href="{% static 'base/countrycodes/css/intlTelInput.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <style>
+    .btn-primary{
+      border-color:{{store.primary_color}} ;
+      background-color: {{store.primary_color}};
+
+    }
+
+    .btn-primary:hover{
+      border-color:{{store.primary_color}} ;
+
+      opacity: 0.7;
+      background-color: {{store.primary_color}};
+      
+    }
+  </style>
+  
+  {% include 'app/base/scripts.html' %}
+  <script src="{% static 'base/qrc/js/src/webcam.js' %}"></script>
+
+
+  <script type="text/javascript">
+
+    window.CSRF_TOKEN = "{{csrf_token}}";
+  </script>
+</head>
+
+<body style="min-width: 100%;background-color: {{settings.background_color}} !important;" class="position-relative text-left" >
+  <div class="uk-width-1-1 text-center fixed-top hide top-0" id='progress-container' 
+  style="margin-top:0px;z-index: 2000;">
+    <div class="ui tiny col-csxx-x-14 rounded-0 bg-transparent active progress uk-display-inline-block m-0"
+        style="border: none;height: 3px;" id="progress">
+       
+             <div class="bar rounded-0 elevation-2 rounded-right" style="background-color: green !important;"></div>
+    </div>
+</div>
+  <div id="top">
+
+  </div>
+
+
+ 
+  {% include 'app/base/navbar.html' %}
+    
+
+
+
+
+  <div class="text-center mt-2 mb-5 p-0 container" style="z-index: 2;">
+    <div class="" style="width: 100%;max-width: 100%;">
+      <div id="major" class="position-relative p-0 bg-transparent "
+        style="">
+
+
+        <div id="" class="position-relative rounded-md p-0" style="z-index: 2;">
+          {% block content%}
+
+
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    {% include 'app/base/footer.html' %}
+
+
+    {% include 'app/base/modals.html' %}
+    <script>
+          {% include 'app/base/utilities.js' %}
+        
+    </script>
+
+
+  <script>
+
+    {
+      (function ($) { //Most read async
+        $('.delete-content').on('click', function (event) {
+          event.preventDefault();
+          var link = $(this);
+          var removableelement = link.attr('removableelement')
+
+          $.ajax({
+            beforeSend: function () {
+              $(removableelement).removeClass('uk-animation-fade')
+
+              $(removableelement).addClass('uk-animation-fade')
+
+            },
+            complete: function () {
+
+            },
+            type: 'get',
+            url: link.attr('contenturl'),
+            data: {
+              'csrfmiddlewaretoken': window.CSRF_TOKEN, // from index.html
+            },
+            success: function (response) {
+              // if there are still more pages to load,
+              // add 1 to the "Load More Posts" link's page data attribute
+              // else hide the link
+              // append html to the posts div
+              //$('.uk-modal-header-title').empty()
+
+              //$('.uk-modal-header-title').append(link.attr('inner-html'));
+              if (response.done) {
+                $(removableelement).addClass('uk-animation-fade')
+                $(removableelement).remove()
+
+                if (response.content) {
+                  $('#main-container').removeClass('uk-animation-fade')
+
+                  $('#main-container').addClass('uk-animation-fade')
+                  $('#main-container').empty()
+                  $('#main-container').append(response.content)
+
+
+                  if (response.message) {
+                    UIkit.notification.closeAll()
+                    UIkit.notification(response.message)
+                  }
+                }
+              }
+              else {
+                UIkit.notification.closeAll()
+                UIkit.notification(response.message)
+
+              }
+
+            },
+            error: function (xhr, status, error) {
+              alert('there was an error')
+            }
+          });
+        });
+      }(jQuery))
+    };
+
+
+  </script>
+  <script>
+    UIkit.offcanvas($('#offcanvas-nav'));
+
+    function flip() {
+      $('.logo-loader')
+        .transition('pulse')
+    }
+
+    setInterval(flip, 1000)
+
+
+    {
+      (function ($) { //Most read async
+        $(window).ready(function () {
+          // $('#page-ready-cover').addClass('uk-transition-fade uk-transition-slow')
+          // $('#page-ready-cover').transition('fade')
+          ;
+
+        })
+      }(jQuery))
+    };
+
+  </script>
+
+
+
+
+</body>
+
+</html>

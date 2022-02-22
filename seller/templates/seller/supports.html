@@ -1,0 +1,37 @@
+{% extends "base/ubase.html" %}
+{% load static %}
+{% block content %}
+<div class="position-relative mt-1">
+
+    <div class="mt--2 container-fluid p-1 uk-position-top-right" style="z-index: 2;">
+        <div class=" p-2 text-right float-none">
+            <a class="uk-icon-button text-white bg-primary position-relative " uk-tooltip="Add request"
+                onclick="requestContentModal('{% url 'partner_create_support' %}','get')">
+                <i class="fa fa-plus uk-position-center text-white"></i></a>
+        </div>
+
+    </div>
+
+    <div id="main-container" class=" overflow-hidden">
+        <div class="card m-0 uk-padding-small m-0-top uk-animation-slide-top rounded-0" id=""
+            style="box-shadow: none;">
+            <div class="text-sm m-0 bg-secondary uk-text-center text-darker uk-text-bold 
+rounded-pill p-2 border-0 pl-3 pr-3 pt-1 pb-1" style="width:max-content">
+                Requests
+            </div>
+            <div class="card-body m-0 uk-padding-small pt-2" id="supports">
+                {% for support in supports %}
+
+                {% include 'partners/support.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom text-right">
+    <a class="p-5 uk-icon-button text-white bg-primary position-relative elevation-2 mt--7 mr-2"
+        uk-tooltip="Add request" onclick="requestContentModal('{% url 'partner_create_support' %}','get')">
+        <i class="fa fa-plus uk-position-center text-white fa-2x"></i></a>
+</div>
+
+{% endblock content %}

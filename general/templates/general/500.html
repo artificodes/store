@@ -1,0 +1,18 @@
+
+<div style="">
+    {% if settings.error_404_background %}
+
+<img src="{{settings.error_500_background.url}}" alt="" class="">
+<div class="bg-secondary uk-position-center rounded-md p-5">
+    An internal server error has occoured. It is not your fault and we have been notified and will fix this soon
+    <p><a href="{% url 'admin_dashboard' %}" class="btn btn-darker text-secondary">Go to home page</a></p>
+    </div>
+
+    {% else %}
+    <div class="bg-secondary position-relative rounded-md p-5">
+        An internal server error has occoured. It is not your fault and we have been notified and will fix this soon
+        <p><a href="{% url 'admin_dashboard' %}" class="btn btn-darker text-secondary">Go to home page</a></p>
+        </div>
+{% endif %}    
+</div>
+

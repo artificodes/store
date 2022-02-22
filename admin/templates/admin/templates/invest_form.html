@@ -1,0 +1,165 @@
+<form class="form" id="invest-form" method="POST" action="{% url 'customer_invest' %}" style="">
+
+    {% csrf_token %}
+
+    <div class="card-body p-1">
+
+
+
+        <div class="uk-inline mt-2" style="width: 100%;">
+            <div class="ui fluid selection dropdown bg-secondary border-0">
+                <div class="text-darker uk-text-bold">Select No. of months</div>
+                <input type="hidden" id="months" name="months" class="investment-input" value="1" required>
+                <i class="dropdown icon"></i>
+               
+                <div class="menu border-primary border">
+
+                    <div class="item" data-value="1" style="padding: 8px !important;">
+                        1
+                    </div>
+                    <div class="item" data-value="2" style="padding: 8px !important;">
+                        2
+                    </div>
+                    <div class="item" data-value="3" style="padding: 8px !important;">
+                        3
+                    </div>
+                    <div class="item" data-value="4" style="padding: 8px !important;">
+                        4
+                    </div>
+                    <div class="item" data-value="5" style="padding: 8px !important;">
+                        5
+                    </div>
+                    <div class="item" data-value="6" style="padding: 8px !important;">
+                        6
+                    </div>
+                    <div class="item" data-value="7" style="padding: 8px !important;">
+                        7
+                    </div>
+                    <div class="item" data-value="8" style="padding: 8px !important;">
+                        8
+                    </div>
+                    <div class="item" data-value="9" style="padding: 8px !important;">
+                        9
+                    </div>
+                    <div class="item" data-value="10" style="padding: 8px !important;">
+                        10
+                    </div>
+                    <div class="item" data-value="11" style="padding: 8px !important;">
+                        11
+                    </div>
+                    <div class="item" data-value="12" style="padding: 8px !important;">
+                        12
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3 investment-input   rounded-md position-relative border border-light text-dark "
+                style="z-index: 2;" id="amount" type="number" name="amount" required value="1000" min="1000">
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+                style="z-index: 1;font-size: 10px;">
+                Amount
+            </span>
+        </div>
+
+        <div class="uk-inline mt-2 uk-animation-fade hide bg-white text-lighter p-2 text-center rounded-md text-sm" 
+        style="width: 100%;" id="investment-details">
+
+    </div>
+    <div class="mt-1 text-center bg-white">
+        <button class="btn btn-primary shadow-none btn-flat " type="submit" style=""> Submit </button>
+    </div>
+
+</form>
+
+
+<script>
+    $('.ui.dropdown')
+        .dropdown()
+        ;
+
+
+    $(".investment-input").on('change', function (event) {
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: "{% url 'customer_investment_brief' %}",
+            type: 'post',
+            data: {
+                'csrfmiddlewaretoken': '{{csrf_token}}',
+                'months': $('#months').val(),
+                'amount': $('#amount').val()
+            },
+
+            success: function (response) {
+                $('#investment-details').empty()
+                $('#investment-details').append(response.details)
+                $('#investment-details').show()
+
+
+            },
+
+            error: function (xhr, status, error) {
+                alert(status)
+            }
+        });
+
+    });
+
+
+
+
+    $("#invest-form").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                if (response.created) {
+                    investWithPaystack(response.customeremail,response.investmentamount,response.investmentid) 
+
+                }
+                if (response.modal_message) {
+                    messageModal(response.modal_message,)
+
+                }
+            },
+
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+
+
+</script>

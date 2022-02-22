@@ -1,0 +1,186 @@
+<div class="nav-tabs-navigation p-0">
+  <div class="nav-tabs-wrapper text-center bg-default ">
+    <ul class="nav nav-pills nav-pills-info m-0 text-center row">
+      <li class="nav-item  m-0 p-3 col">
+        <a class="nav-link active custom inner-tab-content-btn rounded-pill bg-white tab-content-btn   
+        shadow-none  uk-width-1-1 uk-text-bold pt-4 pb-4"
+          style="font-weight: bold;" href="#product_overview" data-toggle="tab">Overview</a>
+      </li>
+
+      <li class="nav-item  m-0 p-3 col">
+        <a class="nav-link  custom inner-tab-content-btn pt-4 pb-4 shadow-none bg-white tab-content-btn  rounded-pill uk-width-1-1 uk-text-bold"
+          style="font-weight: bold;" href="#product_details" data-toggle="tab">
+          Details</a>
+      </li>
+      <!-- <li class="nav-item  m-0 p-0 col">
+        <a class="nav-link  custom inner-tab-content-btn shadow-none tab-content-btn  bg-white rounded-0 uk-width-1-1 uk-text-bold"
+          style="font-weight: bold;" href="#product_images" data-toggle="tab">
+          Images</a>
+      </li> -->
+
+    </ul>
+  </div>
+
+</div>
+<div class="tab-content tab-space pb-0">
+  <div class="tab-pane active slide uk-animation-slide-left " id="product_overview">
+    <div class="container-fluid pt-3 pl-2 pr-2 bg-default pb-5">
+      <div class="row m-0 load-content position-relative" identifier="Overview"
+        contenturl="{% url 'seller_product_overview' productid=product.productid %}">
+
+      </div>
+
+    </div>
+    <div class="mt--5 p-3" style="min-height: 200px;">
+      <div class="card p-4 shadow-none">
+        <div class="card-header">
+          <p class="text-darker h2 text-left">{{year}} sales on graph</p>
+        </div>
+        <div class="card-body load-content position-relative" identifier="productyeargraph"
+          contenturl="{% url 'seller_product_monthly_graph'  productid=product.productid %}">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="tab-pane" id="product_details">
+    <div class=" h3 bg-white rounded-sm  mb-0 p-0 text-dark top-0 text-left navbar navbar-expand-lg"  
+    style="z-index: 3;">
+    <div class="navbar-toggler text-left uk-width-1-1" data-bs-toggle="collapse" data-bs-target="#product-details-navtab" aria-controls="product-details-navtab"
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span  id="navtab-heading" class="h3"><b>{{page}}</b></span> 
+      <button class=" btn bg-transparent m-0 shadow-none p-0 float-right" 
+      data-bs-toggle="collapse" data-bs-target="#product-details-navtab" aria-controls="product-details-navtab"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="text-dark material-icons">expand_more</span>
+    </button>
+    </div>
+     </div>
+    <div class="row m-0">
+      <div class="col-lg-2 p-0 border-bottom border-right">
+        <div class="nav-tabs-navigation p-0">
+          <div class="nav-tabs-wrapper text-center bg-white navbar-expand-lg navbar p-0" >
+            <ul class="nav nav-pills nav-pills-info m-0 text-left row navbar-collapse collapse" id="product-details-navtab">
+              <li class="nav-item  m-0 p-0 col-12">
+                <a class="nav-link active custom inner-tab-content-btn rounded-0 bg-white tab-content-btn   shadow-none  uk-width-1-1 uk-text-bold"
+                  style="font-weight: bold;" href="#product_information" data-toggle="tab">Information</a>
+              </li>
+
+              <li class="nav-item  m-0 p-0 col-12">
+                <a class="nav-link  custom inner-tab-content-btn shadow-none bg-white tab-content-btn  rounded-0 uk-width-1-1 uk-text-bold"
+                  style="font-weight: bold;" href="#product_variations" data-toggle="tab">
+                  Variations</a>
+              </li>
+              <li class="nav-item  m-0 p-0 col-12">
+                <a class="nav-link  custom inner-tab-content-btn shadow-none tab-content-btn  bg-white rounded-0 uk-width-1-1 uk-text-bold"
+                  style="font-weight: bold;" href="#product_images" data-toggle="tab">
+                  Images</a>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <div class="tab-content tab-space pb-0 col overflow-hidden">
+        <div class="tab-pane active slide uk-animation-slide-left " id="product_information">
+            <div class="container-fluid pt-3 pl-2 pr-2">
+              <div class="m-0 load-content position-relative" identifier="product_information_inner" id="product_information_inner"
+                contenturl="{% url 'seller_product_information' productid=product.productid %}">
+              </div>
+            </div>
+     
+        </div>
+        <div class="tab-pane slide uk-animation-slide-left " id="product_images">
+          <div class="container-fluid pt-3 pl-2 pr-2">
+            <div class="text-right">
+              <button class="btn btn-primary load-content-btn" updatectn="product_images_inner"
+                contenturl="{% url 'seller_add_product_image'  productid=product.productid %}"> <i class="fas fa-plus"></i>
+                Add image</button>
+    
+            </div>
+            <div class="m-0 load-content position-relative" identifier="product_images_inner" id="product_images_inner"
+              contenturl="{% url 'seller_product_images' productid=product.productid %}">
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane slide uk-animation-slide-left " id="product_variations">
+          <div class="container-fluid pt-3 pl-2 pr-2">
+            <div class="text-right">
+              <button class="btn btn-primary load-content-btn" updatectn="product_variations_inner"
+                contenturl="{% url 'seller_add_product_variation'  productid=product.productid %}"> <i class="fas fa-plus"></i>
+                Add variation</button>
+    
+            </div>
+            <div class="m-0  position-relative load-content" identifier="product_variations_inner" id="product_variations_inner"
+              contenturl="{% url 'seller_product_variations' productid=product.productid %}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+
+
+  </div>
+
+
+  <script>
+
+    $('.load-content').beacon({
+      enteronce: true,
+      onenter: (el) => {
+        var contentElement = $(el)
+        loadContent(contentElement)
+      }
+    });
+
+
+    {
+      (function ($) {
+        $('.tab-content-btn').on('click', function (event) {
+          tabContainer = ''
+
+          $('.nav-link.tab-btn.main-tab-btn').removeClass('active')
+          var button = $(this)
+
+          var tabContainers = $(button.attr('href')).find('.load-content');
+          var tabContainersIDs = []
+          for (let index = 0; index < tabContainers.length; index++) {
+            tabContainersIDs.push('#' + $(tabContainers[index]).attr('id'))
+          }
+
+          for (let index = 0; index < tabContainersIDs.length; index++) {
+            let contentElement = $(tabContainersIDs[index])
+            if (contentElement.hasClass('uk-animation-slide-right')) {
+              $('.load-content').removeClass('uk-animation-slide-right')
+              $('.load-content').addClass('uk-animation-slide-left')
+
+            }
+            else if (contentElement.hasClass('uk-animation-slide-left')) {
+              $('.load-content').removeClass('uk-animation-slide-left')
+              $('.load-content').addClass('uk-animation-slide-right')
+            }
+            loadContent(contentElement)
+          }
+
+          // $('.tab-content-btn').off()
+        });
+      }(jQuery))
+    };
+
+
+    $('.load-content-btn').off('click')
+    {
+      (function ($) {
+        $('.load-content-btn').on('click', function (event) {
+
+          var button = $(this)
+          requestContentModal(button.attr('contenturl'), 'get', button.attr('updatectn'))
+        });
+      }(jQuery))
+    };
+
+  </script>

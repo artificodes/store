@@ -1,0 +1,185 @@
+<div class="bg-lighter pt-4  pb-4  p-1">
+    <div class="container uk-display-block uk-width-1-1 rounded-md shadow-lg bg-white p-3 border border-success" id=""
+        style="max-width: 320px;border-style: dashed !important;">
+        <p class="h1 text-light">CHECKOUT</p>
+        {% if cart.products.all %}
+
+
+        <!-- <p>My Items ({{cart.products.all | length}})</p> -->
+        {% for product in cart.products.all %}
+        {% include 'customers/checkout_product.html' %}
+        {% endfor %}
+
+        <div class="mt-3">
+   <form class="form " id="place-order" method="POST" action="{% url 'customer_place_order' %}" style="">
+            <div class="card shadow-none">
+                <div class="card-header p-2">Delivery option</div>
+                <div class="card-body p-2">
+                 
+                        {% csrf_token %}
+                    
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input hide-locations" type="radio" name="delivery" id="delivery1"
+                            value="p" required>
+                        <label class="custom-control-label location" price="0" for="delivery1">Pick up</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input class="custom-control-input" type="radio" name="delivery" id="delivery2"
+                            value="d" required>
+                        <label class="custom-control-label show-locations" for="delivery2">Home delivery</label>
+                    </div>
+                 
+        <div class="uk-inline mt-2 hide location-container" style="width: 100%;">
+            <div class="default text p-1 text-left">Choose location</div>
+            <div class="ui fluid search selection dropdown bg-lighter border-0">
+                <input type="hidden" id="location" name="location" required>
+                <i class="dropdown icon"></i>
+                <div class="default text text-dark">Select location</div>
+                <div class="menu border-primary border">
+                    {% for location in locations %}
+                    <div class="item location" data-value="{{location.pk}}" price ="{{location.price}}" style="padding: 8px !important;">{{location.name}} 
+                        <span class="bg-primary text-white p-1 rounded-md ml-1 float-right">{{location.formatted_price}}</span> 
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+                </div>
+            </div>
+            <div class="uk-display-inline-block uk-width-1-1 p-2">
+                <div class="p-2 bg-secondary rounded-md m-0" style="max-width: 320px;">
+                    <div class="row m-0">
+                      <div class="col h4 p-0 text-left">
+                        TOTAL
+                    </div>
+                    <div class="col text-right h4 p-0" id="cart-total" amount="{{cart.total}}">
+                        NGN {{cart.formatted_total}}
+                    </div>  
+                    </div>
+                    
+                    <div class="row m-0" id="delivery-fee-container">
+                        <div class="col h4 p-0 text-left">
+                            Delivery fee
+                        </div>
+                        <div class="col text-right h4 p-0" id="delivery-fee">
+                            NGN 0
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col h3 p-0 text-darker text-left">
+                          GRAND TOTAL
+                      </div>
+                      <div class="col text-right h3 text-darker p-0" id="grand-total">
+                        NGN {{cart.formatted_total}}
+                      </div>  
+                      </div>
+                </div>
+                <div class="mt-3">
+                    <!-- <button class="btn-success uk-width-1-1 m-0 btn"> <i class="fa fa-credit-card mr-3"> -->
+
+                    <!-- </i> PAY NOW (Paystack)</button>  -->
+                    <button class="btn-blue uk-width-1-1 m-0 btn mt-3"> <i class="fa fa-check mr-3"></i> PLACE ORDER</button>
+                </div>
+            </div>
+
+            </form>
+        </div>
+
+
+        
+
+
+        {% else %}
+        <div class="mt-2 text-center">
+            <i class="fa fa-shopping-basket fa-5x text-lighter"></i>
+            <p>You have not added any product to cart yet.</p>
+        </div>
+
+
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    $(".location").click( function (event) {
+    var deliveryFee = Number($(this).attr('price'))
+    var total = Number($('#cart-total').attr('amount'))
+    var amount = deliveryFee + total
+    $('#delivery-fee').empty().html('₦ '+String(deliveryFee))
+    $('#grand-total').empty().html('₦ '+String(amount))
+})
+          $('.ui.dropdown').dropdown()
+
+      {
+    (function ($) {
+      $('.show-locations').on('click', function (event) {
+        $('.location-container').show()
+      })
+    }(jQuery))
+  }
+  {
+    (function ($) {
+      $('.hide-locations').on('click', function (event) {
+        $('.location-container').hide()
+      })
+    }(jQuery))
+  }
+</script>
+
+
+<script>
+ 
+    $("#place-order").submit(function (event) {
+           event.preventDefault(); //prevent default action 
+           var post_url = $(this).attr("action"); //get form action url
+           var request_method = $(this).attr("method"); //get form GET/POST method
+           var form_data = new FormData(this); //Creates new FormData object
+           $.ajax({
+               beforeSend: function () {
+   
+                   showLoadingBar()
+               },
+               complete: function () {
+                   hideLoadingBar()
+   
+               },
+               url: post_url,
+               type: request_method,
+               data: form_data,
+               contentType: false,
+               cache: false,
+               processData: false,
+   
+               success: function (response) {
+                   if (response.full_modal) {
+                       fullcontentModal(response.full_modal, response.heading)
+   
+                   }
+                   if (response.modal_message) {
+                       messageModal(response.modal_message,)
+   
+                   }
+                   if (response.modal_notification) {
+                       notificationModal(response.modal_notification)
+   
+                   }
+   
+                   if (response.modal_content) {
+                       contentModal(response.modal_content, response.heading)
+   
+                   }
+                   if (response.message) {
+                       UIkit.notification.closeAll()
+                       UIkit.notification(response.message)
+                   }
+               },
+   
+               error: function (xhr, status, error) {
+                   UIkit.notification.closeAll()
+                   UIkit.notification('Operation not successful. Check your internet connection',)
+               }
+           });
+       });
+   
+   </script>

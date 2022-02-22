@@ -1,0 +1,158 @@
+{% load static %}
+
+<div class="bg-white p-3 text-center">
+  <div class="card uk-display-inline-block" style="max-width: 500px;">
+    <div class="card-body">
+
+      <form role="form" id='editproductinformation' enctype="multipart/form-data" class="form uk-padding-small"
+        method="POST" action="{% url 'seller_edit_product_information' productid=product.productid %}">
+        {% csrf_token %}
+
+        <div class="card-body">
+
+          <div class="uk-inline mt-2" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+              style="z-index: 2;" id="productname" type="text" name="name" value="{{product.name}}" required>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 10px;">
+
+              Name
+            </span>
+          </div>
+          <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+              style="z-index: 2;" type="number" name="price" value="{{product.price}}" required>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 10px;">
+              Price
+            </span>
+          </div>
+          <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+              style="z-index: 2;" type="number" name="discount" value="{{product.discount}}">
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 10px;">
+              Discount (%)
+            </span>
+          </div>
+          <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+              style="z-index: 2;" type="number" name="available_stock" value="{{product.available_stock}}" required>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 10px;">
+              Available stock
+            </span>
+          </div>
+          <div class="uk-inline mt-4" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+            <input class="uk-input form-control p-3    rounded-sm position-relative border border-light text-dark"
+              style="z-index: 2;" id="productweight" type="number" name="weight" value="{{product.weight}}" required>
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 10px;">
+              Weight
+            </span>
+          </div>
+          {% include 'seller/measurement_units.html' %}
+
+          <div class="uk-inline mt-1" style="width: 100%;">
+
+            <!-- <span class="uk-position-center-left ml-2"> <i class="fa fa-user"></i></span> -->
+
+            <span class=" uk-position-center-left rounded-sm pl-1 pr-1 ml-2 c-label"
+              style="z-index: 1;font-size: 12px;">
+              Description
+            </span>
+          </div>
+          <div class="form-group mt-2">
+            <textarea class="form-control" id="description" rows="3"
+              name="description">{{product.description}}</textarea>
+          </div>
+
+
+        </div>
+
+        <div class="text-center">
+
+
+          <button type="submit" class="btn btn-primary payment-form-submit pl-4 pr-4 text-capitalize">
+            <i class="text-sm material-icons">edit</i> Submit</button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.ui.dropdown').dropdown()
+  $('.previewimage').jPreview();
+
+</script>
+
+<script>
+tinymce.init({
+  selector: 'textarea#description',
+  height: 250,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table paste code help wordcount'
+  ],
+  toolbar: 'undo redo | formatselect | ' +
+    'bold italic backcolor | alignleft aligncenter ' +
+    'alignright alignjustify | bullist numlist outdent indent | ' +
+    'removeformat | help',
+  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+});
+    
+
+
+
+  $("#editproductinformation").submit(function (event) {
+    event.preventDefault(); //prevent default action 
+    // tinymceIframe = $('#full_description_ifr')
+    // tinymceContent = tinymceIframe.contents().find("body#tinymce").html()
+    // $('textarea#full_description').val(tinymceContent)
+    var post_url = $(this).attr("action")
+    var request_method = $(this).attr("method"); //get form GET/POST method
+    var form_data = new FormData(this); //Creates new FormData object
+
+    $.ajax({
+      beforeSend: function () {
+        UIkit.modal($('#content-modal')).hide();
+        showLoadingBar()
+      },
+      complete: function () {
+        hideLoadingBar()
+      },
+      url: post_url,
+      type: request_method,
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+
+      success: function (response) {
+        dispatchResponse(response)
+      },
+      error: function (xhr, status, error) {
+        UIkit.notification.closeAll()
+        UIkit.notification('Not sent. Check your internet connection',)
+      }
+    });
+
+
+  });
+
+</script>

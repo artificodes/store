@@ -1,0 +1,44 @@
+
+<div class="shadow-lg p-0 rounded-lg" style="">
+    {% if products %}
+    <p class="text-center mt-2 text-bold">{{products | length}} result(s)</p>
+        <ul class="navbar-nav uk-width-1-1 flex-column text-left p-0">
+    
+    {% for product in products %}
+            <li class="nav-item  mt-md-0">
+        <a href="{% url 'customer_product_details' productid=product.productid %}"
+        class="position-relative nav-link  dropdown-item p-2">
+        <div class="m-0 mb-1 shadow-none uk-display-inline-block " id="{{productid}}"
+            style="width: 100%;">
+            <div class="card-body p-1 ">
+                <div class="row m-0">
+                    <div class="col-cmd-3-e col-csm-5-e col-css-7 col-csx-14 col-csxx-3 col-csxx-x-5 p-0 text-left"
+                        style="">
+                    
+                            <img src="{{product.image.url}}" alt="" class="rounded-md shadow-none"
+                                style="width: 50px; ">
+                    
+                    </div>
+                    <div class="col-cmd-11 col-csm-5-e col-css-7 col-csx-14 col-csxx-9 col-csxx-x-14 p-0 text-left">
+                        <div class="row m-0 pl-2 pt-0">
+                            <div class="col-12 text-right p-0 h4 m-0">
+                                {{product.name}}
+                            </div>
+                            <div class="col-12 text-right p-0 h3" id="price{{product.productid}}">
+                                {{product.formatted_price}}
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        </a>
+        </li>
+        {% endfor %}
+    
+        {% else %}
+        <p>No product</p>
+        {% endif %}
+        </ul>
+</div>

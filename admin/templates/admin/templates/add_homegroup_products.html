@@ -1,0 +1,99 @@
+<form class="form uk-animation-slide-top-medium" id="addhomegrouproducts" method="POST" enctype="multipart/form-data"
+action="{% url 'admin_add_homegroup_products' id=homegroup.pk %}" style="">
+{% csrf_token %}
+
+<div class="bg-white p-3 text-center">
+    <div class="card  shadow-none">
+        <div class="card-body p-0">
+
+            {% for product in products %}
+
+            <div class="col-csxx-xx-14 col-csxx-x-14 col-csxx-14 col-csx-7 col-css-5-e col-csm-4-e col-cmd-5-e col-lg-4  
+            mt-3
+            p-2" identifier="{{product.productid}}">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="productid" value="{{product.productid}}" required class="custom-control-input" id="{{product.productid}}">
+                    <label class="custom-control-label" for="{{product.productid}}">
+                        {{product.name}}
+
+                    </label>
+                    <label class="card p-0 m-0 mt-1 uk-text-left rounded-md shadow-none" for="{{product.productid}}">
+
+                        <div class="card-body p-2">
+
+                            <div class="row m-0">
+                                <!-- <div class="col-12 text-left">
+                      <p class="text-bold h3">Product name</p>
+                    </div> -->
+
+                                <div class="col-12 text-center">
+                                    <p class="h3 text-bold"></p>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+
+
+                                <div class="col-12 text-center">
+                                    <img src="{{product.url}}" alt="" style="max-height: 150px;">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+<div class="mt-1 text-center bg-transparent">
+    <button class="btn btn-primary shadow-none btn-flat " type="submit" style="">
+        Submit</button>
+</div>
+
+</form>
+
+<script>
+
+    $('.ui.dropdown')
+        .dropdown()
+        ;
+
+        $("#addhomegrouproducts").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = new FormData(this); //Creates new FormData object
+        $.ajax({
+            beforeSend: function () {
+                showLoadingBar()
+            },
+            complete: function () {
+                hideLoadingBar()
+            },
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+                dispatchResponse(response)
+
+            },
+            error: function (xhr, status, error) {
+                UIkit.notification.closeAll()
+                UIkit.notification('Operation not successful. Check your internet connection',)
+            }
+        });
+    });
+
+
+</script>
