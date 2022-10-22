@@ -1,0 +1,10 @@
+venv/
+db.sqlite3
+# static/
+uploads/
+media/
+products/
+.idea/
+__pycache__/
+db.sqlite3
+.env
